@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-07T06:07:13.727Z</updated>
+    <updated>2019-10-07T06:12:42.637Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://tienyeung.github.io/"/>
+    <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://tienyeung.github.io//images/avatar.png</logo>
+    <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
     <entry>
         <title type="html"><![CDATA[尝试]]></title>
-        <id>http://localhost:4000/post/chang-shi</id>
-        <link href="http://localhost:4000/post/chang-shi">
+        <id>https://tienyeung.github.io//post/chang-shi</id>
+        <link href="https://tienyeung.github.io//post/chang-shi">
         </link>
         <updated>2019-10-07T05:51:20.000Z</updated>
         <content type="html"><![CDATA[<p>别在窗前等我<br>
@@ -53,8 +53,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
-        <id>http://localhost:4000/post/hello-gridea</id>
-        <link href="http://localhost:4000/post/hello-gridea">
+        <id>https://tienyeung.github.io//post/hello-gridea</id>
+        <link href="https://tienyeung.github.io//post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[  <p markdown="1" style="
