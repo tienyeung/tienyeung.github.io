@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-07T04:45:39.775Z</updated>
+    <updated>2019-10-07T05:09:34.057Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -22,11 +22,14 @@
         <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<figure data-type="image" tabindex="1"><img src="http://clickrightng.com/wp-content/uploads/2017/06/hello-world.jpg" alt=""></figure>
+<p markdown="1" style="
+    color: green; 
+    font-weight: bold;
+    font-family:heiti "
+>Hello,Blog!</p>
+## 特性👇
+📝  你可以使用最酷的 **Markdown** 语法，进行快速创作  
 <p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
 <p>🏷️  你可以对文章进行标签分组</p>
 <p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
