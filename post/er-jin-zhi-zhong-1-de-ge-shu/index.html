@@ -1,7 +1,7 @@
-
+<!DOCTYPE html>
 <html>
   <head lang="zh">
- <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="telephone=no" name="format-detection"/>
@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>阳阳の部落格</title>
+<title>二进制中1的个数 | 阳阳の部落格</title>
 <link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -49,11 +49,10 @@ function pjax() {
 }
 </script> -->
 
-
   </head>
 
   <body>
-    <div class="header">
+     <div class="header">
       <div class="logo_title">
 		  
         <div class="title animated fadeInDown"><img id="img1" style="display:inline-block;" src="https://tienyeung.github.io//images/avatar.png"/>
@@ -256,42 +255,204 @@ var r = 0;
 }
 
 </style>
+
     <div class="main" id="pjax-container">
       <div class="main-inner">
 
 
 <div class="content">
-  <div class="list_with_title">
-
- <div class="tags-container">
-            <a class="tag" href="https://tienyeung.github.io//tag/cxv9iOKUi">位运算</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/b9V5xGTTNZ">力扣</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/3N5q76T1r">随感</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/CDWA-0Z0e">电影时光</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/2CjH5_jyD">latex</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/eAR5k_XZdu">动态规划</a>
-          
- </div>
- 
 
 
 
 
+
+
+  <div class="post_page" >
+
+<div class="post">
+  <div class="post_title sm_margin">
+    <h2><a>二进制中1的个数</a>
+
+
+
+    </h2>
   </div>
+  
+<script>
+function lan(){
+	if (document.getElementById("lan").innerText == "繁"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_tw.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "简"
+	}
+	else if(document.getElementById("lan").innerText == "簡"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_cn.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "繁"
+		}
+}
+
+function change(){	
+    var rand = Math.random()*1+1;
+    var num = window.getComputedStyle(document.getElementsByName("show")[0],undefined).fontSize;
+	num = num.slice(0,-2); 
+    document.getElementById("show").style.fontSize = num - rand +'px';
+}
+</script>
+
+  <div class="post_details">
+    <div class="info"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-10-09</span>
+<i class="fa fa-eye"></i>
+
+<span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
+
+<i class="fa fa-bookmark-o"></i>
+<span class="tags_info weaklink">
+	
+	<a href="https://tienyeung.github.io//tag/cxv9iOKUi" class="tag">位运算</a>
+
+	<a href="https://tienyeung.github.io//tag/b9V5xGTTNZ" class="tag">力扣</a>
+
+
+</span>
+<span>2 min read</span>
+&nbsp
+&nbsp
+<i class="fa fa-share"></i>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu&sharesource=qzone&title=二进制中1的个数&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;p&gt;做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。&lt;/p&gt;
+"><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu&sharesource=weibo&title=二进制中1的个数 + " - " + &lt;p&gt;做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。&lt;/p&gt;
+&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+&nbsp
+&nbsp
+<a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
+&nbsp
+&nbsp
+<a id="lan" href="javascript:void(0);" onclick="lan();" title="调整简繁体">繁</a>
+</div>
+  </div>
+
+  <div class="post_content markdown">
+  &nbsp
+  <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
+    <div name="show" id="show">
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><p>做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。</p>
+<!-- more -->
+<p><strong>如下有两种方法</strong>：</p>
+<h1 id="按位与">按位与</h1>
+<p>即将该二进制数与1相与，若不为0，说明该位(最低位)上为1，然后将1左移一位，依次与二进制数对比。</p>
+<pre><code class="language-python">class Solution(object):
+    def hammingWeight(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        bits=0
+        mask=1
+        for i in range(0,32):
+            if n&amp;mask !=0 :
+                bits+=1
+            mask&lt;&lt;=1
+        return bits
+</code></pre>
+<h1 id="特殊方法">特殊方法</h1>
+<p>将该数不断同比自己小1的数相与，直到结果为0为止。为什么n &amp;= (n – 1)能清除最右边的1呢？因为从二进制的角度讲，n相当于在n - 1的最低位加上1。举个例子，8（1000）= 7（0111）+ 1（0001），所以8 &amp; 7 = （1000）&amp;（0111）= 0（0000），清除了8最右边的1（其实就是最高位的1，因为8的二进制中只有一个1）。再比如7（0111）= 6（0110）+ 1（0001），所以7 &amp; 6 = （0111）&amp;（0110）= 6（0110），清除了7的二进制表示中最右边的1（也就是最低位的1）。</p>
+<pre><code class="language-python">def count1(n):
+        res = 0
+        while n!=0:
+            n&amp;=(n-1)
+            res+=1
+        
+        return res
+</code></pre>
+</span></p></div>
+	<br>
+	<hr>
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
+<div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-09</div>     -->
+	 <p class="md_block">
+    <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
+<div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
+</p> 
+</div>
+</div>
+
+<style type="text/css">
+#mememe {
+	border:3px;
+	border-radius:5px;
+    background-repeat: no-repeat;
+    height: 100%;
+	width: 100%;
+	display: inline-block;
+	border-radius:5px; 
+}
+</style>
+
+<script>
+var link = "" ;
+$("img").each( (i,o) => {
+	var o = $(o);
+	if( o.attr("src").indexOf("sinaimg") > 0 || o.attr("src").indexOf("qpic") > 0 || o.attr("src").indexOf("baidu") > 0 || o.attr("src").indexOf("sinaimg") > 0){
+		o.attr("referrerpolicy","no-referrer");
+		link = o.attr("src");
+		o.attr("src",link);
+	}
+});
+</script>
+
+<div style="width:100%;overflow:hidden">
+
+          <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
+            下一篇
+            <a href="https://tienyeung.github.io//post/du-zhong-hua-shi-you-gan">
+              <h3 class="post-title">
+                读中华史有感
+              </h3>
+            </a>
+          </div>
+
+
 
 </div>
 
+<div class="doc_comments">
+
+</div>
+
+  </div>
+</div>
 
 
       </div>
+<div class="toc-container">
+<ul class="markdownIt-TOC">
+<li><a href="#%E6%8C%89%E4%BD%8D%E4%B8%8E">按位与</a></li>
+<li><a href="#%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95">特殊方法</a></li>
+</ul>
 
+</div>
     </div>
-
+	
    <div class="footer">
 <div class="site_footer_wrap"><div class="site_footer">
 

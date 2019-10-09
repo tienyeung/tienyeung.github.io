@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-09T05:57:51.558Z</updated>
+    <updated>2019-10-09T10:50:17.292Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,45 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[二进制中1的个数]]></title>
+        <id>https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu</id>
+        <link href="https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu">
+        </link>
+        <updated>2019-10-09T10:39:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。</p>
+<!-- more -->
+<p><strong>如下有两种方法</strong>：</p>
+<h1 id="按位与">按位与</h1>
+<p>即将该二进制数与1相与，若不为0，说明该位(最低位)上为1，然后将1左移一位，依次与二进制数对比。</p>
+<pre><code class="language-python">class Solution(object):
+    def hammingWeight(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        bits=0
+        mask=1
+        for i in range(0,32):
+            if n&amp;mask !=0 :
+                bits+=1
+            mask&lt;&lt;=1
+        return bits
+</code></pre>
+<h1 id="特殊方法">特殊方法</h1>
+<p>将该数不断同比自己小1的数相与，直到结果为0为止。为什么n &amp;= (n – 1)能清除最右边的1呢？因为从二进制的角度讲，n相当于在n - 1的最低位加上1。举个例子，8（1000）= 7（0111）+ 1（0001），所以8 &amp; 7 = （1000）&amp;（0111）= 0（0000），清除了8最右边的1（其实就是最高位的1，因为8的二进制中只有一个1）。再比如7（0111）= 6（0110）+ 1（0001），所以7 &amp; 6 = （0111）&amp;（0110）= 6（0110），清除了7的二进制表示中最右边的1（也就是最低位的1）。</p>
+<pre><code class="language-python">def count1(n):
+        res = 0
+        while n!=0:
+            n&amp;=(n-1)
+            res+=1
+        
+        return res
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[读中华史有感]]></title>
         <id>https://tienyeung.github.io//post/du-zhong-hua-shi-you-gan</id>
