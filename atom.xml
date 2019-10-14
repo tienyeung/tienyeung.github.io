@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-11T06:59:01.836Z</updated>
+    <updated>2019-10-14T02:17:10.678Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,95 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[电梯调度算法]]></title>
+        <id>https://tienyeung.github.io//post/dian-ti-diao-du-suan-fa</id>
+        <link href="https://tienyeung.github.io//post/dian-ti-diao-du-suan-fa">
+        </link>
+        <updated>2019-10-14T02:04:07.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>所有的员工均在1楼进电梯的时候，选择所要到达的楼层。然后计算出停靠的楼层i，当到达楼层i的时候，电梯停止.所有人走出电梯，步行到所在的楼层中。求所有人爬的楼层数目和的最小值。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>所有的员工均在1楼进电梯的时候，选择所要到达的楼层。然后计算出停靠的楼层i，当到达楼层i的时候，电梯停止.所有人走出电梯，步行到所在的楼层中。求所有人爬的楼层数目和的最小值。</p>
+</blockquote>
+<!-- more -->
+<p>最简单的方法和最容易想到的就是穷举法，遍历乘客的停靠楼层并计算在某个楼层的总爬楼梯数，时间复杂度是平方级别。</p>
+<p>优化一下，假设停靠在第i层，假设在i处下楼的客人为N2,在i以上楼层的客人数目为N3 ，在i一下楼层的客人数目为N1。 且将电梯在i层停止时，全部人员的路程之和记为T。</p>
+<p>那么假如电梯在i-1层停的话，则原来i层之上的人需要多爬一层，即增加了N3，第i层的人需要多爬一层，则结果增加了N2,  i层之下的人则少爬了一层，结果减去N1，所以第i-1层的结果为 T - N1 + N2 + N3 。即结果可以即为 T -(N1 - N2 - N3) <br>
+      <br>
+考虑在i+1层的结果，若电梯在i+1层停止的话，原来i层之上的客户都会少爬一层，则结果减少N3 ，而i层之下的人员则都会多爬一层即增加了N1 ，第i层的人员都会多爬一层即为增加了N2 。则结果为 T + N1 + N2 - N3 <br>
+————————————————<br>
+综上我们得出，<br>
+      (1) 若N1 &gt; N2 + N3的时候， 我们在第i-1层 选择电梯停止最好。<br>
+      (2) 若N1 + N2 &lt; N3的时候， 我们选择在第i+1层停止电梯最好。  <br>
+        <br>
+下面我们可以先计算出来当i=1时候的T ，然后判断是否需要在i+1层停止，若是i+1层的花费大于i层，则我们可以继续计算，否则退出。<br>
+————————————————</p>
+<pre><code class="language-java">
+public class Lift 
+{
+	static final int N = 10 ;
+	static int person[] = {0, 2, 5 , 7 , 3 , 5 , 2 , 6, 2 , 6 , 3}; 
+	public static void main(String[] args)
+	{
+		System.out.print(compute(person)+&quot; &quot;+compute2(person));
+	}
+	public static int compute(int[] person)
+	{
+	      //先计算出在第一层停止的时候 所需要的花费
+	       int T = 0;
+	       int N1 = 0 ; //在第一层以下下的人数 
+	       int N2 = person[1] ; //在第一层处下的人数 
+	       int N3 = 0 ;      //在第一层之上下电梯的人数 
+	       int floor =  1 ;
+	       for(int i = 2 ; i &lt;= N ;i++) //先计算出第1层停止需要爬取的楼层数目 
+	       {
+	         T  += person[i] * (i - 1) ;
+	         N3 += person[i] ;     
+	       }
+	        
+	       for(int i = 2 ; i &lt;= N ;i++)
+	       {
+	         if(N1 + N2 &lt;= N3) //说明第i+1层的结果会大于第i层 
+	           {
+	               T += N1 + N2 - N3 ;
+	               N1 += N2 ;
+	               N2 = person[i] ; 
+	               N3 -= person[i] ;
+	               floor = i ;
+	               
+	           }     
+	           else  //否则第i层的结果已经最小，故不需要计算第i+1层 
+	           break ; 
+	            
+	       }     
+	       return floor ;
+	}
+	public static int compute2(int[] person)
+	{
+		      int tempfloor = 0 ;
+		      int min = 6553 ;//存储最小值
+		      int floor = 1   ;//存储停靠的楼层 
+		      int j;
+		      for(int i = 1 ; i &lt;= N ;i++) //表示第i楼层电梯停靠 
+		      {
+		        tempfloor = 0 ;         
+		        for(j = 1 ; j &lt; N ;j++)      
+		            tempfloor += Math.abs((i - j)) * person[j] ;         
+		        if(min &gt; tempfloor)   
+		        {
+		          min = tempfloor ;
+		          floor = i ;          
+		        }       		                        
+		      }
+		      return floor ;	  
+	}
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[算法之美]]></title>
         <id>https://tienyeung.github.io//post/suan-fa-zhi-mei</id>
@@ -48,6 +137,8 @@
 <figure data-type="image" tabindex="1"><img src="https://tienyeung.github.io//post-images/1570764660749.png" alt=""></figure>
 <p>比如你正在跟女朋友讨论晚上去哪里吃饭。老餐馆，你们去过15次，其中9次感觉很好，6次感觉不好，那么就是9个wins，6个losses，根据表格，基廷斯指数是0.6997。而新餐馆你们并没有去过，所以wins和losses都为0，基廷斯指数是0.8699。基廷斯指数给一次都没去过的新餐馆一个非常高的估值，这就是因为它可能给你带来惊喜，要积极探索。但这个探索不是无条件的 —— 根据表格，如果你们去过老餐馆9次每次都很好，那么老餐馆的基廷斯指数就是0.9655，那就没必要去这个新餐馆。事实上，哪怕女朋友说的这个新餐馆，你们已经去过两次，一次体验好一次不好，那么新餐馆的基廷斯指数仍然高达0.7844，你们还是应该去。这是因为小样本的统计很可能不准，也许一次不好只是偶然，你应该给它更多机会。而对比之下，老餐馆已经去过多次，测量结果已经稳定在一个一般的水平了。</p>
 <p><strong>用基廷斯指数解决探索/收获问题，其实有一个隐含的假设，那就是你的转换是没有成本的。今天在这间餐馆吃饭，明天去新餐馆，可以随便去。可是对于换工作之类的问题，其实存在一个适应新单位的转换成本，那就要考虑得更复杂一点了。</strong></p>
+<h2 id="上限置信区间">上限置信区间</h2>
+<p>人绝非全知全能，那势必会存在遗憾，只是或多或少，或快或慢而已。基廷斯指数考虑的剩余时间，而<a href="https://segmentfault.com/a/1190000018871668">上限置信区间</a>考虑的便是遗憾最少化。原理“面对不确定性的乐观主义”。其强调用一只证据推断某个选择方案可能产生的最佳结果，计算结果倾向于我们了解程度较低的可能情况。</p>
 ]]></content>
     </entry>
     <entry>
