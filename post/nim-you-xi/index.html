@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="telephone=no" name="format-detection"/>
+<meta name="renderer" content="webkit">
+<meta name="description" content="温故而知新">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<title>Nim游戏 | 阳阳の部落格</title>
+<link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
+<script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
+<script src="//cdn.bootcss.com/KaTeX/0.10.2/contrib/auto-render.min.js"></script>
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/jquery.js"></script>
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/jquery.pjax.min.js"></script>
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/basic.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async type="text/javascript" src="https://tienyeung.github.io//media/scripts/search.js"></script>
+<!-- <script type="text/javascript">
+$(document).pjax('a[target!=_blank]', '#pjax-container', {
+	fragment: '#pjax-container',
+	timeout: 5000,
+	cache: false
+});
+$(document).on('pjax:complete', function(){  	
+	pjax();
+});
+
+$(window).on('popstate.pjax', function () {
+	pjax();
+})
+
+function pjax() {
+	$.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+
+	if (("#gitalk-container").length > 0 ) {
+	$('#mememe').attr('src','//source.unsplash.com/800x400/?arts,weather?'+Math.random());
+	$.getScript("//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js");
+	$.getScript("//cdn.bootcss.com/KaTeX/0.10.2/contrib/auto-render.min.js");
+	$('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    	});
+	}
+}
+</script> -->
+
+  </head>
+
+  <body>
+     <div class="header">
+      <div class="logo_title">
+		  
+        <div class="title animated fadeInDown"><img id="img1" style="display:inline-block;" src="https://tienyeung.github.io//images/avatar.png"/>
+<script>
+var r = 0;
+    window.onload = function(){
+        var current = 0;
+        document.getElementById('img1').onclick = function(){
+            current = (current+90)%360;
+            this.style.transform = 'rotate('+current+'deg)';
+        }
+    };
+</script>
+          <h1 title="阳阳の部落格" class="weaklink"><a  href="/">阳阳の部落格</a>
+
+          </h1>
+
+          <div class="navbar weaklink">
+            <div class="normal_nav">
+
+<div class="bitcron_nav_container">
+
+
+  <div class="bitcron_nav">
+    <div class="mixed_site_nav_wrap site_nav_wrap">
+		
+      <ul class="mixed_site_nav site_nav sm sm-base">
+	  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/movie1.html" class="selected active current nav__item" >观影</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/books.html" class="selected active current nav__item" >阅读</a>
+  </li>
+  
+ 
+ <li>
+
+      </ul>
+	  
+
+      <div class="clear clear_nav_inline_end"></div>
+<div class="search">
+    <i class="search-icon fa fa-search search-start"></i>
+    <input type="text" class="search-input" placeholder="" />
+    <i class="search-icon fa fa-refresh search-clear"></i>
+	<div class="search-results"></div>
+</div>
+    </div>
+
+  </div>
+
+
+
+  <div class="clear clear_nav_end"></div>
+
+</div>
+
+            </div>
+			
+			<div class="hamberger"><i class="fa fa-bars"></i>
+<i class="fa fa-times"></i>
+
+			</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hidden_nav animated fadeInDown">
+
+<div class="bitcron_nav_container">
+
+
+  <div class="bitcron_nav">
+    <div class="mixed_site_nav_wrap site_nav_wrap">
+      <ul class="mixed_site_nav site_nav sm sm-base">
+	
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/movie1.html" class="selected active current nav__item" >观影</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/books.html" class="selected active current nav__item" >阅读</a>
+
+  </li>
+
+
+
+
+      </ul>
+
+      <div class="clear clear_nav_inline_end"></div>
+    </div>
+
+  </div>
+
+
+
+  <div class="clear clear_nav_end"></div>
+
+</div>
+
+      </div>
+
+    </div>
+
+<style type="text/css">
+.search {
+    position: relative;
+    height: 30px;
+    text-align: right;
+    line-height: 30px;
+    padding-right: 10px;
+}
+
+.search .search-icon {
+    float: right;
+    height: 100%;
+    margin: 0 10px;
+    line-height: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.search .search-input {
+    float: right;
+    width: 30%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.search .search-clear {
+    display: none;
+}
+
+.search .search-results {
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 50%;
+    max-height: 400px;
+    overflow: auto;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 .3rem .5rem #333;
+}
+
+.search .search-results .result-item {
+    color: #000;
+    margin: 5px;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+</style>
+
+    <div class="main" id="pjax-container">
+      <div class="main-inner">
+
+
+<div class="content">
+
+
+
+
+
+
+  <div class="post_page" >
+
+<div class="post">
+  <div class="post_title sm_margin">
+    <h2><a>Nim游戏</a>
+
+
+
+    </h2>
+  </div>
+  
+<script>
+function lan(){
+	if (document.getElementById("lan").innerText == "繁"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_tw.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "简"
+	}
+	else if(document.getElementById("lan").innerText == "簡"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_cn.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "繁"
+		}
+}
+
+function change(){	
+    var rand = Math.random()*1+1;
+    var num = window.getComputedStyle(document.getElementsByName("show")[0],undefined).fontSize;
+	num = num.slice(0,-2); 
+    document.getElementById("show").style.fontSize = num - rand +'px';
+}
+</script>
+
+  <div class="post_details">
+    <div class="info"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-10-15</span>
+<i class="fa fa-eye"></i>
+
+<span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
+
+<i class="fa fa-bookmark-o"></i>
+<span class="tags_info weaklink">
+	
+	<a href="https://tienyeung.github.io//tag/SU9NtEKDV" class="tag">编程之美</a>
+
+
+</span>
+<span>7 min read</span>
+&nbsp
+&nbsp
+<i class="fa fa-share"></i>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/nim-you-xi"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/nim-you-xi&sharesource=qzone&title=Nim游戏&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;p&gt;Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。&lt;/p&gt;
+"><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/nim-you-xi&sharesource=weibo&title=Nim游戏 + " - " + &lt;p&gt;Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。&lt;/p&gt;
+&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+&nbsp
+&nbsp
+<a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
+&nbsp
+&nbsp
+<a id="lan" href="javascript:void(0);" onclick="lan();" title="调整简繁体">繁</a>
+</div>
+  </div>
+
+  <div class="post_content markdown">
+  &nbsp
+  <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
+    <div name="show" id="show">
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+<!-- more -->
+<h1 id="第一种类型">第一种类型</h1>
+<blockquote>
+<p>N块石头排成一行，两个玩家依次取石头，每个玩家可以取其中任意一块或者相邻的两块，最后能将剩下的石头一次取光的玩家获胜。</p>
+</blockquote>
+<p>当题目中由“N个”字眼出现时，可以从一些简单的特例出发，进而掌握解题规律。</p>
+<ul>
+<li>N=1、N=2，先取者必胜</li>
+<li>N=3，先取者取中间1块石头，左右还剩下各1块石头，无论第二个人怎么取，己方必胜</li>
+<li>N=4，先取者取中间2块石头，还是左右各剩一块，己方必胜</li>
+<li>N&gt;4时，先取者只要取中间的元素，N为奇数取中间一个，偶数取中间两个，将石头分为两部分，然后无论第二个人怎么取，先取者只要在另一部分的对称位置取走同样多的石头，则最后先取者必胜。</li>
+</ul>
+<p>思考：若规定最后取光石头的人输，如何应对？</p>
+<h1 id="第二种类型">第二种类型</h1>
+<blockquote>
+<p>有N块石头和两个玩家A和B，玩家A先将石头随机分成若干堆，然后按照BABA...的顺序不断轮流取石头，能将剩下的石头一次取光的玩家获胜，每次取石头时，每个玩家只能从若干堆石头中任选一堆，取这一堆石头中任意数目（大于0）个石头。</p>
+</blockquote>
+<p>同样，不妨从特例出发，N表示石头堆数，M表示石头总数。</p>
+<ul>
+<li>N=1时，无论多少石头，只有一堆，对方必胜</li>
+<li>N=2时，最简单是每堆1个石头，即（1，1），对手拿，无论怎样，己方必胜</li>
+<li>N=2，M&gt;2时，我们称（1，1）为安全局面，那么（1，x）就不是安全局面，只要当前方把局面造成（1，1），那么对方必输，同样（2，2）是安全的，因为对方不能一次性把局面造成（1，1），以此类推，（x，x）是安全的。也就是说，如果石头是偶数个，即可以分成两堆，则己方必胜。</li>
+<li>若石头是奇数个，M=3,两种情况（2，1），（1，1，1）则先拿者必胜</li>
+<li>M=5,同样情况，先拿者必胜</li>
+<li>可以得出阶段性结论：若（1，1，.....)摆放时，1为奇数个，则先拿者必胜；1为偶数个，先拿者必输。想要先拿者必胜，则需摆放为（1，1，...，x），若1有奇数个，从x中拿出x-1个即可，剩下偶数个1；若1有偶数个，把x个全拿走，剩下偶数个1。</li>
+</ul>
+<p>当然还有其它摆法，如何得出必胜技呢？--<strong>异或（XOR)</strong>！<br>
+<strong>同0异一，与0异或为本身</strong></p>
+<h2 id="m为偶数时取胜策略是把m分成两堆">M为偶数时，取胜策略是把M分成两堆。</h2>
+<p>|开始|(M1,M1)|XOR(M1, M1) == 0|<br>
+|中途|(M1,M2)|XOR(M1, M2) != 0|<br>
+|我方|(M2,M2)|XOR(M2, M2) != 0|<br>
+|最后|(0,0)|我方取胜|</p>
+<h2 id="如果石头的个数n为奇数b有必胜的方法">如果石头的个数N为奇数，B有必胜的方法。</h2>
+<p>初始：XOR(M1, M2, ... , Mn) != 0<br>
+玩家B：XOR(M1, ... , Mi', ... , Mn) == 0 （其中一堆Mi的个数减少到Mi'）<br>
+玩家A：XOR(M1, ... , Mj', ... , Mn) != 0 <br>
+玩家B：XOR(M1, ... , Mi', ... , Mn) == 0 （其中一堆Mi的个数减少到Mi'）<br>
+结果：XOR(M1, ... , Mj' , ... , Mn) == 0 （直到结束状态(0,0)）</p>
+<h2 id="这里就有个问题已知xorm1-m2-mn-0玩家b该改变那个mi以使得xorm1-mi-mn-0呢">这里就有个问题：已知XOR(M1, M2, ... , Mn) != 0，玩家B该改变那个Mi以使得XOR(M1, ... , Mi', ... , Mn) == 0呢？</h2>
+<p>设k=XOR(M1, M2, ... , Mn)，已知k!=0，存在一个数Mi，其二进制表达中在k的最高二进制位上的数为1，且这个数Mi肯定存在（k的这个最高位在异或运算中肯定来自某一个Mi）。这时Mi^k &lt; Mi一定成立。则我们可以将Mi改变成Mi'=Mi^k，</p>
+<p>简单证明：即假设k的二进制表达是1xx，那么Mi的二进制表达是x...x1xx，这样玩家B将该Mi改成Xi'=XOR(Mi, k)后，Mi'的二进制表达是x...x0yy，肯定小于Mi，并且有XOR(M1, ... , Mi', ... , Mn) == 0。</p>
+<h1 id="第三种类型">第三种类型</h1>
+<blockquote>
+<p>假设有两堆石头，有两个玩家会根据如下的规则轮流取石头：每人每次可以从两堆石头中各取出数量相等的石头，或者仅从一堆石头中取出任意数量的石头；最后把剩下的石头一次拿光的人获胜。请问在哪些局面（依据两堆石头中的石头个数）下，先取石头的玩家有必胜的策略。</p>
+</blockquote>
+<h2 id="筛选法">筛选法</h2>
+<p>类似构造质数的厄式筛选法：把所有数字排列出来，从2开始，既然2是质数，那么2的倍数一定不是质数，筛去2的倍数，下个数字3没被筛去，则他就是质数因为他不能被小于他的数整除，筛去3的倍数，依次类推。</p>
+<p>回到Nim问题，我们从（10，10）中找出所有组合，对称的先筛去，先取者必胜的安全局面先筛去，即筛去（1，1），（2，2）...（10，10），剩下的表的第一个就是（1，2）不安全局面，则可达到（1，2）的就是安全局面，筛去（1，n），（2，n）也可以一步转化为（2，1），筛去（2，n），接下来就是（3，5）不安全局面，能一步到达（3，5）的就是安全局面，筛去(3，n)(n,3)(5,n)(n,5)(3+n,5+n)。依次类推。剩下的就是不安全局面了，此类方法为自底向上推理算法。、</p>
+<h2 id="通项公式法">通项公式法</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mo>[</mo><mi>a</mi><mo>∗</mo><mi>n</mi><mo>]</mo><mo separator="true">,</mo><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mo>[</mo><mi>b</mi><mo>∗</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">a_n=[a*n],b_n=[b*n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">a=\frac{1+\sqrt{5}}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3829999999999998em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0379999999999998em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.3990085em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.912845em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">5</span></span></span><span style="top:-2.872845em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12715500000000002em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>=</mo><mfrac><mrow><mn>3</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">b=\frac{3+\sqrt{5}}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3829999999999998em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0379999999999998em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.3990085em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">+</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.912845em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">5</span></span></span><span style="top:-2.872845em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12715500000000002em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>
+证明详见《编程之美》1.13</p>
+</span></p></div>
+	<br>
+	<hr>
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
+<div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-15</div>     -->
+	 <p class="md_block">
+    <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
+<div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
+</p> 
+</div>
+</div>
+
+<style type="text/css">
+#mememe {
+	border:3px;
+	border-radius:5px;
+    background-repeat: no-repeat;
+    height: 100%;
+	width: 100%;
+	display: inline-block;
+	border-radius:5px; 
+}
+</style>
+
+<script>
+var link = "" ;
+$("img").each( (i,o) => {
+	var o = $(o);
+	if( o.attr("src").indexOf("sinaimg") > 0 || o.attr("src").indexOf("qpic") > 0 || o.attr("src").indexOf("baidu") > 0 || o.attr("src").indexOf("sinaimg") > 0){
+		o.attr("referrerpolicy","no-referrer");
+		link = o.attr("src");
+		o.attr("src",link);
+	}
+});
+</script>
+
+<div style="width:100%;overflow:hidden">
+
+          <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
+            下一篇
+            <a href="https://tienyeung.github.io//post/dian-ti-diao-du-suan-fa">
+              <h3 class="post-title">
+                电梯调度算法
+              </h3>
+            </a>
+          </div>
+
+
+
+</div>
+
+<div class="doc_comments">
+
+</div>
+
+  </div>
+</div>
+
+
+      </div>
+<div class="toc-container">
+<ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E7%B1%BB%E5%9E%8B">第一种类型</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E7%B1%BB%E5%9E%8B">第二种类型</a>
+<ul>
+<li><a href="#m%E4%B8%BA%E5%81%B6%E6%95%B0%E6%97%B6%E5%8F%96%E8%83%9C%E7%AD%96%E7%95%A5%E6%98%AF%E6%8A%8Am%E5%88%86%E6%88%90%E4%B8%A4%E5%A0%86">M为偶数时，取胜策略是把M分成两堆。</a></li>
+<li><a href="#%E5%A6%82%E6%9E%9C%E7%9F%B3%E5%A4%B4%E7%9A%84%E4%B8%AA%E6%95%B0n%E4%B8%BA%E5%A5%87%E6%95%B0b%E6%9C%89%E5%BF%85%E8%83%9C%E7%9A%84%E6%96%B9%E6%B3%95">如果石头的个数N为奇数，B有必胜的方法。</a></li>
+<li><a href="#%E8%BF%99%E9%87%8C%E5%B0%B1%E6%9C%89%E4%B8%AA%E9%97%AE%E9%A2%98%E5%B7%B2%E7%9F%A5xorm1-m2-mn-0%E7%8E%A9%E5%AE%B6b%E8%AF%A5%E6%94%B9%E5%8F%98%E9%82%A3%E4%B8%AAmi%E4%BB%A5%E4%BD%BF%E5%BE%97xorm1-mi-mn-0%E5%91%A2">这里就有个问题：已知XOR(M1, M2, ... , Mn) != 0，玩家B该改变那个Mi以使得XOR(M1, ... , Mi', ... , Mn) == 0呢？</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B">第三种类型</a>
+<ul>
+<li><a href="#%E7%AD%9B%E9%80%89%E6%B3%95">筛选法</a></li>
+<li><a href="#%E9%80%9A%E9%A1%B9%E5%85%AC%E5%BC%8F%E6%B3%95">通项公式法</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+    </div>
+	
+   <div class="footer">
+<div class="site_footer_wrap"><div class="site_footer">
+
+      <div class="mysocials"><div class="my_socials">
+		   
+			   
+    
+			   
+    
+			   
+    
+			   
+<a href="https://github.com/tienyeung" title="github"><i class="fa fa-github"></i></a>
+
+    
+			   
+    
+			   
+    
+</div>
+      </div>
+
+      <div class="copyright" id="copyright">
+	  <script>
+		var date=new Date;
+		var year=date.getFullYear(); 
+		document.getElementById("copyright").innerHTML = "Copyright © "+year+“ ” + 阳阳の部落格;
+		</script>
+		Hope You Enjoy
+		<br>
+		本站已稳定运行了
+		<strong><script type="text/javascript">
+		var urodz= new Date("10/06/2019");
+		var now = new Date();
+		var ile = now.getTime() - urodz.getTime();
+		var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+		document.write(+dni)
+		</script>
+		</strong>天
+		<br>
+		<!-- 本站总访问量为 <strong><span id="busuanzi_value_site_uv"></span></strong> 次
+	  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> -->
+      </div>
+	  <!-- <img src="https://tienyeung.github.io//images/bottom.svg"> -->
+
+    </div>
+
+<!-- <script type="text/javascript" src="https://tienyeung.github.io//media/scripts/love.js"></script> -->
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/darkmode.js"></script>
+<script>
+var options = {
+  bottom: '64px', // default: '32px'
+  right: '32px', // default: '32px'
+  left: 'unset', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+
+</html>

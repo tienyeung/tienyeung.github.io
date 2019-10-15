@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-14T02:17:10.678Z</updated>
+    <updated>2019-10-15T03:05:03.111Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,83 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[Nim游戏]]></title>
+        <id>https://tienyeung.github.io//post/nim-you-xi</id>
+        <link href="https://tienyeung.github.io//post/nim-you-xi">
+        </link>
+        <updated>2019-10-15T01:52:02.000Z</updated>
+        <summary type="html"><![CDATA[<p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+<!-- more -->
+<h1 id="第一种类型">第一种类型</h1>
+<blockquote>
+<p>N块石头排成一行，两个玩家依次取石头，每个玩家可以取其中任意一块或者相邻的两块，最后能将剩下的石头一次取光的玩家获胜。</p>
+</blockquote>
+<p>当题目中由“N个”字眼出现时，可以从一些简单的特例出发，进而掌握解题规律。</p>
+<ul>
+<li>N=1、N=2，先取者必胜</li>
+<li>N=3，先取者取中间1块石头，左右还剩下各1块石头，无论第二个人怎么取，己方必胜</li>
+<li>N=4，先取者取中间2块石头，还是左右各剩一块，己方必胜</li>
+<li>N&gt;4时，先取者只要取中间的元素，N为奇数取中间一个，偶数取中间两个，将石头分为两部分，然后无论第二个人怎么取，先取者只要在另一部分的对称位置取走同样多的石头，则最后先取者必胜。</li>
+</ul>
+<p>思考：若规定最后取光石头的人输，如何应对？</p>
+<h1 id="第二种类型">第二种类型</h1>
+<blockquote>
+<p>有N块石头和两个玩家A和B，玩家A先将石头随机分成若干堆，然后按照BABA...的顺序不断轮流取石头，能将剩下的石头一次取光的玩家获胜，每次取石头时，每个玩家只能从若干堆石头中任选一堆，取这一堆石头中任意数目（大于0）个石头。</p>
+</blockquote>
+<p>同样，不妨从特例出发，N表示石头堆数，M表示石头总数。</p>
+<ul>
+<li>N=1时，无论多少石头，只有一堆，对方必胜</li>
+<li>N=2时，最简单是每堆1个石头，即（1，1），对手拿，无论怎样，己方必胜</li>
+<li>N=2，M&gt;2时，我们称（1，1）为安全局面，那么（1，x）就不是安全局面，只要当前方把局面造成（1，1），那么对方必输，同样（2，2）是安全的，因为对方不能一次性把局面造成（1，1），以此类推，（x，x）是安全的。也就是说，如果石头是偶数个，即可以分成两堆，则己方必胜。</li>
+<li>若石头是奇数个，M=3,两种情况（2，1），（1，1，1）则先拿者必胜</li>
+<li>M=5,同样情况，先拿者必胜</li>
+<li>可以得出阶段性结论：若（1，1，.....)摆放时，1为奇数个，则先拿者必胜；1为偶数个，先拿者必输。想要先拿者必胜，则需摆放为（1，1，...，x），若1有奇数个，从x中拿出x-1个即可，剩下偶数个1；若1有偶数个，把x个全拿走，剩下偶数个1。</li>
+</ul>
+<p>当然还有其它摆法，如何得出必胜技呢？--<strong>异或（XOR)</strong>！<br>
+<strong>同0异一，与0异或为本身</strong></p>
+<h2 id="m为偶数时取胜策略是把m分成两堆">M为偶数时，取胜策略是把M分成两堆。</h2>
+<p>|开始|(M1,M1)|XOR(M1, M1) == 0|<br>
+|中途|(M1,M2)|XOR(M1, M2) != 0|<br>
+|我方|(M2,M2)|XOR(M2, M2) != 0|<br>
+|最后|(0,0)|我方取胜|</p>
+<h2 id="如果石头的个数n为奇数b有必胜的方法">如果石头的个数N为奇数，B有必胜的方法。</h2>
+<p>初始：XOR(M1, M2, ... , Mn) != 0<br>
+玩家B：XOR(M1, ... , Mi', ... , Mn) == 0 （其中一堆Mi的个数减少到Mi'）<br>
+玩家A：XOR(M1, ... , Mj', ... , Mn) != 0 <br>
+玩家B：XOR(M1, ... , Mi', ... , Mn) == 0 （其中一堆Mi的个数减少到Mi'）<br>
+结果：XOR(M1, ... , Mj' , ... , Mn) == 0 （直到结束状态(0,0)）</p>
+<h2 id="这里就有个问题已知xorm1-m2-mn-0玩家b该改变那个mi以使得xorm1-mi-mn-0呢">这里就有个问题：已知XOR(M1, M2, ... , Mn) != 0，玩家B该改变那个Mi以使得XOR(M1, ... , Mi', ... , Mn) == 0呢？</h2>
+<p>设k=XOR(M1, M2, ... , Mn)，已知k!=0，存在一个数Mi，其二进制表达中在k的最高二进制位上的数为1，且这个数Mi肯定存在（k的这个最高位在异或运算中肯定来自某一个Mi）。这时Mi^k &lt; Mi一定成立。则我们可以将Mi改变成Mi'=Mi^k，</p>
+<p>简单证明：即假设k的二进制表达是1xx，那么Mi的二进制表达是x...x1xx，这样玩家B将该Mi改成Xi'=XOR(Mi, k)后，Mi'的二进制表达是x...x0yy，肯定小于Mi，并且有XOR(M1, ... , Mi', ... , Mn) == 0。</p>
+<h1 id="第三种类型">第三种类型</h1>
+<blockquote>
+<p>假设有两堆石头，有两个玩家会根据如下的规则轮流取石头：每人每次可以从两堆石头中各取出数量相等的石头，或者仅从一堆石头中取出任意数量的石头；最后把剩下的石头一次拿光的人获胜。请问在哪些局面（依据两堆石头中的石头个数）下，先取石头的玩家有必胜的策略。</p>
+</blockquote>
+<h2 id="筛选法">筛选法</h2>
+<p>类似构造质数的厄式筛选法：把所有数字排列出来，从2开始，既然2是质数，那么2的倍数一定不是质数，筛去2的倍数，下个数字3没被筛去，则他就是质数因为他不能被小于他的数整除，筛去3的倍数，依次类推。</p>
+<p>回到Nim问题，我们从（10，10）中找出所有组合，对称的先筛去，先取者必胜的安全局面先筛去，即筛去（1，1），（2，2）...（10，10），剩下的表的第一个就是（1，2）不安全局面，则可达到（1，2）的就是安全局面，筛去（1，n），（2，n）也可以一步转化为（2，1），筛去（2，n），接下来就是（3，5）不安全局面，能一步到达（3，5）的就是安全局面，筛去(3，n)(n,3)(5,n)(n,5)(3+n,5+n)。依次类推。剩下的就是不安全局面了，此类方法为自底向上推理算法。、</p>
+<h2 id="通项公式法">通项公式法</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mo>[</mo><mi>a</mi><mo>∗</mo><mi>n</mi><mo>]</mo><mo separator="true">,</mo><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mo>[</mo><mi>b</mi><mo>∗</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">a_n=[a*n],b_n=[b*n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">a=\frac{1+\sqrt{5}}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3829999999999998em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0379999999999998em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.3990085em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.912845em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">5</span></span></span><span style="top:-2.872845em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12715500000000002em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>=</mo><mfrac><mrow><mn>3</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">b=\frac{3+\sqrt{5}}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3829999999999998em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0379999999999998em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.3990085em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">+</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.912845em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">5</span></span></span><span style="top:-2.872845em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12715500000000002em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>
+证明详见《编程之美》1.13</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[电梯调度算法]]></title>
         <id>https://tienyeung.github.io//post/dian-ti-diao-du-suan-fa</id>
@@ -25,7 +102,7 @@
 </blockquote>
 <!-- more -->
 <p>最简单的方法和最容易想到的就是穷举法，遍历乘客的停靠楼层并计算在某个楼层的总爬楼梯数，时间复杂度是平方级别。</p>
-<p>优化一下，假设停靠在第i层，假设在i处下楼的客人为N2,在i以上楼层的客人数目为N3 ，在i一下楼层的客人数目为N1。 且将电梯在i层停止时，全部人员的路程之和记为T。</p>
+<p>优化一下，假设停靠在第i层，假设在i处下楼的客人为N2,在i以上楼层的客人数目为N3 ，在i以下楼层的客人数目为N1。 且将电梯在i层停止时，全部人员的路程之和记为T。</p>
 <p>那么假如电梯在i-1层停的话，则原来i层之上的人需要多爬一层，即增加了N3，第i层的人需要多爬一层，则结果增加了N2,  i层之下的人则少爬了一层，结果减去N1，所以第i-1层的结果为 T - N1 + N2 + N3 。即结果可以即为 T -(N1 - N2 - N3) <br>
       <br>
 考虑在i+1层的结果，若电梯在i+1层停止的话，原来i层之上的客户都会少爬一层，则结果减少N3 ，而i层之下的人员则都会多爬一层即增加了N1 ，第i层的人员都会多爬一层即为增加了N2 。则结果为 T + N1 + N2 - N3 <br>
