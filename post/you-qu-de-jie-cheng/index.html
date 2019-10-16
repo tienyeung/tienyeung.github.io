@@ -1,6 +1,6 @@
-
+<!DOCTYPE html>
 <html>
-<head lang="zh">
+  <head lang="zh">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>阳阳の部落格</title>
+<title>有趣的阶乘 | 阳阳の部落格</title>
 <link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -52,7 +52,7 @@ function pjax() {
   </head>
 
   <body>
-    <div class="header">
+     <div class="header">
       <div class="logo_title">
 		  
         <div class="title animated fadeInDown"><img id="img1" style="display:inline-block;" src="https://tienyeung.github.io//images/avatar.png"/>
@@ -259,6 +259,7 @@ var r = 0;
     <div class="main" id="pjax-container">
       <div class="main-inner">
 
+
 <div class="content">
 
 
@@ -266,63 +267,199 @@ var r = 0;
 
 
 
-  <div class="post_list" >
+  <div class="post_page" >
 
-	
 <div class="post">
-  <div class="post_title weaklink">
-    <h2><a href="https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu">二进制数中1的个数</a>
+  <div class="post_title sm_margin">
+    <h2><a>有趣的阶乘</a>
+
+
+
     </h2>
   </div>
-  <div class="post_content markdown"><div class="p_part"><p><p>做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。同时，欢迎和我讨论力扣解题思想，目前做了100多题，每题的解题思路都上传到了我的<a href="https://github.com/tienyeung/leetcode">github</a>,望多指正！</p>
-</p></div></div>
-  <div class="post_footer">
-    <div class="info weaklink"><i class="fa fa-clock-o"></i>
-<span class="date_info">2019-10-09</span>
+  
+<script>
+function lan(){
+	if (document.getElementById("lan").innerText == "繁"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_tw.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "简"
+	}
+	else if(document.getElementById("lan").innerText == "簡"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_cn.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "繁"
+		}
+}
+
+function change(){	
+    var rand = Math.random()*1+1;
+    var num = window.getComputedStyle(document.getElementsByName("show")[0],undefined).fontSize;
+	num = num.slice(0,-2); 
+    document.getElementById("show").style.fontSize = num - rand +'px';
+}
+</script>
+
+  <div class="post_details">
+    <div class="info"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-10-16</span>
+<i class="fa fa-eye"></i>
+
+<span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
 
 <i class="fa fa-bookmark-o"></i>
-	
 <span class="tags_info weaklink">
 	
-	<a href="https://tienyeung.github.io//tag/cxv9iOKUi" class="tag">位运算</a>
-
-
-	<a href="https://tienyeung.github.io//tag/b9V5xGTTNZ" class="tag">力扣</a>
-
-
 
 </span>
-
-
-    </div>
-
+<span>2 min read</span>
+&nbsp
+&nbsp
+<i class="fa fa-share"></i>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/you-qu-de-jie-cheng"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/you-qu-de-jie-cheng&sharesource=qzone&title=有趣的阶乘&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+&lt;p&gt;阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。&lt;/p&gt;
+&lt;/blockquote&gt;
+"><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/you-qu-de-jie-cheng&sharesource=weibo&title=有趣的阶乘 + " - " + &lt;blockquote&gt;
+&lt;p&gt;阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。&lt;/p&gt;
+&lt;/blockquote&gt;
+&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+&nbsp
+&nbsp
+<a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
+&nbsp
+&nbsp
+<a id="lan" href="javascript:void(0);" onclick="lan();" title="调整简繁体">繁</a>
+</div>
   </div>
 
+  <div class="post_content markdown">
+  &nbsp
+  <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
+    <div name="show" id="show">
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><blockquote>
+<p>阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。</p>
+</blockquote>
+<!-- more -->
+<h1 id="问题1">问题1</h1>
+<p>零是由2和5相乘算出的，也就是说多少个0就有多少个2和5相乘；同时4和5相乘也为0，但4是2的倍数，也就是说偶数与5相乘为0，如此看来2比5多，因此多少个0就是n由多少个5组成，同时25，75等含有2个5，3个5，诱导公式为f(n) = n/5 + n/5^2 + n/5^3 + n/5^4 + n/5^5+..<br>
+即可用递归：</p>
+<pre><code class="language-python">class Solution(object):
+    def trailingZeroes(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        count=0
+        while n&gt;=5:
+            return n//5+self.trailingZeroes(n//5)
+        return count
+</code></pre>
+<h1 id="问题2">问题2</h1>
+<p>首先来看一下一个二进制数除以2的计算过程和结果是怎样的。<br>
+把一个二进制数除以2，实际过程如下：<br>
+判断最后一个二进制位是否为0，若为0，则将此二进制数右移一位，即为商值；反之，若为1，则说明这个二进制数是奇数，无法被2整除。<br>
+所以，这个问题实际上等同于求N！含有质因数2的个数。即答案等于N！含有质因数2的个数加1。<br>
+由于N！中含有质因数2的个数，等于N/2＋N/4＋N/8＋N/16＋…</p>
+<pre><code class="language-python">class Solution(object):
+    def trailingZeroes(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        count=0
+        while n:
+            n&gt;&gt;=1
+            count+=N
+        return count
+</code></pre>
+</span></p></div>
+	<br>
+	<hr>
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
+<div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-16</div>     -->
+	 <p class="md_block">
+    <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
+<div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
+</p> 
 </div>
-	
-	
+</div>
 
-<div class="paginator pager pagination" >
-	
+<style type="text/css">
+#mememe {
+	border:3px;
+	border-radius:5px;
+    background-repeat: no-repeat;
+    height: 100%;
+	width: 100%;
+	display: inline-block;
+	border-radius:5px; 
+}
+</style>
 
-	
+<script>
+var link = "" ;
+$("img").each( (i,o) => {
+	var o = $(o);
+	if( o.attr("src").indexOf("sinaimg") > 0 || o.attr("src").indexOf("qpic") > 0 || o.attr("src").indexOf("baidu") > 0 || o.attr("src").indexOf("sinaimg") > 0){
+		o.attr("referrerpolicy","no-referrer");
+		link = o.attr("src");
+		o.attr("src",link);
+	}
+});
+</script>
+
+<div style="width:100%;overflow:hidden">
+
+          <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
+            下一篇
+            <a href="https://tienyeung.github.io//post/nim-you-xi">
+              <h3 class="post-title">
+                Nim游戏
+              </h3>
+            </a>
+          </div>
 
 
-    <div style="clear:both;height:0;"></div>
+
+</div>
+
+<div class="doc_comments">
+
+</div>
+
   </div>
-
 </div>
-
-
-
-  </div>
-</div>
-
 
 
       </div>
-    </div>
+<div class="toc-container">
+<ul class="markdownIt-TOC">
+<li><a href="#%E9%97%AE%E9%A2%981">问题1</a></li>
+<li><a href="#%E9%97%AE%E9%A2%982">问题2</a></li>
+</ul>
 
+</div>
+    </div>
+	
    <div class="footer">
 <div class="site_footer_wrap"><div class="site_footer">
 

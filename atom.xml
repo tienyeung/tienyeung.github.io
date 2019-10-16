@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-15T03:05:03.111Z</updated>
+    <updated>2019-10-16T02:26:30.904Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,54 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[有趣的阶乘]]></title>
+        <id>https://tienyeung.github.io//post/you-qu-de-jie-cheng</id>
+        <link href="https://tienyeung.github.io//post/you-qu-de-jie-cheng">
+        </link>
+        <updated>2019-10-16T02:06:42.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。</p>
+</blockquote>
+<!-- more -->
+<h1 id="问题1">问题1</h1>
+<p>零是由2和5相乘算出的，也就是说多少个0就有多少个2和5相乘；同时4和5相乘也为0，但4是2的倍数，也就是说偶数与5相乘为0，如此看来2比5多，因此多少个0就是n由多少个5组成，同时25，75等含有2个5，3个5，诱导公式为f(n) = n/5 + n/5^2 + n/5^3 + n/5^4 + n/5^5+..<br>
+即可用递归：</p>
+<pre><code class="language-python">class Solution(object):
+    def trailingZeroes(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        count=0
+        while n&gt;=5:
+            return n//5+self.trailingZeroes(n//5)
+        return count
+</code></pre>
+<h1 id="问题2">问题2</h1>
+<p>首先来看一下一个二进制数除以2的计算过程和结果是怎样的。<br>
+把一个二进制数除以2，实际过程如下：<br>
+判断最后一个二进制位是否为0，若为0，则将此二进制数右移一位，即为商值；反之，若为1，则说明这个二进制数是奇数，无法被2整除。<br>
+所以，这个问题实际上等同于求N！含有质因数2的个数。即答案等于N！含有质因数2的个数加1。<br>
+由于N！中含有质因数2的个数，等于N/2＋N/4＋N/8＋N/16＋…</p>
+<pre><code class="language-python">class Solution(object):
+    def trailingZeroes(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        count=0
+        while n:
+            n&gt;&gt;=1
+            count+=N
+        return count
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Nim游戏]]></title>
         <id>https://tienyeung.github.io//post/nim-you-xi</id>
