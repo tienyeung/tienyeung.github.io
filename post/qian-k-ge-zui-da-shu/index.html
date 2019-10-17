@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>有趣的阶乘 | 阳阳の部落格</title>
+<title>前K个最大数 | 阳阳の部落格</title>
 <link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -271,7 +271,7 @@ var r = 0;
 
 <div class="post">
   <div class="post_title sm_margin">
-    <h2><a>有趣的阶乘</a>
+    <h2><a>前K个最大数</a>
 
 
 
@@ -318,7 +318,7 @@ function change(){
 
   <div class="post_details">
     <div class="info"><i class="fa fa-clock-o"></i>
-<span class="date_info">2019-10-16</span>
+<span class="date_info">2019-10-17</span>
 <i class="fa fa-eye"></i>
 
 <span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
@@ -330,17 +330,17 @@ function change(){
 
 
 </span>
-<span>2 min read</span>
+<span>7 min read</span>
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/you-qu-de-jie-cheng"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/you-qu-de-jie-cheng&sharesource=qzone&title=有趣的阶乘&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
-&lt;p&gt;阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。&lt;/p&gt;
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/qian-k-ge-zui-da-shu"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/qian-k-ge-zui-da-shu&sharesource=qzone&title=前K个最大数&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+&lt;p&gt;问题：查找大量无序元素中最大的K个数。&lt;/p&gt;
 &lt;/blockquote&gt;
 "><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/you-qu-de-jie-cheng&sharesource=weibo&title=有趣的阶乘 + " - " + &lt;blockquote&gt;
-&lt;p&gt;阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。&lt;/p&gt;
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/qian-k-ge-zui-da-shu&sharesource=weibo&title=前K个最大数 + " - " + &lt;blockquote&gt;
+&lt;p&gt;问题：查找大量无序元素中最大的K个数。&lt;/p&gt;
 &lt;/blockquote&gt;
 &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
 &nbsp
@@ -357,47 +357,177 @@ function change(){
   <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
     <div name="show" id="show">
 	<p class="md_block"><span class="md_line md_line_start md_line_end"><blockquote>
-<p>阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。</p>
+<p>问题：查找大量无序元素中最大的K个数。</p>
 </blockquote>
 <!-- more -->
-<h1 id="问题1">问题1</h1>
-<p>零是由2和5相乘算出的，也就是说多少个0就有多少个2和5相乘；同时4和5相乘也为0，但4是2的倍数，也就是说偶数与5相乘为0，如此看来2比5多，因此多少个0就是n由多少个5组成，同时25，75等含有2个5，3个5，诱导公式为f(n) = n/5 + n/5^2 + n/5^3 + n/5^4 + n/5^5+..<br>
-即可用递归：</p>
-<pre><code class="language-python">class Solution(object):
-    def trailingZeroes(self, n):
-        &quot;&quot;&quot;
-        :type n: int
-        :rtype: int
-        &quot;&quot;&quot;
-        count=0
-        while n&gt;=5:
-            return n//5+self.trailingZeroes(n//5)
-        return count
+<h1 id="解法一">解法一</h1>
+<p>该解法是大部分能想到的，也是第一想到的方法。假设数据量不大，可以先用快速排序或堆排序，他们的平均时间复杂度为O(N<em>logN),然后取出前K个，时间复杂度为O(K)，总的时间复杂度为O(N</em>logN)+O(K).<br>
+当K=1时，上面的算法的时间复杂度也是O(N*logN)，<em>上面的算法是把整个数组都进行了排序，而原题目只要求最大的K个数，并不需要前K个数有限，也不需要后N-K个数有序。可以通过部分排序算法如选择排序和交换排序，把N个数中的前K个数排序出来，复杂度为O(N</em>K),选择哪一个，取决于K的大小，在K(K&lt;logN)较小的情况下，选择部分排序。</p>
+<h1 id="解法二">解法二</h1>
+<p>假设N个数存储在数组S中，从数组中随机找一个元素X，将数组分成两部分Sa和Sb.Sa中的元素大于等于X,Sb中的元素小于X。<br>
+    出现如下两种情况：<br>
+   (1)若Sa组的个数大于或等于K，则继续在sa分组中找取最大的K个数字 。<br>
+   (2)若Sa组中的数字小于K ，其个数为T，则继续在sb中找取 K-T个数字 。<br>
+一直这样递归下去，不断把问题分解成小问题，平均时间复杂度为O(N*logK)。</p>
+<pre><code class="language-c++">
+/*将数组a[s]...a[t]中的元素用一个元素划开，保存中a[k]中*/
+void partition(int a[], int s,int t,int &amp;k)  
+{  
+    int i,j,x;  
+    x=a[s];    //取划分元素   
+    i=s;        //扫描指针初值   
+    j=t;  
+    do  
+    {  
+        while((a[j]&lt;x)&amp;&amp;i&lt;j) j--;   //从右向左扫描,如果是比划分元素小，则不动
+        if(i&lt;j) a[i++]=a[j];           //大元素向左边移   
+        while((a[i]&gt;=x)&amp;&amp;i&lt;j) i++;      //从左向右扫描，如果是比划分元素大，则不动 
+        if(i&lt;j) a[j--]=a[i];            //小元素向右边移   
+  
+    }while(i&lt;j); //直到指针i与j相等    
+a[i]=x;      //划分元素就位   
+k=i;  
+}  
+/*查找数组前K个最大的元素，index:返回数组中最大元素中第K个元素的下标(从0开始编号),high为数组最大下标*/
+int FindKMax(int a[],int low,int high,int k)
+{ 
+     int q;
+int index=-1;
+   if(low &lt; high)  
+      {  
+        partition(a , low , high,q);  
+        int len = q - low + 1; //表示第几个位置    
+        if(len == k)  
+         index=q; //返回第k个位置   
+        else if(len &lt; k)   
+         index= FindKMax(a , q + 1 , high , k-len);     
+       else 
+        index=FindKMax(a , low , q - 1, k);  
+      }  
+    return index;
+ 
+}
+int main()
+{
+     int a[]={20,100,4,2,87,9,8,5,46,26};  
+    int Len=sizeof(a)/sizeof(int); 
+     int K=4;
+ FindKMax(a , 0 , Len- 1 , K) ;    
+    for(int i = 0 ; i &lt; K ; i++)  
+      cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;  
+ return 0;
+}
 </code></pre>
-<h1 id="问题2">问题2</h1>
-<p>首先来看一下一个二进制数除以2的计算过程和结果是怎样的。<br>
-把一个二进制数除以2，实际过程如下：<br>
-判断最后一个二进制位是否为0，若为0，则将此二进制数右移一位，即为商值；反之，若为1，则说明这个二进制数是奇数，无法被2整除。即二进制最低位为0代表是偶数，如果为1则代表是奇数。<br>
-所以，这个问题实际上等同于求N！含有质因数2的个数。即答案等于N！含有质因数2的个数加1。<br>
-由于N！中含有质因数2的个数，等于N/2＋N/4＋N/8＋N/16＋…</p>
-<pre><code class="language-python">class Solution(object):
-    def trailingZeroes(self, n):
-        &quot;&quot;&quot;
-        :type n: int
-        :rtype: int
-        &quot;&quot;&quot;
-        count=0
-        while n:
-            n&gt;&gt;=1
-            count+=N
-        return count
+<h1 id="解法三">解法三</h1>
+<p>该问题的实质是寻找最大的K个数中最小的那个，也就是第K大的数p，可以先找出N个数中最大的和最小的元素的值，然后使用二分法进行搜索找到p，再根据p找到其他大于它的K-1个数。其时间复杂度是O(N)+O(NlogN)+O(N)，近似后为O(NlogN)。</p>
+<pre><code class="language-python">while Vmax-Vmin&gt;delta:
+    Vmid=Vmin+(Vmax-Vmin)*0.5
+    #f(arr,N,Vmid)返回数组arr中不小于Vmid的数的个数
+    #delta取值比任何两数之差小，如果元素是整数可以取0.5
+    if f(arr,N,Vmid) &gt;= k:
+        Vmin=Vmid
+    else:
+        Vmax=Vmid
+</code></pre>
+<h1 id="解法四">解法四</h1>
+<p>如果N个数都是正数，取值范围不太大，可以考虑用空间换时间。申请一个包括N中最大值的MAXN大小的数组count[MAXN]，count[i]表示整数i在所有整数中的个数。这样只要扫描一遍数组，就可以得到第K大的元素。</p>
+<pre><code class="language-c++">for(sumCount = 0, v = MAXN -1; v &gt;=0; v--)  
+{  
+       cumCount += count[v];  
+       if(sumCount &gt;= k)  
+            break;  
+}  
+return v; 
+</code></pre>
+<h1 id="解法五">解法五</h1>
+<p>当N的数值很大的时候，即N&gt;&gt;K。从N个数中任取K个数建立一个有K个节点的小顶堆，每次从剩下N-K个数中取出一个数，与堆顶元素进行比较，若小于等于堆顶元素则舍弃，若大于等于堆顶，则将堆顶元素更新为该元素并重新调整堆。维护堆的时间复杂度是O(logK)。所以总的时间复杂度是O(NlogK)。</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;  
+
+using namespace std;  
+
+void buildMinHeap(int *pArray, int K);
+void adjustHeap(int *pArray, int rootIndex, int heapSize);
+
+int main()  
+{  
+    int a[] = {9, 8, 7, 6, 5, 4, 3, 11, 12, 13, 1, 28};
+    int K = 5 ;
+
+    //建一个K个元素大小的最小堆
+    buildMinHeap(a, K);
+
+    //从第K个元素开始扫描，看有没有比根节点更大的节点，若有则替换，并更新堆；若没有比根节点大则扫描下一个元素，直到数组结束
+    for (int i = K; i &lt; sizeof(a) / sizeof(int); i++)
+    {
+        if (a[i] &gt; a[0])
+        {
+            swap(a[i], a[0]);
+            adjustHeap(a, 0, K);
+        }
+    }
+
+    //打印出前K大的数，没有排序。
+    for (int i = 0; i &lt; K; i++)
+    {
+        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+    }
+    system(&quot;pause&quot;);
+}  
+
+//建一个K个元素大小的最小堆
+void buildMinHeap(int *pArray, int K)
+{
+    for (int i = (K - 2) / 2; i &gt;= 0; i--)
+    {
+        adjustHeap (pArray, i, K);
+    }
+}
+
+void adjustHeap (int *pArray, int rootIndex, int heapSize)
+{
+    int minIndex = rootIndex;
+
+    //左孩子节点
+    int leftIndex = 2 * rootIndex + 1;
+
+    //右孩子节点
+    int rightIndex = 2 * (rootIndex + 1);
+
+    //如果左孩子比根节点和右孩子节点小的话，则左孩子和根节点进行交换
+    if ((leftIndex &lt; heapSize) &amp;&amp; (rightIndex &lt; heapSize) &amp;&amp;
+        (pArray[leftIndex] &lt; pArray[rootIndex]))
+    {
+        minIndex = leftIndex;
+    }
+    if ((leftIndex &lt; heapSize) &amp;&amp; (rightIndex &gt;= heapSize) &amp;&amp; 
+        (pArray[leftIndex] &lt; pArray[rootIndex]))
+    {
+        minIndex = leftIndex;
+    }
+
+
+    if ((rightIndex &lt; heapSize) &amp;&amp; (pArray[rightIndex] &lt;
+         pArray[leftIndex]) &amp;&amp; (pArray[rightIndex] &lt; 
+             pArray[rootIndex]))
+    {
+        minIndex = rightIndex;
+    }
+
+    if (minIndex != rootIndex) 
+    {
+        //如果左孩子或者右孩子比根节点小的话，那么就交换，并且重新调整以
+        //minIndex为根节点的子树
+        swap(pArray[rootIndex], pArray[minIndex]);
+        adjustHeap(pArray, minIndex, heapSize);
+    }
+}
 </code></pre>
 </span></p></div>
 	<br>
 	<hr>
 <!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
 <div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
-<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-16</div>     -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-17</div>     -->
 	 <p class="md_block">
     <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
 <div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
@@ -433,23 +563,14 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://tienyeung.github.io//post/nim-you-xi">
+            <a href="https://tienyeung.github.io//post/you-qu-de-jie-cheng">
               <h3 class="post-title">
-                Nim游戏
+                有趣的阶乘
               </h3>
             </a>
           </div>
 
 
-
-          <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
-            上一篇
-            <a href="https://tienyeung.github.io//post/qian-k-ge-zui-da-shu">
-              <h3 class="post-title">
-                前K个最大数
-              </h3>
-            </a>
-          </div>
 
 </div>
 
@@ -464,8 +585,11 @@ $("img").each( (i,o) => {
       </div>
 <div class="toc-container">
 <ul class="markdownIt-TOC">
-<li><a href="#%E9%97%AE%E9%A2%981">问题1</a></li>
-<li><a href="#%E9%97%AE%E9%A2%982">问题2</a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%B8%80">解法一</a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%BA%8C">解法二</a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%B8%89">解法三</a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E5%9B%9B">解法四</a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%BA%94">解法五</a></li>
 </ul>
 
 </div>

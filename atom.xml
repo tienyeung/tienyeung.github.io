@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-16T11:02:06.297Z</updated>
+    <updated>2019-10-17T02:20:59.254Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,184 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[前K个最大数]]></title>
+        <id>https://tienyeung.github.io//post/qian-k-ge-zui-da-shu</id>
+        <link href="https://tienyeung.github.io//post/qian-k-ge-zui-da-shu">
+        </link>
+        <updated>2019-10-17T01:50:20.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>问题：查找大量无序元素中最大的K个数。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>问题：查找大量无序元素中最大的K个数。</p>
+</blockquote>
+<!-- more -->
+<h1 id="解法一">解法一</h1>
+<p>该解法是大部分能想到的，也是第一想到的方法。假设数据量不大，可以先用快速排序或堆排序，他们的平均时间复杂度为O(N<em>logN),然后取出前K个，时间复杂度为O(K)，总的时间复杂度为O(N</em>logN)+O(K).<br>
+当K=1时，上面的算法的时间复杂度也是O(N*logN)，<em>上面的算法是把整个数组都进行了排序，而原题目只要求最大的K个数，并不需要前K个数有限，也不需要后N-K个数有序。可以通过部分排序算法如选择排序和交换排序，把N个数中的前K个数排序出来，复杂度为O(N</em>K),选择哪一个，取决于K的大小，在K(K&lt;logN)较小的情况下，选择部分排序。</p>
+<h1 id="解法二">解法二</h1>
+<p>假设N个数存储在数组S中，从数组中随机找一个元素X，将数组分成两部分Sa和Sb.Sa中的元素大于等于X,Sb中的元素小于X。<br>
+    出现如下两种情况：<br>
+   (1)若Sa组的个数大于或等于K，则继续在sa分组中找取最大的K个数字 。<br>
+   (2)若Sa组中的数字小于K ，其个数为T，则继续在sb中找取 K-T个数字 。<br>
+一直这样递归下去，不断把问题分解成小问题，平均时间复杂度为O(N*logK)。</p>
+<pre><code class="language-c++">
+/*将数组a[s]...a[t]中的元素用一个元素划开，保存中a[k]中*/
+void partition(int a[], int s,int t,int &amp;k)  
+{  
+    int i,j,x;  
+    x=a[s];    //取划分元素   
+    i=s;        //扫描指针初值   
+    j=t;  
+    do  
+    {  
+        while((a[j]&lt;x)&amp;&amp;i&lt;j) j--;   //从右向左扫描,如果是比划分元素小，则不动
+        if(i&lt;j) a[i++]=a[j];           //大元素向左边移   
+        while((a[i]&gt;=x)&amp;&amp;i&lt;j) i++;      //从左向右扫描，如果是比划分元素大，则不动 
+        if(i&lt;j) a[j--]=a[i];            //小元素向右边移   
+  
+    }while(i&lt;j); //直到指针i与j相等    
+a[i]=x;      //划分元素就位   
+k=i;  
+}  
+/*查找数组前K个最大的元素，index:返回数组中最大元素中第K个元素的下标(从0开始编号),high为数组最大下标*/
+int FindKMax(int a[],int low,int high,int k)
+{ 
+     int q;
+int index=-1;
+   if(low &lt; high)  
+      {  
+        partition(a , low , high,q);  
+        int len = q - low + 1; //表示第几个位置    
+        if(len == k)  
+         index=q; //返回第k个位置   
+        else if(len &lt; k)   
+         index= FindKMax(a , q + 1 , high , k-len);     
+       else 
+        index=FindKMax(a , low , q - 1, k);  
+      }  
+    return index;
+ 
+}
+int main()
+{
+     int a[]={20,100,4,2,87,9,8,5,46,26};  
+    int Len=sizeof(a)/sizeof(int); 
+     int K=4;
+ FindKMax(a , 0 , Len- 1 , K) ;    
+    for(int i = 0 ; i &lt; K ; i++)  
+      cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;  
+ return 0;
+}
+</code></pre>
+<h1 id="解法三">解法三</h1>
+<p>该问题的实质是寻找最大的K个数中最小的那个，也就是第K大的数p，可以先找出N个数中最大的和最小的元素的值，然后使用二分法进行搜索找到p，再根据p找到其他大于它的K-1个数。其时间复杂度是O(N)+O(NlogN)+O(N)，近似后为O(NlogN)。</p>
+<pre><code class="language-python">while Vmax-Vmin&gt;delta:
+    Vmid=Vmin+(Vmax-Vmin)*0.5
+    #f(arr,N,Vmid)返回数组arr中不小于Vmid的数的个数
+    #delta取值比任何两数之差小，如果元素是整数可以取0.5
+    if f(arr,N,Vmid) &gt;= k:
+        Vmin=Vmid
+    else:
+        Vmax=Vmid
+</code></pre>
+<h1 id="解法四">解法四</h1>
+<p>如果N个数都是正数，取值范围不太大，可以考虑用空间换时间。申请一个包括N中最大值的MAXN大小的数组count[MAXN]，count[i]表示整数i在所有整数中的个数。这样只要扫描一遍数组，就可以得到第K大的元素。</p>
+<pre><code class="language-c++">for(sumCount = 0, v = MAXN -1; v &gt;=0; v--)  
+{  
+       cumCount += count[v];  
+       if(sumCount &gt;= k)  
+            break;  
+}  
+return v; 
+</code></pre>
+<h1 id="解法五">解法五</h1>
+<p>当N的数值很大的时候，即N&gt;&gt;K。从N个数中任取K个数建立一个有K个节点的小顶堆，每次从剩下N-K个数中取出一个数，与堆顶元素进行比较，若小于等于堆顶元素则舍弃，若大于等于堆顶，则将堆顶元素更新为该元素并重新调整堆。维护堆的时间复杂度是O(logK)。所以总的时间复杂度是O(NlogK)。</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;  
+
+using namespace std;  
+
+void buildMinHeap(int *pArray, int K);
+void adjustHeap(int *pArray, int rootIndex, int heapSize);
+
+int main()  
+{  
+    int a[] = {9, 8, 7, 6, 5, 4, 3, 11, 12, 13, 1, 28};
+    int K = 5 ;
+
+    //建一个K个元素大小的最小堆
+    buildMinHeap(a, K);
+
+    //从第K个元素开始扫描，看有没有比根节点更大的节点，若有则替换，并更新堆；若没有比根节点大则扫描下一个元素，直到数组结束
+    for (int i = K; i &lt; sizeof(a) / sizeof(int); i++)
+    {
+        if (a[i] &gt; a[0])
+        {
+            swap(a[i], a[0]);
+            adjustHeap(a, 0, K);
+        }
+    }
+
+    //打印出前K大的数，没有排序。
+    for (int i = 0; i &lt; K; i++)
+    {
+        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+    }
+    system(&quot;pause&quot;);
+}  
+
+//建一个K个元素大小的最小堆
+void buildMinHeap(int *pArray, int K)
+{
+    for (int i = (K - 2) / 2; i &gt;= 0; i--)
+    {
+        adjustHeap (pArray, i, K);
+    }
+}
+
+void adjustHeap (int *pArray, int rootIndex, int heapSize)
+{
+    int minIndex = rootIndex;
+
+    //左孩子节点
+    int leftIndex = 2 * rootIndex + 1;
+
+    //右孩子节点
+    int rightIndex = 2 * (rootIndex + 1);
+
+    //如果左孩子比根节点和右孩子节点小的话，则左孩子和根节点进行交换
+    if ((leftIndex &lt; heapSize) &amp;&amp; (rightIndex &lt; heapSize) &amp;&amp;
+        (pArray[leftIndex] &lt; pArray[rootIndex]))
+    {
+        minIndex = leftIndex;
+    }
+    if ((leftIndex &lt; heapSize) &amp;&amp; (rightIndex &gt;= heapSize) &amp;&amp; 
+        (pArray[leftIndex] &lt; pArray[rootIndex]))
+    {
+        minIndex = leftIndex;
+    }
+
+
+    if ((rightIndex &lt; heapSize) &amp;&amp; (pArray[rightIndex] &lt;
+         pArray[leftIndex]) &amp;&amp; (pArray[rightIndex] &lt; 
+             pArray[rootIndex]))
+    {
+        minIndex = rightIndex;
+    }
+
+    if (minIndex != rootIndex) 
+    {
+        //如果左孩子或者右孩子比根节点小的话，那么就交换，并且重新调整以
+        //minIndex为根节点的子树
+        swap(pArray[rootIndex], pArray[minIndex]);
+        adjustHeap(pArray, minIndex, heapSize);
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[有趣的阶乘]]></title>
         <id>https://tienyeung.github.io//post/you-qu-de-jie-cheng</id>
@@ -64,9 +242,13 @@
         <link href="https://tienyeung.github.io//post/nim-you-xi">
         </link>
         <updated>2019-10-15T01:52:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+        <summary type="html"><![CDATA[<blockquote>
+<p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+</blockquote>
 ]]></summary>
-        <content type="html"><![CDATA[<p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+        <content type="html"><![CDATA[<blockquote>
+<p>Nim游戏是博弈论中最经典的模型，它又有着十分简单的规则和无比优美的结论.通常的Nim游戏的定义是这样的：有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。这游戏看上去有点复杂，k可以考虑从简单情况开始研究。</p>
+</blockquote>
 <!-- more -->
 <h1 id="第一种类型">第一种类型</h1>
 <blockquote>
@@ -1171,53 +1353,6 @@ TeX, pdfTeX, XeTeX, LuaTeX, LaTeX, pdfLaTeX, XeLaTeX …</p>
 <li>在各个论坛或者 LaTeX 交流群里聪明地提出你的问题。</li>
 </ol>
 <p>参考：<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[动态规划]]></title>
-        <id>https://tienyeung.github.io//post/Dynamic-Program</id>
-        <link href="https://tienyeung.github.io//post/Dynamic-Program">
-        </link>
-        <updated>2019-06-15T08:38:04.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>动态规划</strong>的本质不在于是递推或是递归，也不需要纠结是不是内存换时间。</p>
-<p>理解动态规划并不需要数学公式介入，只是完全解释清楚需要点篇幅…首先需要明白哪些问题不是动态规划可以解决的，才能明白为神马需要动态规划。不过好处时顺便也就搞明白了递推贪心搜索和动规之间有什么关系，以及帮助那些总是把动规当成搜索解的同学建立动规的思路。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p><strong>动态规划</strong>的本质不在于是递推或是递归，也不需要纠结是不是内存换时间。</p>
-<p>理解动态规划并不需要数学公式介入，只是完全解释清楚需要点篇幅…首先需要明白哪些问题不是动态规划可以解决的，才能明白为神马需要动态规划。不过好处时顺便也就搞明白了递推贪心搜索和动规之间有什么关系，以及帮助那些总是把动规当成搜索解的同学建立动规的思路。</p>
-<!-- more -->
-<p>动态规划是对于 某一类问题 的解决方法！！重点在于如何鉴定“某一类问题”是动态规划可解的而不是纠结解决方法是递归还是递推！</p>
-<p>怎么鉴定dp可解的一类问题需要从计算机是怎么工作的说起…计算机的本质是一个状态机，内存里存储的所有数据构成了当前的状态，CPU只能利用当前的状态计算出下一个状态（不要纠结硬盘之类的外部存储，就算考虑他们也只是扩大了状态的存储容量而已，并不能改变下一个状态只能从当前状态计算出来这一条铁律）</p>
-<p>当你企图使用计算机解决一个问题是，其实就是在思考如何将这个问题表达成状态（用哪些变量存储哪些数据）以及如何在状态中转移（怎样根据一些变量计算出另一些变量）。所以所谓的空间复杂度就是为了支持你的计算所必需存储的状态最多有多少，所谓时间复杂度就是从初始状态到达最终状态中间需要多少步！</p>
-<p>太抽象了还是举个例子吧：</p>
-<p>比如说我想计算第100个非波那契数，每一个非波那契数就是这个问题的一个状态，每求一个新数字只需要之前的两个状态。所以同一个时刻，最多只需要保存两个状态，空间复杂度就是常数；每计算一个新状态所需要的时间也是常数且状态是线性递增的，所以时间复杂度也是线性的。</p>
-<p>上面这种状态计算很直接，只需要依照固定的模式从旧状态计算出新状态就行（a[i]=a[i-1]+a[i-2]），不需要考虑是不是需要更多的状态，也不需要选择哪些旧状态来计算新状态。对于这样的解法，我们叫递推。</p>
-<p>非波那契那个例子过于简单，以至于让人忽视了阶段的概念，所谓阶段是指随着问题的解决，在同一个时刻可能会得到的不同状态的集合。非波那契数列中，每一步会计算得到一个新数字，所以每个阶段只有一个状态。想象另外一个问题情景，假如把你放在一个围棋棋盘上的某一点，你每一步只能走一格，因为你可以东南西北随便走，所以你当你同样走四步可能会处于很多个不同的位置。从头开始走了几步就是第几个阶段，走了n步可能处于的位置称为一个状态，走了这n步所有可能到达的位置的集合就是这个阶段下所有可能的状态。</p>
-<p>现在问题来了，有了阶段之后，计算新状态可能会遇到各种奇葩的情况，针对不同的情况，就需要不同的算法，下面就分情况来说明一下：</p>
-<p>假如问题有n个阶段，每个阶段都有多个状态，不同阶段的状态数不必相同，一个阶段的一个状态可以得到下个阶段的所有状态中的几个。那我们要计算出最终阶段的状态数自然要经历之前每个阶段的某些状态。</p>
-<p>好消息是，有时候我们并不需要真的计算所有状态，比如这样一个弱智的棋盘问题：从棋盘的左上角到达右下角最短需要几步。答案很显然，用这样一个弱智的问题是为了帮助我们理解阶段和状态。某个阶段确实可以有多个状态，正如这个问题中走n步可以走到很多位置一样。但是同样n步中，有哪些位置可以让我们在第n+1步中走的最远呢？没错，正是第n步中走的最远的位置。换成一句熟悉话叫做“下一步最优是从当前最优得到的”。所以为了计算最终的最优值，只需要存储每一步的最优值即可，解决符合这种性质的问题的算法就叫贪心。如果只看最优状态之间的计算过程是不是和非波那契数列的计算很像？所以计算的方法是递推。</p>
-<p>既然问题都是可以划分成阶段和状态的。这样一来我们一下子解决了一大类问题：一个阶段的最优可以由前一个阶段的最优得到。</p>
-<p>如果一个阶段的最优无法用前一个阶段的最优得到呢？</p>
-<p>什么你说只需要之前两个阶段就可以得到当前最优？那跟只用之前一个阶段并没有本质区别。最麻烦的情况在于你需要之前所有的情况才行。</p>
-<p>再来一个迷宫的例子。在计算从起点到终点的最短路线时，你不能只保存当前阶段的状态，因为题目要求你最短，所以你必须知道之前走过的所有位置。因为即便你当前再的位置不变，之前的路线不同会影响你的之后走的路线。这时你需要保存的是之前每个阶段所经历的那个状态，根据这些信息才能计算出下一个状态！</p>
-<p>每个阶段的状态或许不多，但是每个状态都可以转移到下一阶段的多个状态，所以解的复杂度就是指数的，因此时间复杂度也是指数的。哦哦，刚刚提到的之前的路线会影响到下一步的选择，这个令人不开心的情况就叫做有后效性。</p>
-<p>刚刚的情况实在太普遍，解决方法实在太暴力，有没有哪些情况可以避免如此的暴力呢？</p>
-<p>契机就在于后效性。</p>
-<p>有一类问题，看似需要之前所有的状态，其实不用。不妨也是拿最长上升子序列的例子来说明为什么他不必需要暴力搜索，进而引出动态规划的思路。</p>
-<p>假装我们年幼无知想用搜索去寻找最长上升子序列。怎么搜索呢？需要从头到尾依次枚举是否选择当前的数字，每选定一个数字就要去看看是不是满足“上升”的性质，这里第i个阶段就是去思考是否要选择第i个数，第i个阶段有两个状态，分别是选和不选。哈哈，依稀出现了刚刚迷宫找路的影子！咦慢着，每次当我决定要选择当前数字的时候，只需要和之前选定的一个数字比较就行了！这是和之前迷宫问题的本质不同！这就可以纵容我们不需要记录之前所有的状态啊！既然我们的选择已经不受之前状态的组合的影响了，那时间复杂度自然也不是指数的了啊！虽然我们不在乎某序列之前都是什么元素，但我们还是需要这个序列的长度的。所以我们只需要记录以某个元素结尾的LIS长度就好！因此第i个阶段的最优解只是由前i-1个阶段的最优解得到的，然后就得到了DP方程</p>
-<p>所以一个问题是该用递推、贪心、搜索还是动态规划，完全是由这个问题本身阶段间状态的转移方式决定的！</p>
-<p>每个阶段只有一个状态-&gt;递推；<br>
-每个阶段的最优状态都是由上一个阶段的最优状态得到的-&gt;贪心；<br>
-每个阶段的最优状态是由之前所有阶段的状态的组合得到的-&gt;搜索；<br>
-每个阶段的最优状态可以从之前某个阶段的某个或某些状态直接得到而不管之前这个状态是如何得到的-&gt;动态规划。</p>
-<blockquote>
-<p>每个阶段的最优状态可以从之前某个阶段的某个或某些状态直接得到</p>
-</blockquote>
-<p>这个性质叫做最优子结构；</p>
-<blockquote>
-<p>而不管之前这个状态是如何得到的</p>
-</blockquote>
-<p>这个性质叫做无后效性。</p>
-<p>另：其实动态规划中的最优状态的说法容易产生误导，以为只需要计算最优状态就好，LIS问题确实如此，转移时只用到了每个阶段“选”的状态。但实际上有的问题往往需要对每个阶段的所有状态都算出一个最优值，然后根据这些最优值再来找最优状态。比如背包问题就需要对前i个包（阶段）容量为j时（状态）计算出最大价值。然后在最后一个阶段中的所有状态种找到最优值。</p>
 ]]></content>
     </entry>
 </feed>
