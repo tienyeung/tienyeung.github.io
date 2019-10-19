@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="telephone=no" name="format-detection"/>
+<meta name="renderer" content="webkit">
+<meta name="description" content="温故而知新">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<title>子数组的最大乘积以及最大和 | 阳阳の部落格</title>
+<link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
+<script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
+<script src="//cdn.bootcss.com/KaTeX/0.10.2/contrib/auto-render.min.js"></script>
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/jquery.js"></script>
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/jquery.pjax.min.js"></script>
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/basic.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async type="text/javascript" src="https://tienyeung.github.io//media/scripts/search.js"></script>
+<!-- <script type="text/javascript">
+$(document).pjax('a[target!=_blank]', '#pjax-container', {
+	fragment: '#pjax-container',
+	timeout: 5000,
+	cache: false
+});
+$(document).on('pjax:complete', function(){  	
+	pjax();
+});
+
+$(window).on('popstate.pjax', function () {
+	pjax();
+})
+
+function pjax() {
+	$.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+
+	if (("#gitalk-container").length > 0 ) {
+	$('#mememe').attr('src','//source.unsplash.com/800x400/?arts,weather?'+Math.random());
+	$.getScript("//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js");
+	$.getScript("//cdn.bootcss.com/KaTeX/0.10.2/contrib/auto-render.min.js");
+	$('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    	});
+	}
+}
+</script> -->
+
+  </head>
+
+  <body>
+     <div class="header">
+      <div class="logo_title">
+		  
+        <div class="title animated fadeInDown"><img id="img1" style="display:inline-block;" src="https://tienyeung.github.io//images/avatar.png"/>
+<script>
+var r = 0;
+    window.onload = function(){
+        var current = 0;
+        document.getElementById('img1').onclick = function(){
+            current = (current+90)%360;
+            this.style.transform = 'rotate('+current+'deg)';
+        }
+    };
+</script>
+          <h1 title="阳阳の部落格" class="weaklink"><a  href="/">阳阳の部落格</a>
+
+          </h1>
+
+          <div class="navbar weaklink">
+            <div class="normal_nav">
+
+<div class="bitcron_nav_container">
+
+
+  <div class="bitcron_nav">
+    <div class="mixed_site_nav_wrap site_nav_wrap">
+		
+      <ul class="mixed_site_nav site_nav sm sm-base">
+	  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/movie1.html" class="selected active current nav__item" >观影</a>
+  </li>
+  
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/books.html" class="selected active current nav__item" >阅读</a>
+  </li>
+  
+ 
+ <li>
+
+      </ul>
+	  
+
+      <div class="clear clear_nav_inline_end"></div>
+<div class="search">
+    <i class="search-icon fa fa-search search-start"></i>
+    <input type="text" class="search-input" placeholder="" />
+    <i class="search-icon fa fa-refresh search-clear"></i>
+	<div class="search-results"></div>
+</div>
+    </div>
+
+  </div>
+
+
+
+  <div class="clear clear_nav_end"></div>
+
+</div>
+
+            </div>
+			
+			<div class="hamberger"><i class="fa fa-bars"></i>
+<i class="fa fa-times"></i>
+
+			</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hidden_nav animated fadeInDown">
+
+<div class="bitcron_nav_container">
+
+
+  <div class="bitcron_nav">
+    <div class="mixed_site_nav_wrap site_nav_wrap">
+      <ul class="mixed_site_nav site_nav sm sm-base">
+	
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/movie1.html" class="selected active current nav__item" >观影</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/books.html" class="selected active current nav__item" >阅读</a>
+
+  </li>
+
+
+
+
+      </ul>
+
+      <div class="clear clear_nav_inline_end"></div>
+    </div>
+
+  </div>
+
+
+
+  <div class="clear clear_nav_end"></div>
+
+</div>
+
+      </div>
+
+    </div>
+
+<style type="text/css">
+.search {
+    position: relative;
+    height: 30px;
+    text-align: right;
+    line-height: 30px;
+    padding-right: 10px;
+}
+
+.search .search-icon {
+    float: right;
+    height: 100%;
+    margin: 0 10px;
+    line-height: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.search .search-input {
+    float: right;
+    width: 30%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.search .search-clear {
+    display: none;
+}
+
+.search .search-results {
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 50%;
+    max-height: 400px;
+    overflow: auto;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 .3rem .5rem #333;
+}
+
+.search .search-results .result-item {
+    color: #000;
+    margin: 5px;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+</style>
+
+    <div class="main" id="pjax-container">
+      <div class="main-inner">
+
+
+<div class="content">
+
+
+
+
+
+
+  <div class="post_page" >
+
+<div class="post">
+  <div class="post_title sm_margin">
+    <h2><a>子数组的最大乘积以及最大和</a>
+
+
+
+    </h2>
+  </div>
+  
+<script>
+function lan(){
+	if (document.getElementById("lan").innerText == "繁"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_tw.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "简"
+	}
+	else if(document.getElementById("lan").innerText == "簡"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_cn.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "繁"
+		}
+}
+
+function change(){	
+    var rand = Math.random()*1+1;
+    var num = window.getComputedStyle(document.getElementsByName("show")[0],undefined).fontSize;
+	num = num.slice(0,-2); 
+    document.getElementById("show").style.fontSize = num - rand +'px';
+}
+</script>
+
+  <div class="post_details">
+    <div class="info"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-10-19</span>
+<i class="fa fa-eye"></i>
+
+<span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
+
+<i class="fa fa-bookmark-o"></i>
+<span class="tags_info weaklink">
+	
+	<a href="https://tienyeung.github.io//tag/SU9NtEKDV" class="tag">编程之美</a>
+
+
+</span>
+<span>10 min read</span>
+&nbsp
+&nbsp
+<i class="fa fa-share"></i>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he&sharesource=qzone&title=子数组的最大乘积以及最大和&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+&lt;p&gt;1.给定一个长度为N的整数数组，只允许用乘法，不能用除法，计算任意（N－1）个数的组合乘积中最大的一组，并写出算法的时间复杂度。&lt;br&gt;
+2.一个有N个整数元素的一维数组（A[0]，A[1]，…，A[n－2]，A[n－1]），这个数组当然有很多子数组，那么子数组之和的最大值是什么呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+"><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he&sharesource=weibo&title=子数组的最大乘积以及最大和 + " - " + &lt;blockquote&gt;
+&lt;p&gt;1.给定一个长度为N的整数数组，只允许用乘法，不能用除法，计算任意（N－1）个数的组合乘积中最大的一组，并写出算法的时间复杂度。&lt;br&gt;
+2.一个有N个整数元素的一维数组（A[0]，A[1]，…，A[n－2]，A[n－1]），这个数组当然有很多子数组，那么子数组之和的最大值是什么呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+&nbsp
+&nbsp
+<a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
+&nbsp
+&nbsp
+<a id="lan" href="javascript:void(0);" onclick="lan();" title="调整简繁体">繁</a>
+</div>
+  </div>
+
+  <div class="post_content markdown">
+  &nbsp
+  <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
+    <div name="show" id="show">
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><blockquote>
+<p>1.给定一个长度为N的整数数组，只允许用乘法，不能用除法，计算任意（N－1）个数的组合乘积中最大的一组，并写出算法的时间复杂度。<br>
+2.一个有N个整数元素的一维数组（A[0]，A[1]，…，A[n－2]，A[n－1]），这个数组当然有很多子数组，那么子数组之和的最大值是什么呢？</p>
+</blockquote>
+<!-- more -->
+<h1 id="子数组的最大乘积">子数组的最大乘积</h1>
+<p>假设N个整数的乘积为P，针对P的正负性进行如下分析（其中，AN－1表示N－1个数的组合，PN－1表示N－1个数的组合的乘积）：</p>
+<ol>
+<li>P为0<br>
+那么，数组中至少包含有一个0。假设除去一个0之外，其他N－1个数的乘积为Q，根据Q的正负性进行讨论：<br>
+Q为0<br>
+说明数组中至少有两个0，那么N－1个数的乘积只能为0，返回0；<br>
+Q为正数<br>
+返回Q，因为如果以0替换此时AN－1中的任一个数，所得到的PN－1为0，必然小于Q；<br>
+Q为负数<br>
+如果以0替换此时AN－1中的任一个数，所得到的PN－1为0，大于Q，乘积最大值为0。</li>
+<li>P为负数<br>
+根据“负负得正”的乘法性质，自然想到从N个整数中去掉一个负数，使得PN－1为一个正数。而要使这个正数最大，这个被去掉的负数的绝对值必须是数组中最小的。我们只需要扫描一遍数组，把绝对值最小的负数给去掉就可以了。</li>
+<li>P为正数<br>
+类似P为负数的情况，应该去掉一个绝对值最小的正数值，这样得到的PN－1就是最大的。<br>
+上面的解法采用了直接求N个整数的乘积P，进而判断P的正负性的办法，但是直接求乘积在编译环境下往往会有溢出的危险（这也就是本题要求不使用除法的潜在用意），事实上可做一个小的转变，<strong>不需要直接求乘积，而是求出数组中正数（+）、负数（-）和0的个数，从而判断P的正负性，其余部分与以上面的解法相同</strong>。<br>
+在时间复杂度方面，由于只需要遍历数组一次，在遍历数组的同时就可得到数组中正数（+）、负数（-）和0的个数，以及数组中绝对值最小的正数和负数，时间复杂度为O（N）。</li>
+</ol>
+<pre><code class="language-java">public int findMaxProduct2(int[] A) {
+        int np = 0, nn = 0, nz = 0; // 数组A中正数的个数，负数的个数，0的个数
+        int min_abs_pv = Integer.MAX_VALUE, min_abs_nv = Integer.MAX_VALUE; // 数组中绝对值最小的正数和负数
+        int max_abs_nv = 0; // 数组中绝对值最大的负数
+        for (int i = 0; i &lt; A.length; ++i) {
+            if (A[i] &gt; 0) {
+                ++np;
+                min_abs_pv = min_abs_pv &gt; A[i] ? A[i] : min_abs_pv;
+            } else if (A[i] &lt; 0) {
+                ++nn;
+                min_abs_nv = min_abs_nv &gt; -A[i] ? -A[i] : min_abs_nv;
+                max_abs_nv = max_abs_nv &lt; -A[i] ? -A[i] : max_abs_nv;
+            } else ++nz;
+
+
+        }
+
+        if (nz &gt;= 2) return 0;
+
+        int signOfP = 0;
+        if (nn % 2 == 0) signOfP = 1;
+        else signOfP = -1;
+
+        int maxPro = 1;
+        if (signOfP == 0) {
+            for (int i = 0; i &lt; A.length; ++i) {
+                if (A[i] != 0) maxPro *= A[i];
+            }
+            return maxPro &gt; 0 ? maxPro : 0;
+        } else if (signOfP == -1) {
+            for (int i = 0; i &lt; A.length; ++i) {
+                if (!(A[i]&lt;0 &amp;&amp; Math.abs(A[i]) == min_abs_nv)) // 去掉绝对值最大负数
+                    maxPro *= A[i];
+            }
+            return maxPro;
+        } else { // P为正数
+            if (np &gt; 0) { // 数组中存在正数
+                for (int i = 0; i &lt; A.length; ++i) {
+                    if (!(A[i]&gt;0 &amp;&amp; A[i] != min_abs_pv))
+                        maxPro *= A[i];
+                }
+                return maxPro;
+            } else {// 数组中不存在正数
+                for (int i = 0; i &lt; A.length; ++i) {
+                    if (!(A[i]&lt;0 &amp;&amp; Math.abs(A[i]) == max_abs_nv))
+                        maxPro *= A[i];
+                }
+                return maxPro;
+            }
+        }
+}
+</code></pre>
+<h1 id="子数组之和的最大值">★子数组之和的最大值</h1>
+<p>明确题意：</p>
+<ul>
+<li>题目说的子数组，是连续的。</li>
+<li>题目只需要求和，并不需要返回子数组的具体位置。</li>
+<li>数组的元素是整数，所以数组可能包含有正整数、零、负整数。</li>
+</ul>
+<h2 id="解法一-on2">解法一 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></h2>
+<pre><code class="language-python">def maxsum(A:list):
+    maxinum=float(&quot;-inf&quot;)
+    for i in range(A):
+        j=i
+        for j in range(A):
+            sum+=A[j]
+            if sum&gt;maxinum:
+                maximun=sum
+    return sum
+</code></pre>
+<h2 id="解法二-onlog2n">解法二 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mn>2</mn><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n*log2N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></h2>
+<p>如果将所给数组（A[0]，…，A[n－1]）分为长度相等的两段数组（A[0]，…，A[n/2－1]）和（A[n/2]，…，A[n－1]），分别求出这两段数组各自的最大子段和，则原数组（A[0]，…，A[n－1]）的最大子段和为以下三种情况的最大值：</p>
+<ol>
+<li>（A[0]，…，A[n－1]）的最大子段和与（A[0]，…，A[n/2－1]）的最大子段和相同。</li>
+<li>（A[0]，…，A[n－1]）的最大子段和与（A[n/2]，…，A[n－1]）的最大子段和相同。</li>
+<li>（A[0]，…，A[n－1]）的最大子段跨过其中间两个元素A[n/2－1]到A[n/2]。</li>
+</ol>
+<p>1和2两种情况事实上是问题规模减半的相同子问题，可以通过递归求得。至于第3种情况，我们只要找到以A[n/2－1]结尾的和最大的一段数组和s1＝（A[i]，…，A[n/2－1]）（0＜＝i＜n/2－1）A[]和以A[n/2]开始和最大的一段和s2＝（A[n/2]，…，A[j]）（n/2＜＝j＜n）。那么第3种情况的最大值为s1＋s2＝A[i]＋…＋A[n/2－1]＋A[n/2]＋…＋A[j]，只需要对原数组进行一次遍历即可。</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+#define N 1001
+
+int array[N];
+
+int MaxSubsequence(int L,int R){
+    int i,j;
+    //0个元素
+    if(L &gt; R){
+        return 0;
+    }
+    //1个元素
+    if(L == R){
+        return array[L];
+    }
+    int mid = (L + R) / 2;
+    //跨越a和b之间的部分
+    //在a中的部分是a中包含右边界的最大子数组
+    int sum = 0;
+    int leftMax = array[mid];
+    for(i = mid;i &gt;= L;i--){
+        sum += array[i];
+        leftMax = max(leftMax,sum);
+    }
+    //在b中的部分是b中包含左边界的最大子数组
+    sum = 0;
+    int rightMax = array[mid+1];
+    for(i = mid+1;i &lt;= R;i++){
+        sum += array[i];
+        rightMax = max(rightMax,sum);
+    }
+    //递归调用
+    //跨越a和b
+    int maxSum = rightMax+leftMax;
+    //整个在a中
+    maxSum = max(maxSum,MaxSubsequence(L,mid));
+    //整个在b中
+    maxSum = max(maxSum,MaxSubsequence(mid+1,R));
+    return maxSum;
+}
+
+int main(){
+    int n,i,j;
+    //freopen(&quot;C:\\Users\\XIAOSI\\Desktop\\acm.txt&quot;,&quot;r&quot;,stdin);
+    while(scanf(&quot;%d&quot;,&amp;n) != EOF){
+        //输入数据
+        for(i = 0;i &lt; n;i++){
+            scanf(&quot;%d&quot;,&amp;array[i]);
+        }
+        int maxSum = MaxSubsequence(0,n-1);
+        printf(&quot;%d\n&quot;,maxSum);
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="解法三-on">解法三 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></h2>
+<p>使用动态规划的方法，考虑数组第一个元素arr[0]，以及和最大的子数组[i, j]之间的关系，有以下三种情况：<br>
+1．当0＝i＝j时，元素A[0]本身构成和最大的一段；<br>
+2．当0＝i＜j时，和最大的一段以A[0]开始；<br>
+3．当0＜i时，元素A[0]跟和最大的一段没有关系。<br>
+从上面三种情况可以看出，可以将一个大问题（N个元素数组）转化为一个较小的问题（n－1个元素的数组）。假设已经知道（A[1]，…，A[n－1]）中和最大的一段之和为All[1]，并且已经知道（A[1]，…，A[n－1]）中包含A[1]的和最大的一段的和为Start[1]。那么，根据上述分析的三种情况，不难看出（A[0]，…，A[n－1]）中问题的解All[0]是三种情况的最大值max{A[0]，A[0]＋Start[1]，All[1]}。通过这样的分析，可以看出这个问题符合无后效性，可以使用动态规划的方法来解决.</p>
+<pre><code class="language-c">int max(int x, int y)
+{
+    return x &gt; y ? x : y;
+} 
+
+int maxSum(int *arr, int n)
+{
+    int start[n - 1] = arr[n - 1];
+    int all[n - 1] = arr[n - 1];
+    for(int i = n - 2; i &gt;= 0; i--)//必须从后往前遍历数组
+    {
+        start[i] = max(arr[i], arr[i] + start[i + 1]);
+        all[i] = max(start[i], all[i + 1]); 
+    }
+    return all[0];
+</code></pre>
+<p>空间上对其进行优化，可以使用两个变量代替使用两个数组。第一个递推式：Start[i]＝max{A[i]，Start[i＋1]＋A[i]}。如果Start[i＋1]＜0，则Start[i]＝A[i]。而且，在这两个递推式中，其实都只需要用两个变量就可以了。Start[k＋1]只有在计算Start[k]时使用，而All[k＋1]也只有在计算All[k]时使用。所以程序可以进一步改进一下，只需O（1）的空间就足够了。</p>
+<pre><code class="language-c">int max(int x, int y)
+{
+    return x &gt; y ? x : y;
+} 
+
+int maxSum(int *arr, int n)
+{
+    int start = arr[n - 1];
+    int all = arr[n - 1];
+    for(int i = n - 2; i &gt;= 0; i--)
+    {
+        start = max(arr[i], arr[i] + start);
+        all = max(start, all);  
+    }
+    return all;
+}
+</code></pre>
+<p>我们还可以换一个写法：<br>
+<img src="https://i.loli.net/2019/10/19/OL7eFglM2BK8NnC.png" alt="untitled.png"></p>
+</span></p></div>
+	<br>
+	<hr>
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
+<div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-19</div>     -->
+	 <p class="md_block">
+    <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
+<div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
+</p> 
+</div>
+</div>
+
+<style type="text/css">
+#mememe {
+	border:3px;
+	border-radius:5px;
+    background-repeat: no-repeat;
+    height: 100%;
+	width: 100%;
+	display: inline-block;
+	border-radius:5px; 
+}
+</style>
+
+<script>
+var link = "" ;
+$("img").each( (i,o) => {
+	var o = $(o);
+	if( o.attr("src").indexOf("sinaimg") > 0 || o.attr("src").indexOf("qpic") > 0 || o.attr("src").indexOf("baidu") > 0 || o.attr("src").indexOf("sinaimg") > 0){
+		o.attr("referrerpolicy","no-referrer");
+		link = o.attr("src");
+		o.attr("src",link);
+	}
+});
+</script>
+
+<div style="width:100%;overflow:hidden">
+
+          <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
+            下一篇
+            <a href="https://tienyeung.github.io//post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi">
+              <h3 class="post-title">
+                寻找数组中最大值和最小值
+              </h3>
+            </a>
+          </div>
+
+
+
+</div>
+
+<div class="doc_comments">
+
+</div>
+
+  </div>
+</div>
+
+
+      </div>
+<div class="toc-container">
+<ul class="markdownIt-TOC">
+<li><a href="#%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF">子数组的最大乘积</a></li>
+<li><a href="#%E5%AD%90%E6%95%B0%E7%BB%84%E4%B9%8B%E5%92%8C%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC">★子数组之和的最大值</a>
+<ul>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%B8%80-on2">解法一 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%BA%8C-onlog2n">解法二 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mn>2</mn><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n*log2N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></a></li>
+<li><a href="#%E8%A7%A3%E6%B3%95%E4%B8%89-on">解法三 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+    </div>
+	
+   <div class="footer">
+<div class="site_footer_wrap"><div class="site_footer">
+
+      <div class="mysocials"><div class="my_socials">
+		   
+			   
+    
+			   
+    
+			   
+    
+			   
+<a href="https://github.com/tienyeung" title="github"><i class="fa fa-github"></i></a>
+
+    
+			   
+    
+			   
+    
+</div>
+      </div>
+
+      <div class="copyright" id="copyright">
+	  <script>
+		var date=new Date;
+		var year=date.getFullYear(); 
+		document.getElementById("copyright").innerHTML = "Copyright © "+year+“ ” + 阳阳の部落格;
+		</script>
+		Hope You Enjoy
+		<br>
+		本站已稳定运行了
+		<strong><script type="text/javascript">
+		var urodz= new Date("10/06/2019");
+		var now = new Date();
+		var ile = now.getTime() - urodz.getTime();
+		var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+		document.write(+dni)
+		</script>
+		</strong>天
+		<br>
+		<!-- 本站总访问量为 <strong><span id="busuanzi_value_site_uv"></span></strong> 次
+	  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> -->
+      </div>
+	  <!-- <img src="https://tienyeung.github.io//images/bottom.svg"> -->
+
+    </div>
+
+<!-- <script type="text/javascript" src="https://tienyeung.github.io//media/scripts/love.js"></script> -->
+<script type="text/javascript" src="https://tienyeung.github.io//media/scripts/darkmode.js"></script>
+<script>
+var options = {
+  bottom: '64px', // default: '32px'
+  right: '32px', // default: '32px'
+  left: 'unset', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+
+</html>
