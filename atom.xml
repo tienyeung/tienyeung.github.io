@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-19T03:24:42.932Z</updated>
+    <updated>2019-10-20T03:09:16.308Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,77 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[数组分割]]></title>
+        <id>https://tienyeung.github.io//post/shu-zu-fen-ge</id>
+        <link href="https://tienyeung.github.io//post/shu-zu-fen-ge">
+        </link>
+        <updated>2019-10-20T01:33:40.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>有一个没有排序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近？题目的本质就是要从2n个整数中找出n个，使得它们的和尽可能地靠近所有整数之和的一半。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>有一个没有排序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近？题目的本质就是要从2n个整数中找出n个，使得它们的和尽可能地靠近所有整数之和的一半。</p>
+</blockquote>
+<!-- more -->
+<h1 id="解法一">解法一</h1>
+<p>假设2n个整数之和为SUM。从2n个整数中找出n个元素的和，不管如何接近SUM/2，同样都会存在大于SUM/2或者小于SUM/2的情况。在求解这个问题时，大于或小于SUM/2没有本质的区别。因此，可以只考虑小于等于SUM/2的情况。<br>
+比较直观地来说，可以用动态规划来解决这个问题。具体分析如下：<br>
+可以把任务分成2N步，第k步的定义是前k个元素中任意i个元素的和，所有可能的取值之集合为Sk（只考虑取值小于等于SUM/2的情况）。<br>
+然后将第k步拆分成两个小步。即首先得到前k－1个元素中，任意i个元素，总共能有多少种取值，设这个取值集合为Sk－1＝{vi}。第二步就是令Sk＝Sk－1∪{vi＋arr[k]}，即可完成第k步。<br>
+伪代码如下：<br>
+<img src="https://i.loli.net/2019/10/20/VnYOhJCNfRrmx12.png" alt="untitled.png"><br>
+从有效性来分析，整个代码是一个三重循环，目的就是执行insert。这个代码实际执行insert的次数至多是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>4</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">4^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>次（枚举所有元素在与不在的情况），因此可以认为复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mn>4</mn><mi>N</mi></msup><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（4^N）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">）</span></span></span></span>。<br>
+既然算法的时间复杂度是N的指数级，因此在N很大时，效率很低。我们不得不考虑设计一种时间复杂度是N的多项式函数的方法。考虑的出发点是，是否有另一种拆分第k步的方法。</p>
+<h1 id="解法二">解法二</h1>
+<p>解法二的拆分方法需要遍历Sk－1＝{vi}的元素，由于Sk－1＝{vi}的元素个数随着k的增大而增大，所以导致了解法二的效率低下。能不能设计一个算法使得第k步所花费的时间与k无关呢？<br>
+我们不妨倒过来想，原来是给定Sk－1＝{vi}，求Sk。那我们能不能给定Sk的可能值v和arr[k]，去寻找v－arr[k]是否在Sk－1＝{vi}中呢？由于Sk可能值的集合的大小与k无关，所以这样设计的动态规划算法其第k步的时间复杂度与k无关。<br>
+代码如下：<br>
+<img src="https://i.loli.net/2019/10/20/cISKm6bpYnz48d1.png" alt="untitled1.png"><br>
+利用如上的算法，时间复杂度将为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mi>N</mi><mn>2</mn></msup><mo>∗</mo><mi>S</mi><mi>u</mi><mi>m</mi><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（N^2* Sum）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord cjk_fallback">）</span></span></span></span>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最长递增子序列]]></title>
+        <id>https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie</id>
+        <link href="https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie">
+        </link>
+        <updated>2019-10-20T01:06:07.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>写一个时间复杂度尽可能低的程序，求一个一维数组（N个元素）中的最长递增子序列的长度。根据题目的要求，求一维数组中的最长递增子序列，也就是找一个标号的序列b[0]，b[1]，…，b[m]（0＜＝b[0]＜b[1]＜…＜b[m]＜N），使得array[b[0]]＜array[b[1]]＜…＜array[b[m]]。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>写一个时间复杂度尽可能低的程序，求一个一维数组（N个元素）中的最长递增子序列的长度。根据题目的要求，求一维数组中的最长递增子序列，也就是找一个标号的序列b[0]，b[1]，…，b[m]（0＜＝b[0]＜b[1]＜…＜b[m]＜N），使得array[b[0]]＜array[b[1]]＜…＜array[b[m]]。</p>
+</blockquote>
+<!-- more -->
+<h1 id="解法一">解法一</h1>
+<blockquote>
+<p>无后效性:将各阶段按照一定的次序排列好之后，对于某个给定的阶段状态来说，它以前各阶段的状态无法直接影响它未来的决策，而只能间接地通过当前的这个状态来影响。换句话说，每个状态都是过去历史的一个完整总结。</p>
+</blockquote>
+<p>满足无后效性，即可使用动态规划来解决：使用i来表示当前遍历的位置，当i＝2时，由于-1＜1。因此，必须丢弃第一个值然后重新建立串。当前的递增序列为（-1），长度为1。当i＝3时，由于2＞1，2＞-1。因此，最长的递增序列为（1，2），（-1，2），长度为2。在这里，2前面是1还是-1对求出后面的递增序列没有直接影响。<br>
+依此类推之后，可以得出如下的结论：<br>
+假设在目标数组array[]的前i个元素中，最长递增子序列的长度为LIS[i]。那么，<br>
+LIS[i＋1]＝max{1，LIS[k]＋1}，array[i＋1]＞array[k]，for any k＜＝i<br>
+即如果array[i＋1]大于array[k]，那么第i＋1个元素可以接在LIS[k]长的子序列后面构成一个更长的子序列。与此同时array[i＋1]本身至少可以构成一个长度为1的子序列。<br>
+<img src="https://i.loli.net/2019/10/20/senitVDhpHxkm71.png" alt="untitled.png"><br>
+这种方法的时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mi>N</mi><mn>2</mn></msup><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（N^2）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">）</span></span></span></span></p>
+<h1 id="解法二">解法二</h1>
+<p>找到前i个元素中的一个递增子序列，使得这个递增子序列的最大的元素比array[i＋1]小，且长度尽量地长。这样将array[i＋1]加在该递增子序列后，便可找到以array[i＋1]为最大元素的最长递增子序列。仍然假设在数组的前i个元素中，以array[i]为最大元素的最长递增子序列的长度为LIS[i]。<br>
+同时，假设：<br>
+长度为1的递增子序列最大元素的最小值为MaxV[1]；<br>
+长度为2的递增子序列最大元素的最小值为MaxV[2]；<br>
+……<br>
+长度为LIS[i]的递增子序列最大元素的最小值为MaxV[LIS[i]]。<br>
+<img src="https://i.loli.net/2019/10/20/senitVDhpHxkm71.png" alt="untitled.png"><br>
+时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mi>N</mi><mn>2</mn></msup><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（N^2）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">）</span></span></span></span><br>
+在递增序列中，如果i＜j，那么就会有MaxV[i]＜MaxV[j]。如果出现MaxV[j]＜MaxV[i]的情况，则跟定义矛盾，为什么？<br>
+因此，根据这样单调递增的关系，可以将上面方法中的穷举部分进行如下修改：<br>
+<img src="https://i.loli.net/2019/10/20/QshFq5vWidKULbR.png" alt="untitled2.png"><br>
+如果把上述的查询部分利用二分搜索进行加速，那么就可以把时间复杂度降为O（N*log2N）。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[子数组的最大乘积以及最大和]]></title>
         <id>https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he</id>
@@ -278,6 +349,32 @@ int maxSum(int *arr, int n)
         return  Fibonacci(n-1)+Fibonacci(n-2)
 </code></pre>
 <p>思考一下，能否将其效率进一步优化，递归法其中涉及到许多重复计算，而如何减少这些计算呢？可以用数组储存所有已计算过的项，这样便可以达到空间换时间的目的。但是否有更快的算法呢？</p>
+<h1 id="常规法备忘录">常规法备忘录</h1>
+<pre><code class="language-python">def fib(self, N):
+        &quot;&quot;&quot;
+        :type N: int
+        :rtype: int
+        &quot;&quot;&quot;
+        if N&lt;=0:
+            return 0
+        elif N == 1 or N == 2:
+            return 1
+        f1,f2,fn=1,1,0
+        for i in range(3,N+1):
+            fn = f1 + f2
+            f1 = f2
+            f2 = fn
+        return fn
+</code></pre>
+<h1 id="动态规划">动态规划</h1>
+<pre><code class="language-c++">int fib(int N) {
+    vector&lt;int&gt; dp(N + 1, 0);
+    dp[1] = dp[2] = 1;
+    for (int i = 3; i &lt;= N; i++)
+        dp[i] = dp[i - 1] + dp[i - 2];
+    return dp[N];
+}
+</code></pre>
 <h1 id="更快的算法">更快的算法</h1>
 <h2 id="通项公式">通项公式</h2>
 <p>由递推公式F（n）＝F（n－1）＋F（n－2），知道F(n)的特征方程为：<br>
@@ -328,6 +425,12 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 -221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
 s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12715500000000002em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>即可得,但其中引入了无理数，不能保证结果精度。</p>
+<pre><code class="language-javascript">let fib = n =&gt; Math.round(
+       (Math.pow((1 + Math.sqrt(5)) / 2, n) -
+         Math.pow((1 - Math.sqrt(5)) / 2, n)) /
+        Math.sqrt(5)
+     );
+</code></pre>
 <h2 id="分治策略">分治策略</h2>
 <p>注意到Fibonacci数列是二阶递推数列，所以存在一个2*2的矩阵A，使得：<br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>F</mi><mi>n</mi></msub><mo separator="true">,</mo><msub><mi>F</mi><mi>n</mi></msub><mo>−</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>(</mo><msub><mi>F</mi><mi>n</mi></msub><mo>−</mo><mn>1</mn><mo separator="true">,</mo><msub><mi>F</mi><mi>n</mi></msub><mo>−</mo><mn>2</mn><mo>)</mo><mo>∗</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">(F_n,F_n-1)=(F_n-1,F_n-2)*A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>,可解得A:<br>
@@ -343,8 +446,43 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <img src="https://i.loli.net/2019/10/18/nNP8imOsHfUFzZ9.png" alt="untitled2.png"><br>
 <img src="https://i.loli.net/2019/10/18/TylWaiK5n9kod1u.png" alt="untitled5.png"><br>
 <img src="https://i.loli.net/2019/10/18/NDqbfQgBYTpGew6.png" alt="untitled3.png"><br>
-于是，复杂度为O(logn)的算法如下：<br>
-<img src="https://i.loli.net/2019/10/18/yPFfvVcol1bQUIJ.png" alt="untitled4.png"></p>
+于是，复杂度为O(logn)的算法如下:</p>
+<pre><code class="language-javascript">func fib(N int) int {
+	if N == 0 || N == 1 {
+		return N
+	}
+	// first 是第0个和第1个元素
+	first := [][2]int{[2]int{0, 1}, [2]int{0, 0}}
+	// temp为系数
+	temp := [][2]int{[2]int{0, 1}, [2]int{1, 1}}
+	res := matrix22_pow(temp, N - 1)
+	return matrix22_mul(first, res)[0][1]
+}
+
+func matrix22_pow(x [][2]int, n int) [][2]int {
+	r := x
+	res := [][2]int{[2]int{1, 0}, [2]int{0, 1}}
+	for n != 0 {
+		if n &amp; 1 == 1 {
+			// 最低二进制位为1
+			res = matrix22_mul(res, r)
+		}
+		// 2维矩阵相乘
+		r = matrix22_mul(r, r)
+		n &gt;&gt;= 1
+	}
+	return res
+}
+
+func matrix22_mul(x, y [][2]int) [][2]int {
+	temp := make([][2]int, 2)
+	temp[0][0] = x[0][0] * y[0][0] + x[0][1] * y[0][1]
+	temp[0][1] = x[0][0] * y[0][1] + x[0][1] * y[1][1]
+	temp[1][0] = x[1][0] * y[0][0] + x[1][1] * y[0][1]
+	temp[1][1] = x[1][0] * y[1][0] + x[1][1] * y[1][1]
+	return temp
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -783,63 +921,6 @@ public class Lift
 <p><strong>用基廷斯指数解决探索/收获问题，其实有一个隐含的假设，那就是你的转换是没有成本的。今天在这间餐馆吃饭，明天去新餐馆，可以随便去。可是对于换工作之类的问题，其实存在一个适应新单位的转换成本，那就要考虑得更复杂一点了。</strong></p>
 <h2 id="上限置信区间">上限置信区间</h2>
 <p>人绝非全知全能，那势必会存在遗憾，只是或多或少，或快或慢而已。基廷斯指数考虑的剩余时间，而<a href="https://segmentfault.com/a/1190000018871668">上限置信区间</a>考虑的便是遗憾最少化。原理“面对不确定性的乐观主义”。其强调用一只证据推断某个选择方案可能产生的最佳结果，计算结果倾向于我们了解程度较低的可能情况。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[最好的时代]]></title>
-        <id>https://tienyeung.github.io//post/zui-hao-de-shi-dai</id>
-        <link href="https://tienyeung.github.io//post/zui-hao-de-shi-dai">
-        </link>
-        <updated>2019-10-10T02:27:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>要问最好的时代是什么时候，毫无疑问就是当下，就是即将迈入21世纪20年代的新时代中国。如果真的有一部时光机，我不会想穿越回文艺青年热衷的民国，因为我知道那时军阀割据，战乱频仍，即便是大师众多，英雄辈出，于普通民众而言仍是苦不堪言。也不会想穿越回大明书粉向往的明朝，因为我知道那时生产力极度落后，当政者的最高愿景并非是发展生产力，提升民众幸福度，而仅仅是保持社会稳定，而到达“黎民不饥不寒”的最低标准而已，即便上层阶级生活安逸，但底层百姓却占大多数，即便穿越回去大概率只是当一个生活困苦，苛捐杂税缠身的中下贫农而已。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>要问最好的时代是什么时候，毫无疑问就是当下，就是即将迈入21世纪20年代的新时代中国。如果真的有一部时光机，我不会想穿越回文艺青年热衷的民国，因为我知道那时军阀割据，战乱频仍，即便是大师众多，英雄辈出，于普通民众而言仍是苦不堪言。也不会想穿越回大明书粉向往的明朝，因为我知道那时生产力极度落后，当政者的最高愿景并非是发展生产力，提升民众幸福度，而仅仅是保持社会稳定，而到达“黎民不饥不寒”的最低标准而已，即便上层阶级生活安逸，但底层百姓却占大多数，即便穿越回去大概率只是当一个生活困苦，苛捐杂税缠身的中下贫农而已。</p>
-<!-- more -->
-<p>那我为什么还要写最好的时代，难道不是显而易见的么？放在时代洪流面前，的确是的，但放在个人命运前面，却有待分说。其实写这篇文章我是在怀念一些人我认为的最好的时代，他们最好的时代我已经错过，如今不论颜值，演技，心态已不复从前。我喜欢周星驰，梁朝伟，喜欢那个时代群星闪耀的香港电影的黄金时代，梁朝伟的电影我看过85%以上，周星驰的电影我看过95%以上，他们的综艺访谈我也有意搜索看过，他们的最好的时代开始于90年代，巅峰时期就处在新世纪来临前10年，如今虽有零星作品问世，但质量也不如从前了，不得不感叹韶华的逝去。周星驰的最后一部出演的电影是12年前的《长江七号》，我以为以后会有更好的作品问世，没想到可能已成绝唱，之后的出任导演的作品只能说差强人意。梁朝伟的最近一部电影是《欧洲攻略》，其实从拍了《摆渡人》《捉妖记2》我就知道，梁朝伟的时代可能也已经过去了，最后一部佳作已是7年前的《一代宗师》，这部从构思到杀青一共经历13年的电影，一如王家卫的一贯作风，消磨了太多时光，虽然慢工出细活，但梁朝伟却或许因此少拍了许多佳作，加上之前的《2046》拍了整整四年，梁朝伟全程在组，几乎没出演过任何影片，这于我们观众而言不失为一种巨大的遗憾，那个时期正是梁朝伟的黄金时期，四十岁出头，演技颜值精力仍在巅峰，本可以一鼓作气多出几部好片的。可对此梁朝伟却觉得无所谓，只要有角色让他释放情绪就好了，果然，这才是佛系的梁先生，那么闲暇时飞到伦敦一言不发喂一下午鸽子的事迹也就不足为奇了：）</p>
-<p>我不能见证他们最好的时代是我无比的遗憾，每当看见他们当时在电影或综艺访谈里的帅气脸庞和意气风发，与如今的极少的出镜率和沉默寡言寥寥数语的访谈对比，我都感到无比的怀念。不该是这样的，或许是我常常回顾他们的电影，他们的电影放在当下仍不算脱节，恍惚间，我一直以为他们现在还像电影里一样帅气逼人，才华横溢，直到看到电影出品日期时我才恍然：这不是10年前的作品，已经是20年前甚至30年前的作品了。时间过得怎么能这么快！</p>
-<p>其实你我都知道时间的流逝是均匀的，无所谓快慢，周，梁二人比我早出生太多，甚至比我爸年纪还大出不少，但我却能把他们当作我的偶像，是因为我看到的作品永远是他们年轻时代的作品，自我懂事来，他们便甚少作品问世，以至于我觉得他们仍一如年少模样。他们的过去我无法参与，我能参与的只是回顾他们往日时光的作品而已。</p>
-<p>我喜欢的周杰伦，现在已为人夫，为人父，事业成功，家庭美满，时光把他的棱角打磨了不少，变得成熟稳重，或许再也写不出以往或深情或自负或遗憾的作品了，我同样没有参与他状态最巅峰的时代，惭愧的是，大多80，90后视为周青春的周杰伦我却是在2015年才正式入坑的，我的青春是许嵩。那个时候的我只是零星听过几首杰伦的歌，还不是之后的我那样成为狂热的公举粉，看过几乎所有访谈，听过几乎所有杰伦的歌。我入坑后一年，周杰伦发布了目前为止最后一张专辑，也还算差强人意，只是似乎缺了点什么。</p>
-<p>所以我总是会感概：为何我总是错过他们最好的时代，对他们的最好的时代我唯一能做的就只是怀念回忆而已。或许我就是一个喜欢怀旧的人，我不想喜欢一个在当今正处巅峰状态的人，因为我看不出他们的成就，梁朝伟是金像奖获奖最多的影帝，周星驰是无厘头鼻祖喜剧天才，周杰伦是金曲奖获奖最多的音乐鬼才，我都是在他们功成名就许久后才喜欢他们的。或许需要时光的沉淀才能让一个人绽放光彩，也许我不是恰好错过了他们的绽放，而正因为他们绽放才会驻留。</p>
-<p>怀念无济于事，时光终究逝去，能做的也许就是把握当下吧！</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[二进制数中1的个数]]></title>
-        <id>https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu</id>
-        <link href="https://tienyeung.github.io//post/er-jin-zhi-zhong-1-de-ge-shu">
-        </link>
-        <updated>2019-10-09T10:39:05.000Z</updated>
-        <summary type="html"><![CDATA[<p>做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。同时，欢迎和我讨论力扣解题思想，目前做了100多题，每题的解题思路都上传到了我的<a href="https://github.com/tienyeung/leetcode">github</a>,望多指正！</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>做题时常常能遇到如何计算二进制数中的1的个数，在此做一个总结，因为我觉得比较有代表性，且有特殊方法可考。同时，欢迎和我讨论力扣解题思想，目前做了100多题，每题的解题思路都上传到了我的<a href="https://github.com/tienyeung/leetcode">github</a>,望多指正！</p>
-<!-- more -->
-<p><strong>如下有两种方法</strong>：</p>
-<h1 id="按位与">按位与</h1>
-<p>即将该二进制数与1相与，若不为0，说明该位(最低位)上为1，然后将1左移一位，依次与二进制数对比。</p>
-<pre><code class="language-python">class Solution(object):
-    def hammingWeight(self, n):
-        &quot;&quot;&quot;
-        :type n: int
-        :rtype: int
-        &quot;&quot;&quot;
-        bits=0
-        mask=1
-        for i in range(0,32):
-            if n&amp;mask !=0 :
-                bits+=1
-            mask&lt;&lt;=1
-        return bits
-</code></pre>
-<h1 id="特殊方法">特殊方法</h1>
-<p>将该数不断同比自己小1的数相与，直到结果为0为止。为什么n &amp;= (n – 1)能清除最右边的1呢？因为从二进制的角度讲，n相当于在n - 1的最低位加上1。举个例子，8（1000）= 7（0111）+ 1（0001），所以8 &amp; 7 = （1000）&amp;（0111）= 0（0000），清除了8最右边的1（其实就是最高位的1，因为8的二进制中只有一个1）。再比如7（0111）= 6（0110）+ 1（0001），所以7 &amp; 6 = （0111）&amp;（0110）= 6（0110），清除了7的二进制表示中最右边的1（也就是最低位的1）。</p>
-<pre><code class="language-python">def count1(n):
-        res = 0
-        while n!=0:
-            n&amp;=(n-1)
-            res+=1
-        
-        return res
-</code></pre>
 ]]></content>
     </entry>
 </feed>
