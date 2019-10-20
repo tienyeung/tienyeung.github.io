@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>动态规划 | 阳阳の部落格</title>
+<title>Github入门 | 阳阳の部落格</title>
 <link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -271,7 +271,7 @@ var r = 0;
 
 <div class="post">
   <div class="post_title sm_margin">
-    <h2><a>动态规划</a>
+    <h2><a>Github入门</a>
 
 
 
@@ -318,7 +318,7 @@ function change(){
 
   <div class="post_details">
     <div class="info"><i class="fa fa-clock-o"></i>
-<span class="date_info">2019-06-15</span>
+<span class="date_info">2019-05-18</span>
 <i class="fa fa-eye"></i>
 
 <span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
@@ -330,17 +330,13 @@ function change(){
 
 
 </span>
-<span>9 min read</span>
+<span>3 min read</span>
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/Dynamic-Program"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/Dynamic-Program&sharesource=qzone&title=动态规划&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;的本质不在于是递推或是递归，也不需要纠结是不是内存换时间。&lt;/p&gt;
-&lt;p&gt;理解动态规划并不需要数学公式介入，只是完全解释清楚需要点篇幅…首先需要明白哪些问题不是动态规划可以解决的，才能明白为神马需要动态规划。不过好处时顺便也就搞明白了递推贪心搜索和动规之间有什么关系，以及帮助那些总是把动规当成搜索解的同学建立动规的思路。&lt;/p&gt;
-"><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/Dynamic-Program&sharesource=weibo&title=动态规划 + " - " + &lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;的本质不在于是递推或是递归，也不需要纠结是不是内存换时间。&lt;/p&gt;
-&lt;p&gt;理解动态规划并不需要数学公式介入，只是完全解释清楚需要点篇幅…首先需要明白哪些问题不是动态规划可以解决的，才能明白为神马需要动态规划。不过好处时顺便也就搞明白了递推贪心搜索和动规之间有什么关系，以及帮助那些总是把动规当成搜索解的同学建立动规的思路。&lt;/p&gt;
-&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/github-ru-men"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/github-ru-men&sharesource=qzone&title=Github入门&pics=https://blog.blinkstar.cn/images/avatar.png&summary="><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/github-ru-men&sharesource=weibo&title=Github入门 + " - " + &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
 &nbsp
 &nbsp
 <a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
@@ -354,48 +350,138 @@ function change(){
   &nbsp
   <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
     <div name="show" id="show">
-	<p class="md_block"><span class="md_line md_line_start md_line_end"><p><strong>动态规划</strong>的本质不在于是递推或是递归，也不需要纠结是不是内存换时间。</p>
-<p>理解动态规划并不需要数学公式介入，只是完全解释清楚需要点篇幅…首先需要明白哪些问题不是动态规划可以解决的，才能明白为神马需要动态规划。不过好处时顺便也就搞明白了递推贪心搜索和动规之间有什么关系，以及帮助那些总是把动规当成搜索解的同学建立动规的思路。</p>
-<!-- more -->
-<p>动态规划是对于 某一类问题 的解决方法！！重点在于如何鉴定“某一类问题”是动态规划可解的而不是纠结解决方法是递归还是递推！</p>
-<p>怎么鉴定dp可解的一类问题需要从计算机是怎么工作的说起…计算机的本质是一个状态机，内存里存储的所有数据构成了当前的状态，CPU只能利用当前的状态计算出下一个状态（不要纠结硬盘之类的外部存储，就算考虑他们也只是扩大了状态的存储容量而已，并不能改变下一个状态只能从当前状态计算出来这一条铁律）</p>
-<p>当你企图使用计算机解决一个问题是，其实就是在思考如何将这个问题表达成状态（用哪些变量存储哪些数据）以及如何在状态中转移（怎样根据一些变量计算出另一些变量）。所以所谓的空间复杂度就是为了支持你的计算所必需存储的状态最多有多少，所谓时间复杂度就是从初始状态到达最终状态中间需要多少步！</p>
-<p>太抽象了还是举个例子吧：</p>
-<p>比如说我想计算第100个非波那契数，每一个非波那契数就是这个问题的一个状态，每求一个新数字只需要之前的两个状态。所以同一个时刻，最多只需要保存两个状态，空间复杂度就是常数；每计算一个新状态所需要的时间也是常数且状态是线性递增的，所以时间复杂度也是线性的。</p>
-<p>上面这种状态计算很直接，只需要依照固定的模式从旧状态计算出新状态就行（a[i]=a[i-1]+a[i-2]），不需要考虑是不是需要更多的状态，也不需要选择哪些旧状态来计算新状态。对于这样的解法，我们叫递推。</p>
-<p>非波那契那个例子过于简单，以至于让人忽视了阶段的概念，所谓阶段是指随着问题的解决，在同一个时刻可能会得到的不同状态的集合。非波那契数列中，每一步会计算得到一个新数字，所以每个阶段只有一个状态。想象另外一个问题情景，假如把你放在一个围棋棋盘上的某一点，你每一步只能走一格，因为你可以东南西北随便走，所以你当你同样走四步可能会处于很多个不同的位置。从头开始走了几步就是第几个阶段，走了n步可能处于的位置称为一个状态，走了这n步所有可能到达的位置的集合就是这个阶段下所有可能的状态。</p>
-<p>现在问题来了，有了阶段之后，计算新状态可能会遇到各种奇葩的情况，针对不同的情况，就需要不同的算法，下面就分情况来说明一下：</p>
-<p>假如问题有n个阶段，每个阶段都有多个状态，不同阶段的状态数不必相同，一个阶段的一个状态可以得到下个阶段的所有状态中的几个。那我们要计算出最终阶段的状态数自然要经历之前每个阶段的某些状态。</p>
-<p>好消息是，有时候我们并不需要真的计算所有状态，比如这样一个弱智的棋盘问题：从棋盘的左上角到达右下角最短需要几步。答案很显然，用这样一个弱智的问题是为了帮助我们理解阶段和状态。某个阶段确实可以有多个状态，正如这个问题中走n步可以走到很多位置一样。但是同样n步中，有哪些位置可以让我们在第n+1步中走的最远呢？没错，正是第n步中走的最远的位置。换成一句熟悉话叫做“下一步最优是从当前最优得到的”。所以为了计算最终的最优值，只需要存储每一步的最优值即可，解决符合这种性质的问题的算法就叫贪心。如果只看最优状态之间的计算过程是不是和非波那契数列的计算很像？所以计算的方法是递推。</p>
-<p>既然问题都是可以划分成阶段和状态的。这样一来我们一下子解决了一大类问题：一个阶段的最优可以由前一个阶段的最优得到。</p>
-<p>如果一个阶段的最优无法用前一个阶段的最优得到呢？</p>
-<p>什么你说只需要之前两个阶段就可以得到当前最优？那跟只用之前一个阶段并没有本质区别。最麻烦的情况在于你需要之前所有的情况才行。</p>
-<p>再来一个迷宫的例子。在计算从起点到终点的最短路线时，你不能只保存当前阶段的状态，因为题目要求你最短，所以你必须知道之前走过的所有位置。因为即便你当前再的位置不变，之前的路线不同会影响你的之后走的路线。这时你需要保存的是之前每个阶段所经历的那个状态，根据这些信息才能计算出下一个状态！</p>
-<p>每个阶段的状态或许不多，但是每个状态都可以转移到下一阶段的多个状态，所以解的复杂度就是指数的，因此时间复杂度也是指数的。哦哦，刚刚提到的之前的路线会影响到下一步的选择，这个令人不开心的情况就叫做有后效性。</p>
-<p>刚刚的情况实在太普遍，解决方法实在太暴力，有没有哪些情况可以避免如此的暴力呢？</p>
-<p>契机就在于后效性。</p>
-<p>有一类问题，看似需要之前所有的状态，其实不用。不妨也是拿最长上升子序列的例子来说明为什么他不必需要暴力搜索，进而引出动态规划的思路。</p>
-<p>假装我们年幼无知想用搜索去寻找最长上升子序列。怎么搜索呢？需要从头到尾依次枚举是否选择当前的数字，每选定一个数字就要去看看是不是满足“上升”的性质，这里第i个阶段就是去思考是否要选择第i个数，第i个阶段有两个状态，分别是选和不选。哈哈，依稀出现了刚刚迷宫找路的影子！咦慢着，每次当我决定要选择当前数字的时候，只需要和之前选定的一个数字比较就行了！这是和之前迷宫问题的本质不同！这就可以纵容我们不需要记录之前所有的状态啊！既然我们的选择已经不受之前状态的组合的影响了，那时间复杂度自然也不是指数的了啊！虽然我们不在乎某序列之前都是什么元素，但我们还是需要这个序列的长度的。所以我们只需要记录以某个元素结尾的LIS长度就好！因此第i个阶段的最优解只是由前i-1个阶段的最优解得到的，然后就得到了DP方程</p>
-<p>所以一个问题是该用递推、贪心、搜索还是动态规划，完全是由这个问题本身阶段间状态的转移方式决定的！</p>
-<p>每个阶段只有一个状态-&gt;递推；<br>
-每个阶段的最优状态都是由上一个阶段的最优状态得到的-&gt;贪心；<br>
-每个阶段的最优状态是由之前所有阶段的状态的组合得到的-&gt;搜索；<br>
-每个阶段的最优状态可以从之前某个阶段的某个或某些状态直接得到而不管之前这个状态是如何得到的-&gt;动态规划。</p>
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><h2 id="步骤">步骤</h2>
+<p>第一步:首先,选择一个合适的地方,创建一个空目录</p>
 <blockquote>
-<p>每个阶段的最优状态可以从之前某个阶段的某个或某些状态直接得到</p>
+<p>$ cd ～<br>
+$ mkdir mygithub<br>
+$ cd mygithub</p>
 </blockquote>
-<p>这个性质叫做最优子结构；</p>
+<p>第二步:通过git init命令把这个目录变成Git可以管理的仓库</p>
 <blockquote>
-<p>而不管之前这个状态是如何得到的</p>
+<p>$ git init</p>
 </blockquote>
-<p>这个性质叫做无后效性。</p>
-<p>另：其实动态规划中的最优状态的说法容易产生误导，以为只需要计算最优状态就好，LIS问题确实如此，转移时只用到了每个阶段“选”的状态。但实际上有的问题往往需要对每个阶段的所有状态都算出一个最优值，然后根据这些最优值再来找最优状态。比如背包问题就需要对前i个包（阶段）容量为j时（状态）计算出最大价值。然后在最后一个阶段中的所有状态种找到最优值。</p>
+<p>第三步 把文件添加到版本库</p>
+<p>在./mygithub目录下 新建一个README.txt文件，并将其提交到缓存区</p>
+<blockquote>
+<p>$ git add README.txt</p>
+</blockquote>
+<p>第四步 用命令git commit告诉Git,把文件提交到仓库</p>
+<blockquote>
+<p>$ git commit -m &quot;hello github&quot;</p>
+</blockquote>
+<p><em>-m 表示描述信息</em></p>
+<p>第五步:输入远程地址</p>
+<blockquote>
+<p>$ git remote add origin https:<em>//github.com/yeungtien/...</em></p>
+</blockquote>
+<p><em>origin 是默认远程仓库标识</em></p>
+<p>第六步:上传到github</p>
+<blockquote>
+<p>$ git push -u origin master</p>
+</blockquote>
+<h2 id="忽略文件">忽略文件：</h2>
+<p>通过<code>touch .gitignore</code>创建.gitignore文件来忽略你不想看到的文件</p>
+<p>星号（*）匹配零个或多个任意字符；<br>
+[abc] 匹配任何一个列在方括号中的字符（这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）；<br>
+问号（?）只匹配一个任意字符；<br>
+如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。</p>
+<p>举个栗子：</p>
+<ol>
+<li>忽略所有 .a 结尾的文件</li>
+</ol>
+<blockquote>
+<p>*.a</p>
+</blockquote>
+<ol start="2">
+<li>但 lib.a 除外</li>
+</ol>
+<blockquote>
+<p>!lib.a</p>
+</blockquote>
+<ol start="3">
+<li>仅仅忽略项目根目录下的 TODO 文件</li>
+</ol>
+<ul>
+<li>不包括 subdir/TODO</li>
+</ul>
+<blockquote>
+<p>/TODO</p>
+</blockquote>
+<ul>
+<li>忽略 build/ 目录下的所有文件</li>
+</ul>
+<blockquote>
+<p>build/</p>
+</blockquote>
+<h2 id="删除文件">删除文件：</h2>
+<blockquote>
+<p>git rm to_be_deleted.txt</p>
+</blockquote>
+<blockquote>
+<p>git commit -m 'remove file'</p>
+</blockquote>
+<h2 id="撤销删除">撤销删除：</h2>
+<p>如果文件被删除：</p>
+<blockquote>
+<p>git checkout -- readme.txt</p>
+</blockquote>
+<p>如果一个修改后的文件已经被暂存了，恢复到之前的状态：</p>
+<blockquote>
+<p>git reset HEAD readme.txt</p>
+</blockquote>
+<p>如果文件修改已经被 commit 了，如何撤销：</p>
+<blockquote>
+<p>git commit --amend</p>
+</blockquote>
+<h2 id="版本回退">版本回退：</h2>
+<p>工作目录中运行 <code>git log</code></p>
+<p><code>HEAD</code>，它指向的是最新的提交。而上一次的提交就是 <code>HEAD^</code>，上上次是 <code>HEAD^^</code>，也可以写成 <code>HEAD~2</code>，以此类推。</p>
+<p>要回退上一个版本，只要：</p>
+<blockquote>
+<p>git reset --hard HEAD^</p>
+</blockquote>
+<p>或提交id：</p>
+<blockquote>
+<p>git reset --hard 15547（不必输全）</p>
+</blockquote>
+<h2 id="多地管理">多地管理</h2>
+<ol>
+<li>把项目clone到本地</li>
+<li>初始化项目为git</li>
+</ol>
+<blockquote>
+<p>git init</p>
+</blockquote>
+<p>3.配置邮箱</p>
+<blockquote>
+<p>git config --global user.email &quot;yeungtien@gmail.com&quot;</p>
+</blockquote>
+<p>4.1 生成ssh密钥并添加到setting(用于ssh clone)</p>
+<blockquote>
+<p>ssh-keygen -t rsa -C 'yeungtien@gmail.com'</p>
+</blockquote>
+<p>将生成的id_rsa.pub中的密钥添加到自己账户</p>
+<p>4.2 提交无需密码(用于https clone)</p>
+<blockquote>
+<p>git config --global credential.helper store</p>
+</blockquote>
+<p>4.3 更改协议</p>
+<blockquote>
+<p>git remote set-url origin git@github.com:yourusername/yourrepositoryname.git</p>
+</blockquote>
+<h2 id="常见问题">常见问题</h2>
+<p><a href="https://www.jianshu.com/p/f22d02c7d943">解决github permission denied(publickey)问题</a></p>
+<p><a href="https://blog.csdn.net/pan0755/article/details/78460149">git批量提交和删除</a></p>
+<p><a href="https://blog.csdn.net/xingkong_hdc/article/details/79484518">多地管理github账号</a></p>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.jianshu.com/p/38611735b15e">Github 入门</a></p>
 </span></p></div>
 	<br>
 	<hr>
 <!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
 <div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
-<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-06-15</div>     -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-05-18</div>     -->
 	 <p class="md_block">
     <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
 <div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
@@ -429,22 +515,13 @@ $("img").each( (i,o) => {
 
 <div style="width:100%;overflow:hidden">
 
-          <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
-            下一篇
-            <a href="https://tienyeung.github.io//post/github-ru-men">
-              <h3 class="post-title">
-                Github入门
-              </h3>
-            </a>
-          </div>
-
 
 
           <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
             上一篇
-            <a href="https://tienyeung.github.io//post/LaTex">
+            <a href="https://tienyeung.github.io//post/Dynamic-Program">
               <h3 class="post-title">
-                LaTex入门
+                动态规划
               </h3>
             </a>
           </div>
@@ -461,6 +538,20 @@ $("img").each( (i,o) => {
 
       </div>
 <div class="toc-container">
+<ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%AD%A5%E9%AA%A4">步骤</a></li>
+<li><a href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6">忽略文件：</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6">删除文件：</a></li>
+<li><a href="#%E6%92%A4%E9%94%80%E5%88%A0%E9%99%A4">撤销删除：</a></li>
+<li><a href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80">版本回退：</a></li>
+<li><a href="#%E5%A4%9A%E5%9C%B0%E7%AE%A1%E7%90%86">多地管理</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
 
 </div>
     </div>
