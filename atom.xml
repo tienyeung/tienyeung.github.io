@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-21T02:28:40.434Z</updated>
+    <updated>2019-10-23T03:18:12.907Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,108 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[电话号码对应英语单词]]></title>
+        <id>https://tienyeung.github.io//post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci</id>
+        <link href="https://tienyeung.github.io//post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci">
+        </link>
+        <updated>2019-10-23T02:17:22.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>1.手机上，数字键对应多个字母，如何根据这样的对应关系设计一个程序，找出一段号码所代表的所有字符串<br>
+2.对于一个电话号码，是否可以用一个单词来代表呢？</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>1.手机上，数字键对应多个字母，如何根据这样的对应关系设计一个程序，找出一段号码所代表的所有字符串<br>
+2.对于一个电话号码，是否可以用一个单词来代表呢？</p>
+</blockquote>
+<!-- more -->
+<h1 id="题目1">题目1</h1>
+<blockquote>
+<p>除了0、1之外，其他数字上都最少有3个字符，其中7、9上有4个字符，我们假设0、1输出的是空字符。</p>
+</blockquote>
+<pre><code class="language-java">package algorithm;
+ 
+public class Num2Letter {
+	
+	private static char c[][] = {
+			{},				//0
+			{},				//1
+			{'A','B','C'},			//2
+			{'D','D','E'},			//3
+			{'G','H','I'},			//4
+			{'J','K','L'},			//5
+			{'M','N','O'},			//6
+			{'P','Q','R','S'},		//7
+			{'T','U','V'},			//8
+			{'W','X','Y','Z'}		//9
+	};
+	
+	private static int total[] = {0, 0, 3, 3, 3, 3, 3, 4, 3, 4};	//各个数字所能代表的字符总数
+	
+	//int number[];							//存储电话号码的数组
+	//int answer[];							//数字目前所代表的字符在其所能代表的字符集中的位置
+	//int TelLength = 0;
+	
+	public static void PrintResult(String telNumber){
+		int TelLength = telNumber.length();
+		int[] number=new int[TelLength];
+		int[] answer=new int[TelLength];
+        //answer储存的是当前号码上的字母序号，比如answer[0]=0代表电话号码的第一位数字所对应的第一个字母
+		for(int i=0; i&lt;TelLength; i++){
+			number[i]=telNumber.charAt(i)-'0';
+			answer[i]=0;
+		}
+		//DirectSearch(number,answer, TelLength);
+		RecursiveSearch(number, answer, 0, TelLength);
+		
+	}
+	
+	private static void DirectSearch(int[] number, int[] answer, int TelLength){	//解法一、直接循环法
+		while(true){
+			for(int i=0; i&lt;TelLength; i++){
+				System.out.print(c[number[i]][answer[i]]);
+			}
+			System.out.println(&quot;&quot;);
+			int k=TelLength-1;
+			while(k&gt;=0){
+				if(answer[k]&lt;total[number[k]]-1){
+					answer[k]++;
+					break;
+				}else{
+					answer[k]=0;
+					k--;
+				}
+			}
+			if(k&lt;0)
+				break;
+		}
+	}
+	
+	private static void RecursiveSearch(int[] number, int[] answer, int index, int TelLength){	//解法二、递归的方法
+		if(index == TelLength){
+			for(int i=0; i&lt;TelLength; i++){
+				System.out.print(c[number[i]][answer[i]]);
+			}
+			System.out.println(&quot;&quot;);
+			return;
+		}
+		for(answer[index]=0; answer[index]&lt;total[number[index]]; answer[index]++){
+			RecursiveSearch(number, answer, index+1, TelLength);
+		}
+	}
+	
+	public static void main(String args[]){
+		String phoneNum=&quot;5869872&quot;;
+		Num2Letter.PrintResult(phoneNum);
+	}
+}
+</code></pre>
+<h1 id="题目2">题目2</h1>
+<p>解法1：直接把电话号码所对应的字符串匹配字典<br>
+解法2：把字典里所有单词转化为数字</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[连续自然数的加法]]></title>
         <id>https://tienyeung.github.io//post/lian-xu-zi-ran-shu-de-jia-fa</id>
@@ -68,7 +170,7 @@ int main()
 }
 </code></pre>
 <h1 id="解法2">解法2</h1>
-<h2 id="解答1">解答1.</h2>
+<h2 id="解答1">解答1</h2>
 <p>首先分析，<br>
 对于正整数N，如果表示成2个连续自然数相加，N = m + (m + 1) = 2m + 1，则N为奇数；<br>
 如果表示成3个连续的自然数相加，N = (m - 1) + m + (m + 1) = 3m，则N为3的倍数；<br>
@@ -993,95 +1095,6 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
 s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12715500000000002em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>
 证明详见《编程之美》1.13</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[电梯调度算法]]></title>
-        <id>https://tienyeung.github.io//post/dian-ti-diao-du-suan-fa</id>
-        <link href="https://tienyeung.github.io//post/dian-ti-diao-du-suan-fa">
-        </link>
-        <updated>2019-10-14T02:04:07.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>所有的员工均在1楼进电梯的时候，选择所要到达的楼层。然后计算出停靠的楼层i，当到达楼层i的时候，电梯停止.所有人走出电梯，步行到所在的楼层中。求所有人爬的楼层数目和的最小值。</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>所有的员工均在1楼进电梯的时候，选择所要到达的楼层。然后计算出停靠的楼层i，当到达楼层i的时候，电梯停止.所有人走出电梯，步行到所在的楼层中。求所有人爬的楼层数目和的最小值。</p>
-</blockquote>
-<!-- more -->
-<p>最简单的方法和最容易想到的就是穷举法，遍历乘客的停靠楼层并计算在某个楼层的总爬楼梯数，时间复杂度是平方级别。</p>
-<p>优化一下，假设停靠在第i层，假设在i处下楼的客人为N2,在i以上楼层的客人数目为N3 ，在i以下楼层的客人数目为N1。 且将电梯在i层停止时，全部人员的路程之和记为T。</p>
-<p>那么假如电梯在i-1层停的话，则原来i层之上的人需要多爬一层，即增加了N3，第i层的人需要多爬一层，则结果增加了N2,  i层之下的人则少爬了一层，结果减去N1，所以第i-1层的结果为 T - N1 + N2 + N3 。即结果可以即为 T -(N1 - N2 - N3) <br>
-      <br>
-考虑在i+1层的结果，若电梯在i+1层停止的话，原来i层之上的客户都会少爬一层，则结果减少N3 ，而i层之下的人员则都会多爬一层即增加了N1 ，第i层的人员都会多爬一层即为增加了N2 。则结果为 T + N1 + N2 - N3 <br>
-————————————————<br>
-综上我们得出，<br>
-      (1) 若N1 &gt; N2 + N3的时候， 我们在第i-1层 选择电梯停止最好。<br>
-      (2) 若N1 + N2 &lt; N3的时候， 我们选择在第i+1层停止电梯最好。  <br>
-        <br>
-下面我们可以先计算出来当i=1时候的T ，然后判断是否需要在i+1层停止，若是i+1层的花费大于i层，则我们可以继续计算，否则退出。<br>
-————————————————</p>
-<pre><code class="language-java">
-public class Lift 
-{
-	static final int N = 10 ;
-	static int person[] = {0, 2, 5 , 7 , 3 , 5 , 2 , 6, 2 , 6 , 3}; 
-	public static void main(String[] args)
-	{
-		System.out.print(compute(person)+&quot; &quot;+compute2(person));
-	}
-	public static int compute(int[] person)
-	{
-	      //先计算出在第一层停止的时候 所需要的花费
-	       int T = 0;
-	       int N1 = 0 ; //在第一层以下下的人数 
-	       int N2 = person[1] ; //在第一层处下的人数 
-	       int N3 = 0 ;      //在第一层之上下电梯的人数 
-	       int floor =  1 ;
-	       for(int i = 2 ; i &lt;= N ;i++) //先计算出第1层停止需要爬取的楼层数目 
-	       {
-	         T  += person[i] * (i - 1) ;
-	         N3 += person[i] ;     
-	       }
-	        
-	       for(int i = 2 ; i &lt;= N ;i++)
-	       {
-	         if(N1 + N2 &lt;= N3) //说明第i+1层的结果会大于第i层 
-	           {
-	               T += N1 + N2 - N3 ;
-	               N1 += N2 ;
-	               N2 = person[i] ; 
-	               N3 -= person[i] ;
-	               floor = i ;
-	               
-	           }     
-	           else  //否则第i层的结果已经最小，故不需要计算第i+1层 
-	           break ; 
-	            
-	       }     
-	       return floor ;
-	}
-	public static int compute2(int[] person)
-	{
-		      int tempfloor = 0 ;
-		      int min = 6553 ;//存储最小值
-		      int floor = 1   ;//存储停靠的楼层 
-		      int j;
-		      for(int i = 1 ; i &lt;= N ;i++) //表示第i楼层电梯停靠 
-		      {
-		        tempfloor = 0 ;         
-		        for(j = 1 ; j &lt; N ;j++)      
-		            tempfloor += Math.abs((i - j)) * person[j] ;         
-		        if(min &gt; tempfloor)   
-		        {
-		          min = tempfloor ;
-		          floor = i ;          
-		        }       		                        
-		      }
-		      return floor ;	  
-	}
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
