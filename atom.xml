@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://tienyeung.github.io/</id>
+    <id>http://localhost:4000</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-23T03:18:12.907Z</updated>
+    <updated>2019-10-23T06:51:06.303Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://tienyeung.github.io/"/>
-    <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://tienyeung.github.io//images/avatar.png</logo>
-    <icon>https://tienyeung.github.io//favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
     <entry>
         <title type="html"><![CDATA[电话号码对应英语单词]]></title>
-        <id>https://tienyeung.github.io//post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci</id>
-        <link href="https://tienyeung.github.io//post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci">
+        <id>http://localhost:4000/post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci</id>
+        <link href="http://localhost:4000/post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci">
         </link>
         <updated>2019-10-23T02:17:22.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -27,6 +27,32 @@
 </blockquote>
 <!-- more -->
 <h1 id="题目1">题目1</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2 ABC</th>
+<th style="text-align:center">3 DEF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4 GIH</td>
+<td style="text-align:center">5 JKL</td>
+<td style="text-align:center">6 MNO</td>
+</tr>
+<tr>
+<td style="text-align:center">7 PQRS</td>
+<td style="text-align:center">8 TUV</td>
+<td style="text-align:center">9 WXYZ</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>除了0、1之外，其他数字上都最少有3个字符，其中7、9上有4个字符，我们假设0、1输出的是空字符。</p>
 </blockquote>
@@ -114,8 +140,8 @@ public class Num2Letter {
     </entry>
     <entry>
         <title type="html"><![CDATA[连续自然数的加法]]></title>
-        <id>https://tienyeung.github.io//post/lian-xu-zi-ran-shu-de-jia-fa</id>
-        <link href="https://tienyeung.github.io//post/lian-xu-zi-ran-shu-de-jia-fa">
+        <id>http://localhost:4000/post/lian-xu-zi-ran-shu-de-jia-fa</id>
+        <link href="http://localhost:4000/post/lian-xu-zi-ran-shu-de-jia-fa">
         </link>
         <updated>2019-10-21T02:18:59.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -317,8 +343,8 @@ Ns = (n[0] + 1) * (n[2] + 1) * (n[3] + 1) * ... * (n[k] + 1) - 1</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[数组分割]]></title>
-        <id>https://tienyeung.github.io//post/shu-zu-fen-ge</id>
-        <link href="https://tienyeung.github.io//post/shu-zu-fen-ge">
+        <id>http://localhost:4000/post/shu-zu-fen-ge</id>
+        <link href="http://localhost:4000/post/shu-zu-fen-ge">
         </link>
         <updated>2019-10-20T01:33:40.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -348,8 +374,8 @@ Ns = (n[0] + 1) * (n[2] + 1) * (n[3] + 1) * ... * (n[k] + 1) - 1</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[最长递增子序列]]></title>
-        <id>https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie</id>
-        <link href="https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie">
+        <id>http://localhost:4000/post/zui-chang-di-zeng-zi-xu-lie</id>
+        <link href="http://localhost:4000/post/zui-chang-di-zeng-zi-xu-lie">
         </link>
         <updated>2019-10-20T01:06:07.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -388,8 +414,8 @@ LIS[i＋1]＝max{1，LIS[k]＋1}，array[i＋1]＞array[k]，for any k＜＝i<br
     </entry>
     <entry>
         <title type="html"><![CDATA[子数组的最大乘积以及最大和]]></title>
-        <id>https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he</id>
-        <link href="https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
+        <id>http://localhost:4000/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he</id>
+        <link href="http://localhost:4000/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
         </link>
         <updated>2019-10-19T02:16:29.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -604,8 +630,8 @@ int maxSum(int *arr, int n)
     </entry>
     <entry>
         <title type="html"><![CDATA[寻找数组中最大值和最小值]]></title>
-        <id>https://tienyeung.github.io//post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi</id>
-        <link href="https://tienyeung.github.io//post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi">
+        <id>http://localhost:4000/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi</id>
+        <link href="http://localhost:4000/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi">
         </link>
         <updated>2019-10-18T02:49:00.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -632,8 +658,8 @@ int maxSum(int *arr, int n)
     </entry>
     <entry>
         <title type="html"><![CDATA[斐波那契数列的优化]]></title>
-        <id>https://tienyeung.github.io//post/fei-bo-na-qi-shu-lie-de-you-hua</id>
-        <link href="https://tienyeung.github.io//post/fei-bo-na-qi-shu-lie-de-you-hua">
+        <id>http://localhost:4000/post/fei-bo-na-qi-shu-lie-de-you-hua</id>
+        <link href="http://localhost:4000/post/fei-bo-na-qi-shu-lie-de-you-hua">
         </link>
         <updated>2019-10-18T02:13:45.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -792,8 +818,8 @@ func matrix22_mul(x, y [][2]int) [][2]int {
     </entry>
     <entry>
         <title type="html"><![CDATA[前K个最大数]]></title>
-        <id>https://tienyeung.github.io//post/qian-k-ge-zui-da-shu</id>
-        <link href="https://tienyeung.github.io//post/qian-k-ge-zui-da-shu">
+        <id>http://localhost:4000/post/qian-k-ge-zui-da-shu</id>
+        <link href="http://localhost:4000/post/qian-k-ge-zui-da-shu">
         </link>
         <updated>2019-10-17T01:50:20.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -970,8 +996,8 @@ void adjustHeap (int *pArray, int rootIndex, int heapSize)
     </entry>
     <entry>
         <title type="html"><![CDATA[有趣的阶乘]]></title>
-        <id>https://tienyeung.github.io//post/you-qu-de-jie-cheng</id>
-        <link href="https://tienyeung.github.io//post/you-qu-de-jie-cheng">
+        <id>http://localhost:4000/post/you-qu-de-jie-cheng</id>
+        <link href="http://localhost:4000/post/you-qu-de-jie-cheng">
         </link>
         <updated>2019-10-16T02:06:42.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -1018,8 +1044,8 @@ void adjustHeap (int *pArray, int rootIndex, int heapSize)
     </entry>
     <entry>
         <title type="html"><![CDATA[Nim游戏]]></title>
-        <id>https://tienyeung.github.io//post/nim-you-xi</id>
-        <link href="https://tienyeung.github.io//post/nim-you-xi">
+        <id>http://localhost:4000/post/nim-you-xi</id>
+        <link href="http://localhost:4000/post/nim-you-xi">
         </link>
         <updated>2019-10-15T01:52:02.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
