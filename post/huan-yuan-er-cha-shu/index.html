@@ -1,7 +1,7 @@
-
+<!DOCTYPE html>
 <html>
   <head lang="zh">
- <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="telephone=no" name="format-detection"/>
@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>阳阳の部落格</title>
+<title>还原二叉树 | 阳阳の部落格</title>
 <link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -49,11 +49,10 @@ function pjax() {
 }
 </script> -->
 
-
   </head>
 
   <body>
-    <div class="header">
+     <div class="header">
       <div class="logo_title">
 		  
         <div class="title animated fadeInDown"><img id="img1" style="display:inline-block;" src="https://tienyeung.github.io//images/avatar.png"/>
@@ -256,38 +255,226 @@ var r = 0;
 }
 
 </style>
+
     <div class="main" id="pjax-container">
       <div class="main-inner">
 
 
 <div class="content">
-  <div class="list_with_title">
-
- <div class="tags-container">
-            <a class="tag" href="https://tienyeung.github.io//tag/SU9NtEKDV">编程之美</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/sY_-tSuvI">阅读</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/3N5q76T1r">随感</a>
-          
-            <a class="tag" href="https://tienyeung.github.io//tag/NsSr3BBoP">CS摘录</a>
-          
- </div>
- 
 
 
 
 
+
+
+  <div class="post_page" >
+
+<div class="post">
+  <div class="post_title sm_margin">
+    <h2><a>还原二叉树</a>
+
+
+
+    </h2>
   </div>
+  
+<script>
+function lan(){
+	if (document.getElementById("lan").innerText == "繁"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_tw.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "简"
+	}
+	else if(document.getElementById("lan").innerText == "簡"){
+		var s=document.getElementById("tongwenlet_cn");
+		if(s != null){
+		document.body.removeChild(s);
+		}
+		var s = document.createElement("script");
+		s.language = "javascript";
+		s.type = "text/javascript";
+		s.src = "https://git.oschina.net/runningcheese/JiathisQR.js/raw/master/bookmarklet_cn.js";
+		s.id = "tongwenlet_cn";
+		document.body.appendChild(s);
+		document.getElementById("lan").innerHTML = "繁"
+		}
+}
+
+function change(){	
+    var rand = Math.random()*1+1;
+    var num = window.getComputedStyle(document.getElementsByName("show")[0],undefined).fontSize;
+	num = num.slice(0,-2); 
+    document.getElementById("show").style.fontSize = num - rand +'px';
+}
+</script>
+
+  <div class="post_details">
+    <div class="info"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-10-24</span>
+<i class="fa fa-eye"></i>
+
+<span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
+
+<i class="fa fa-bookmark-o"></i>
+<span class="tags_info weaklink">
+	
+
+</span>
+<span>2 min read</span>
+&nbsp
+&nbsp
+<i class="fa fa-share"></i>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/huan-yuan-er-cha-shu"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/huan-yuan-er-cha-shu&sharesource=qzone&title=还原二叉树&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+&lt;p&gt;根据先序遍历和中序遍历的结果来还原二叉树&lt;/p&gt;
+&lt;/blockquote&gt;
+"><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/huan-yuan-er-cha-shu&sharesource=weibo&title=还原二叉树 + " - " + &lt;blockquote&gt;
+&lt;p&gt;根据先序遍历和中序遍历的结果来还原二叉树&lt;/p&gt;
+&lt;/blockquote&gt;
+&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+&nbsp
+&nbsp
+<a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
+&nbsp
+&nbsp
+<a id="lan" href="javascript:void(0);" onclick="lan();" title="调整简繁体">繁</a>
+</div>
+  </div>
+
+  <div class="post_content markdown">
+  &nbsp
+  <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
+    <div name="show" id="show">
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><blockquote>
+<p>根据先序遍历和中序遍历的结果来还原二叉树</p>
+</blockquote>
+<!-- more -->
+<p>前序遍历：先访问当前节点，然后以前序访问左子树，右子树。<br>
+中序遍历：先以中序遍历左子树，接着访问当前节点，然后以中序遍历右子树。<br>
+根据前序遍历和中序遍历的特点，可以发现如下规律：<br>
+前序遍历的每一个节点，都是当前子树的根节点。同时，以对应的节点为边界，就会把中序遍历的结果分为左子树和右子树。<br>
+<img src="https://i.loli.net/2019/10/24/3hvtZcwTfVYJqml.png" alt="untitled.png"><br>
+前序：<br>
+<strong>a</strong> b d c e f<br>
+“a”是根节点<br>
+中序：<br>
+d b <strong>a</strong> e c f<br>
+“a”是根节点，把字符串分成左右两个子树<br>
+“a”是前序遍历节点中的第一个元素，可以看出，它把中序遍历的结果分成“db”和“ecf”两个部分。可以从图中看出，这就是“a”的左子树和右子树的遍历结果。<br>
+如果能够找到前序遍历中对应的左子树和右子树，就可以把“a”作为当前的根节点，然后依次递归下去，这样就能够把左子树和右子树的遍历结果给依次恢复出来。<br>
+<strong>节点类</strong></p>
+<pre><code class="language-c">struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * }
+</code></pre>
+<p><strong>构建二叉树</strong></p>
+<pre><code class="language-c">class Solution {
+public:
+    TreeNode* reConstructBinaryTree(vector&lt;int&gt; pre,vector&lt;int&gt; vin) {
+        if(pre.size() == 0)
+            return NULL;//无节点返回NULL
+        int rootValue = pre[0];
+        TreeNode* newRoot = new TreeNode(rootValue);
+        newRoot-&gt;left = newRoot-&gt;right = NULL;
+        if(pre.size() == 1) {
+            return newRoot;
+        }//单节点返回
+        vector&lt;int&gt; preL, preR, vinL, vinR;
+        for (int i = 0 ; i &lt; (int)vin.size() ; i++) {
+            if (vin[i] == rootValue) {
+                for (int j = i+1 ; j &lt; (int)vin.size(); j++) {
+                    vinR.push_back(vin[j]);
+                    preR.push_back(pre[j]);
+                }
+                break;
+            }
+            vinL.push_back(vin[i]);
+            preL.push_back(pre[i+1]); 
+        }//大于两个节点时对数组进行划分
+        newRoot-&gt;left = reConstructBinaryTree(preL,vinL);
+        newRoot-&gt;right = reConstructBinaryTree(preR,vinR);
+        return newRoot;
+    }
+};
+</code></pre>
+</span></p></div>
+	<br>
+	<hr>
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
+<div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-24</div>     -->
+	 <p class="md_block">
+    <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
+<div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
+</p> 
+</div>
+</div>
+
+<style type="text/css">
+#mememe {
+	border:3px;
+	border-radius:5px;
+    background-repeat: no-repeat;
+    height: 100%;
+	width: 100%;
+	display: inline-block;
+	border-radius:5px; 
+}
+</style>
+
+<script>
+var link = "" ;
+$("img").each( (i,o) => {
+	var o = $(o);
+	if( o.attr("src").indexOf("sinaimg") > 0 || o.attr("src").indexOf("qpic") > 0 || o.attr("src").indexOf("baidu") > 0 || o.attr("src").indexOf("sinaimg") > 0){
+		o.attr("referrerpolicy","no-referrer");
+		link = o.attr("src");
+		o.attr("src",link);
+	}
+});
+</script>
+
+<div style="width:100%;overflow:hidden">
+
+          <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
+            下一篇
+            <a href="https://tienyeung.github.io//post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci">
+              <h3 class="post-title">
+                电话号码对应英语单词
+              </h3>
+            </a>
+          </div>
+
+
 
 </div>
 
+<div class="doc_comments">
+
+</div>
+
+  </div>
+</div>
 
 
       </div>
+<div class="toc-container">
 
+</div>
     </div>
-
+	
    <div class="footer">
 <div class="site_footer_wrap"><div class="site_footer">
 
