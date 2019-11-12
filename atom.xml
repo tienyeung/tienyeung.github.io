@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-10-24T02:30:26.140Z</updated>
+    <updated>2019-11-12T11:18:19.672Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -10,6 +10,146 @@
     <logo>https://tienyeung.github.io//images/avatar.png</logo>
     <icon>https://tienyeung.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 阳阳の部落格</rights>
+    <entry>
+        <title type="html"><![CDATA[二分查找]]></title>
+        <id>https://tienyeung.github.io//post/er-fen-cha-zhao</id>
+        <link href="https://tienyeung.github.io//post/er-fen-cha-zhao">
+        </link>
+        <updated>2019-11-12T11:16:39.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>二分查找看似简单，实则暗藏杀机，有时需要改变模板才能适应题目，所谓细节处见魔鬼。</p>
+</blockquote>
+<blockquote>
+<p>Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky.</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>二分查找看似简单，实则暗藏杀机，有时需要改变模板才能适应题目，所谓细节处见魔鬼。</p>
+</blockquote>
+<blockquote>
+<p>Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky.</p>
+</blockquote>
+<!-- more -->
+<h1 id="1左右闭区间">1.左右闭区间</h1>
+<p>所谓左右闭区间就是在查找时，左右边界的数值也应该在查找范围内</p>
+<pre><code class="language-java">int binarySearch(int[] nums, int target) {
+    int left = 0; 
+    int right = nums.length - 1; // 注意
+
+    while(left &lt;= right) {
+        int mid = (right + left) / 2;
+        if(nums[mid] == target)
+            return mid; 
+        else if (nums[mid] &lt; target)
+            left = mid + 1; // 注意
+        else if (nums[mid] &gt; target)
+            right = mid - 1; // 注意
+        }
+    return -1;
+}
+</code></pre>
+<ul>
+<li>注意几点：</li>
+</ul>
+<ol>
+<li>right = nums.length - 1</li>
+<li>left&lt;=right</li>
+<li>l=mid+1</li>
+<li>r=mid-1</li>
+<li>return mid</li>
+</ol>
+<h1 id="2寻找左侧边界的二分搜索">2.寻找左侧边界的二分搜索</h1>
+<p>当一个数组中存在多个要查找的值时，返回最左边的索引</p>
+<pre><code class="language-java">int left_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0;
+    int right = nums.length; // 注意
+    
+    while (left &lt; right) { // 注意
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) {
+            right = mid;
+        } else if (nums[mid] &lt; target) {
+            left = mid + 1;
+        } else if (nums[mid] &gt; target) {
+            right = mid; // 注意
+        }
+    }
+    return nums[left] == target ? left : -1;
+}
+</code></pre>
+<ul>
+<li>注意几点：</li>
+</ul>
+<ol>
+<li>right = nums.length</li>
+<li>left&lt;right</li>
+<li>l=mid+1</li>
+<li>r=mid</li>
+<li>return left</li>
+</ol>
+<h1 id="3-寻找右侧边界的二分查找">3. 寻找右侧边界的二分查找</h1>
+<pre><code class="language-java">int right_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0, right = nums.length;
+    
+    while (left &lt; right) {
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) {
+            left = mid + 1; // 注意
+        } else if (nums[mid] &lt; target) {
+            left = mid + 1;
+        } else if (nums[mid] &gt; target) {
+            right = mid;
+        }
+    }
+    // return left - 1; // 注意
+		return nums[left-1] == target ? (left-1) : -1;
+}
+</code></pre>
+<p>大致和左侧边界的算法相同，但还需注意几点不同：</p>
+<ol>
+<li>right = nums.length</li>
+<li><strong>l=mid+1（nums[mid] = target）</strong></li>
+<li>left&lt;right</li>
+<li>l=mid+1（nums[mid] &lt; target）</li>
+<li>r=mid</li>
+<li><strong>return left-1</strong></li>
+</ol>
+<p><a href="https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-xiang-jie-by-labuladong/">详细解说</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[买票找零问题]]></title>
+        <id>https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti</id>
+        <link href="https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti">
+        </link>
+        <updated>2019-10-25T06:32:40.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？</p>
+</blockquote>
+<!-- more -->
+<p>从这篇博客起，讲述的是算法中的数学问题。此类算法一般不涉及到精妙的解题步骤，而是考虑到复杂的数学思想。</p>
+<h1 id="解法1">解法1</h1>
+<p>我们可以把此问题看作是括号匹配问题，一个50元匹配一个100元，相当于一个左括号匹配一个右括号，保留一个栈，压入左括号，遇到右括号时弹出，如果保证栈中有足够多的左括号，则说明该序列为合法序列。<br>
+可作如下分析，第一个符号一定是左括号，假设第一个符号和第k个符号匹配，那么第二个符号到第k-1个符号之间为合法序列，第k+1个符号到2n也是合法序列，可想而知，k一定为奇数，设k=2i+1(i=0,1,...n)<br>
+<img src="https://i.loli.net/2019/10/25/ij6NFPclkUw4b8O.png" alt="untitled.png"><br>
+假设2n个符号中合法的括号序列之个数为f（2n），若第一个左括号与第k＝2i＋1（i＝0，1，…，n－1）个右括号匹配，那么剩余括号的合法序列为：f（2i）*f（2n－2i－2）个，根据上面的分析，可以得到如下递推式：<br>
+<img src="https://i.loli.net/2019/10/25/9LJMOl3dYHwDKx6.png" alt="untitled1.png"><br>
+f(0)=1,则可在平方级时间复杂度内求出答案</p>
+<h1 id="解法2">解法2</h1>
+<p>为了便于描述，这里用1表示持有50元的球迷，用0表示持有100元的球迷。那么2n个球迷的排队就对应n个1和n个0的排列.如果序列的任意前k（k＝1，2，…，2n－1）项中1的个数都不少于0的个数，我们称这样的一个序列是合法的，否则称其为非法的。显然合法的序列正好与可行的排列方式一一对应。同时，称由n－1个1和n＋1个0组成的序列为Sigma序列（这个名字没有任何特别的意义），这样的序列共有(2n n-1)个。</p>
+<p>n个1和n个0总的排列数为(2n n)个，即合法序列数和非法序列数的总和。我们需要求解合法的序列数，但在尝试后会发现直接求解合法序列并不是一个好的主意，那就试着来求解非法序列吧。<br>
+由定义知道，在一个非法序列中，存在某个（些）k，使得序列前k项中1的个数少于0的个数。更进一步地，存在某个（些）k，使得序列前k项中1的个数比0的个数刚好少1个。取其中最小的k，使得前k项中1的个数比0的个数刚好少1个。那么这个序列的后2n－k项中1的个数会刚好比0的个数多1个。将后2n-k项的0换为1，1换为0，于是得到一个新的序列：由n－1个1和n＋1个0组成一个Sigma序列。我们已经成功地将一个非法序列对应到唯一一个Sigma序列。</p>
+<p>那么一个Sigma序列能唯一地对应到一个非法序列么？对任意一个Sigma序列，存在某个（些）k，使得序列的前k项中1的个数少于0的个数（因为只有n－1个1，而有n＋1个0）。更进一步地，存在某个（些）k，使得序列的前k项中1的个数比0的个数刚好少1个。取其中最小的k，使得前k项中1的个数比0的个数刚好少1个。那么这个序列的后2n－k项中1的个数会刚好比0的个数少1个。将后2n－k项的0换为1，1换为0，于是得到一个新的序列：由n个1和n个0组成。而这个序列正是一个非法的序列（因为前k项中1的个数比0少）。我们又成功地将一个Sigma序列对应到唯一一个非法序列。</p>
+<p><strong>由此我们知道，非法序列和Sigma序列是一一对应的。非法的序列个数为(2n n-1)个，合法的序列数：<br>
+(2n n)-(2n n-1)=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2484389999999999em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>*(2n n)</strong></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[还原二叉树]]></title>
         <id>https://tienyeung.github.io//post/huan-yuan-er-cha-shu</id>
@@ -24,6 +164,8 @@
 <p>根据先序遍历和中序遍历的结果来还原二叉树</p>
 </blockquote>
 <!-- more -->
+<p><em>Today is 1024 Programmer's Day</em><br>
+<em>Cheer Up!</em></p>
 <p>前序遍历：先访问当前节点，然后以前序访问左子树，右子树。<br>
 中序遍历：先以中序遍历左子树，接着访问当前节点，然后以中序遍历右子树。<br>
 根据前序遍历和中序遍历的特点，可以发现如下规律：<br>
@@ -880,232 +1022,6 @@ func matrix22_mul(x, y [][2]int) [][2]int {
 	temp[1][1] = x[1][0] * y[1][0] + x[1][1] * y[1][1]
 	return temp
 }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[前K个最大数]]></title>
-        <id>https://tienyeung.github.io//post/qian-k-ge-zui-da-shu</id>
-        <link href="https://tienyeung.github.io//post/qian-k-ge-zui-da-shu">
-        </link>
-        <updated>2019-10-17T01:50:20.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>问题：查找大量无序元素中最大的K个数。</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>问题：查找大量无序元素中最大的K个数。</p>
-</blockquote>
-<!-- more -->
-<h1 id="解法一">解法一</h1>
-<p>该解法是大部分能想到的，也是第一想到的方法。假设数据量不大，可以先用快速排序或堆排序，他们的平均时间复杂度为O(N<em>logN),然后取出前K个，时间复杂度为O(K)，总的时间复杂度为O(N</em>logN)+O(K).<br>
-当K=1时，上面的算法的时间复杂度也是O(N*logN)，<em>上面的算法是把整个数组都进行了排序，而原题目只要求最大的K个数，并不需要前K个数有限，也不需要后N-K个数有序。可以通过部分排序算法如选择排序和交换排序，把N个数中的前K个数排序出来，复杂度为O(N</em>K),选择哪一个，取决于K的大小，在K(K&lt;logN)较小的情况下，选择部分排序。</p>
-<h1 id="解法二">解法二</h1>
-<p>假设N个数存储在数组S中，从数组中随机找一个元素X，将数组分成两部分Sa和Sb.Sa中的元素大于等于X,Sb中的元素小于X。<br>
-    出现如下两种情况：<br>
-   (1)若Sa组的个数大于或等于K，则继续在sa分组中找取最大的K个数字 。<br>
-   (2)若Sa组中的数字小于K ，其个数为T，则继续在sb中找取 K-T个数字 。<br>
-一直这样递归下去，不断把问题分解成小问题，平均时间复杂度为O(N*logK)。</p>
-<pre><code class="language-c++">
-/*将数组a[s]...a[t]中的元素用一个元素划开，保存中a[k]中*/
-void partition(int a[], int s,int t,int &amp;k)  
-{  
-    int i,j,x;  
-    x=a[s];    //取划分元素   
-    i=s;        //扫描指针初值   
-    j=t;  
-    do  
-    {  
-        while((a[j]&lt;x)&amp;&amp;i&lt;j) j--;   //从右向左扫描,如果是比划分元素小，则不动
-        if(i&lt;j) a[i++]=a[j];           //大元素向左边移   
-        while((a[i]&gt;=x)&amp;&amp;i&lt;j) i++;      //从左向右扫描，如果是比划分元素大，则不动 
-        if(i&lt;j) a[j--]=a[i];            //小元素向右边移   
-  
-    }while(i&lt;j); //直到指针i与j相等    
-a[i]=x;      //划分元素就位   
-k=i;  
-}  
-/*查找数组前K个最大的元素，index:返回数组中最大元素中第K个元素的下标(从0开始编号),high为数组最大下标*/
-int FindKMax(int a[],int low,int high,int k)
-{ 
-     int q;
-int index=-1;
-   if(low &lt; high)  
-      {  
-        partition(a , low , high,q);  
-        int len = q - low + 1; //表示第几个位置    
-        if(len == k)  
-         index=q; //返回第k个位置   
-        else if(len &lt; k)   
-         index= FindKMax(a , q + 1 , high , k-len);     
-       else 
-        index=FindKMax(a , low , q - 1, k);  
-      }  
-    return index;
- 
-}
-int main()
-{
-     int a[]={20,100,4,2,87,9,8,5,46,26};  
-    int Len=sizeof(a)/sizeof(int); 
-     int K=4;
- FindKMax(a , 0 , Len- 1 , K) ;    
-    for(int i = 0 ; i &lt; K ; i++)  
-      cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;  
- return 0;
-}
-</code></pre>
-<h1 id="解法三">解法三</h1>
-<p>该问题的实质是寻找最大的K个数中最小的那个，也就是第K大的数p，可以先找出N个数中最大的和最小的元素的值，然后使用二分法进行搜索找到p，再根据p找到其他大于它的K-1个数。其时间复杂度是O(N)+O(NlogN)+O(N)，近似后为O(NlogN)。</p>
-<pre><code class="language-python">while Vmax-Vmin&gt;delta:
-    Vmid=Vmin+(Vmax-Vmin)*0.5
-    #f(arr,N,Vmid)返回数组arr中不小于Vmid的数的个数
-    #delta取值比任何两数之差小，如果元素是整数可以取0.5
-    if f(arr,N,Vmid) &gt;= k:
-        Vmin=Vmid
-    else:
-        Vmax=Vmid
-</code></pre>
-<h1 id="解法四">解法四</h1>
-<p>如果N个数都是正数，取值范围不太大，可以考虑用空间换时间。申请一个包括N中最大值的MAXN大小的数组count[MAXN]，count[i]表示整数i在所有整数中的个数。这样只要扫描一遍数组，就可以得到第K大的元素。</p>
-<pre><code class="language-c++">for(sumCount = 0, v = MAXN -1; v &gt;=0; v--)  
-{  
-       cumCount += count[v];  
-       if(sumCount &gt;= k)  
-            break;  
-}  
-return v; 
-</code></pre>
-<h1 id="解法五">解法五</h1>
-<p>当N的数值很大的时候，即N&gt;&gt;K。从N个数中任取K个数建立一个有K个节点的小顶堆，每次从剩下N-K个数中取出一个数，与堆顶元素进行比较，若小于等于堆顶元素则舍弃，若大于等于堆顶，则将堆顶元素更新为该元素并重新调整堆。维护堆的时间复杂度是O(logK)。所以总的时间复杂度是O(NlogK)。</p>
-<pre><code class="language-c++">#include &lt;iostream&gt;  
-
-using namespace std;  
-
-void buildMinHeap(int *pArray, int K);
-void adjustHeap(int *pArray, int rootIndex, int heapSize);
-
-int main()  
-{  
-    int a[] = {9, 8, 7, 6, 5, 4, 3, 11, 12, 13, 1, 28};
-    int K = 5 ;
-
-    //建一个K个元素大小的最小堆
-    buildMinHeap(a, K);
-
-    //从第K个元素开始扫描，看有没有比根节点更大的节点，若有则替换，并更新堆；若没有比根节点大则扫描下一个元素，直到数组结束
-    for (int i = K; i &lt; sizeof(a) / sizeof(int); i++)
-    {
-        if (a[i] &gt; a[0])
-        {
-            swap(a[i], a[0]);
-            adjustHeap(a, 0, K);
-        }
-    }
-
-    //打印出前K大的数，没有排序。
-    for (int i = 0; i &lt; K; i++)
-    {
-        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
-    }
-    system(&quot;pause&quot;);
-}  
-
-//建一个K个元素大小的最小堆
-void buildMinHeap(int *pArray, int K)
-{
-    for (int i = (K - 2) / 2; i &gt;= 0; i--)
-    {
-        adjustHeap (pArray, i, K);
-    }
-}
-
-void adjustHeap (int *pArray, int rootIndex, int heapSize)
-{
-    int minIndex = rootIndex;
-
-    //左孩子节点
-    int leftIndex = 2 * rootIndex + 1;
-
-    //右孩子节点
-    int rightIndex = 2 * (rootIndex + 1);
-
-    //如果左孩子比根节点和右孩子节点小的话，则左孩子和根节点进行交换
-    if ((leftIndex &lt; heapSize) &amp;&amp; (rightIndex &lt; heapSize) &amp;&amp;
-        (pArray[leftIndex] &lt; pArray[rootIndex]))
-    {
-        minIndex = leftIndex;
-    }
-    if ((leftIndex &lt; heapSize) &amp;&amp; (rightIndex &gt;= heapSize) &amp;&amp; 
-        (pArray[leftIndex] &lt; pArray[rootIndex]))
-    {
-        minIndex = leftIndex;
-    }
-
-
-    if ((rightIndex &lt; heapSize) &amp;&amp; (pArray[rightIndex] &lt;
-         pArray[leftIndex]) &amp;&amp; (pArray[rightIndex] &lt; 
-             pArray[rootIndex]))
-    {
-        minIndex = rightIndex;
-    }
-
-    if (minIndex != rootIndex) 
-    {
-        //如果左孩子或者右孩子比根节点小的话，那么就交换，并且重新调整以
-        //minIndex为根节点的子树
-        swap(pArray[rootIndex], pArray[minIndex]);
-        adjustHeap(pArray, minIndex, heapSize);
-    }
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[有趣的阶乘]]></title>
-        <id>https://tienyeung.github.io//post/you-qu-de-jie-cheng</id>
-        <link href="https://tienyeung.github.io//post/you-qu-de-jie-cheng">
-        </link>
-        <updated>2019-10-16T02:06:42.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>阶乘（Factorial）是个很有意思的函数，但是不少人都比较怕它，我们来看看两个与阶乘相关的问题：1．给定一个整数N，那么N的阶乘N！末尾有多少个0呢？例如：N＝10，N！＝3628800，N！的末尾有两个0。2．求N！的二进制表示中最低位1的位置。</p>
-</blockquote>
-<!-- more -->
-<h1 id="问题1">问题1</h1>
-<p>零是由2和5相乘算出的，也就是说多少个0就有多少个2和5相乘；同时4和5相乘也为0，但4是2的倍数，也就是说偶数与5相乘为0，如此看来2比5多，因此多少个0就是n由多少个5组成，同时25，75等含有2个5，3个5，诱导公式为f(n) = n/5 + n/5^2 + n/5^3 + n/5^4 + n/5^5+..<br>
-即可用递归：</p>
-<pre><code class="language-python">class Solution(object):
-    def trailingZeroes(self, n):
-        &quot;&quot;&quot;
-        :type n: int
-        :rtype: int
-        &quot;&quot;&quot;
-        count=0
-        while n&gt;=5:
-            return n//5+self.trailingZeroes(n//5)
-        return count
-</code></pre>
-<h1 id="问题2">问题2</h1>
-<p>首先来看一下一个二进制数除以2的计算过程和结果是怎样的。<br>
-把一个二进制数除以2，实际过程如下：<br>
-判断最后一个二进制位是否为0，若为0，则将此二进制数右移一位，即为商值；反之，若为1，则说明这个二进制数是奇数，无法被2整除。即二进制最低位为0代表是偶数，如果为1则代表是奇数。<br>
-所以，这个问题实际上等同于求N！含有质因数2的个数。即答案等于N！含有质因数2的个数加1。<br>
-由于N！中含有质因数2的个数，等于N/2＋N/4＋N/8＋N/16＋…</p>
-<pre><code class="language-python">class Solution(object):
-    def trailingZeroes(self, n):
-        &quot;&quot;&quot;
-        :type n: int
-        :rtype: int
-        &quot;&quot;&quot;
-        count=0
-        while n:
-            n&gt;&gt;=1
-            count+=N
-        return count
 </code></pre>
 ]]></content>
     </entry>

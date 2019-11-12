@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>还原二叉树 | 阳阳の部落格</title>
+<title>买票找零问题 | 阳阳の部落格</title>
 <link href="https://tienyeung.github.io//styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -271,7 +271,7 @@ var r = 0;
 
 <div class="post">
   <div class="post_title sm_margin">
-    <h2><a>还原二叉树</a>
+    <h2><a>买票找零问题</a>
 
 
 
@@ -318,7 +318,7 @@ function change(){
 
   <div class="post_details">
     <div class="info"><i class="fa fa-clock-o"></i>
-<span class="date_info">2019-10-24</span>
+<span class="date_info">2019-10-25</span>
 <i class="fa fa-eye"></i>
 
 <span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
@@ -328,17 +328,17 @@ function change(){
 	
 
 </span>
-<span>3 min read</span>
+<span>4 min read</span>
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/huan-yuan-er-cha-shu"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/huan-yuan-er-cha-shu&sharesource=qzone&title=还原二叉树&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
-&lt;p&gt;根据先序遍历和中序遍历的结果来还原二叉树&lt;/p&gt;
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti&sharesource=qzone&title=买票找零问题&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+&lt;p&gt;在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？&lt;/p&gt;
 &lt;/blockquote&gt;
 "><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/huan-yuan-er-cha-shu&sharesource=weibo&title=还原二叉树 + " - " + &lt;blockquote&gt;
-&lt;p&gt;根据先序遍历和中序遍历的结果来还原二叉树&lt;/p&gt;
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti&sharesource=weibo&title=买票找零问题 + " - " + &lt;blockquote&gt;
+&lt;p&gt;在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？&lt;/p&gt;
 &lt;/blockquote&gt;
 &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
 &nbsp
@@ -355,68 +355,30 @@ function change(){
   <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
     <div name="show" id="show">
 	<p class="md_block"><span class="md_line md_line_start md_line_end"><blockquote>
-<p>根据先序遍历和中序遍历的结果来还原二叉树</p>
+<p>在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？</p>
 </blockquote>
 <!-- more -->
-<p><em>Today is 1024 Programmer's Day</em><br>
-<em>Cheer Up!</em></p>
-<p>前序遍历：先访问当前节点，然后以前序访问左子树，右子树。<br>
-中序遍历：先以中序遍历左子树，接着访问当前节点，然后以中序遍历右子树。<br>
-根据前序遍历和中序遍历的特点，可以发现如下规律：<br>
-前序遍历的每一个节点，都是当前子树的根节点。同时，以对应的节点为边界，就会把中序遍历的结果分为左子树和右子树。<br>
-<img src="https://i.loli.net/2019/10/24/3hvtZcwTfVYJqml.png" alt="untitled.png"><br>
-前序：<br>
-<strong>a</strong> b d c e f<br>
-“a”是根节点<br>
-中序：<br>
-d b <strong>a</strong> e c f<br>
-“a”是根节点，把字符串分成左右两个子树<br>
-“a”是前序遍历节点中的第一个元素，可以看出，它把中序遍历的结果分成“db”和“ecf”两个部分。可以从图中看出，这就是“a”的左子树和右子树的遍历结果。<br>
-如果能够找到前序遍历中对应的左子树和右子树，就可以把“a”作为当前的根节点，然后依次递归下去，这样就能够把左子树和右子树的遍历结果给依次恢复出来。<br>
-<strong>节点类</strong></p>
-<pre><code class="language-c">struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * }
-</code></pre>
-<p><strong>构建二叉树</strong></p>
-<pre><code class="language-c">class Solution {
-public:
-    TreeNode* reConstructBinaryTree(vector&lt;int&gt; pre,vector&lt;int&gt; vin) {
-        if(pre.size() == 0)
-            return NULL;//无节点返回NULL
-        int rootValue = pre[0];
-        TreeNode* newRoot = new TreeNode(rootValue);
-        newRoot-&gt;left = newRoot-&gt;right = NULL;
-        if(pre.size() == 1) {
-            return newRoot;
-        }//单节点返回
-        vector&lt;int&gt; preL, preR, vinL, vinR;
-        for (int i = 0 ; i &lt; (int)vin.size() ; i++) {
-            if (vin[i] == rootValue) {
-                for (int j = i+1 ; j &lt; (int)vin.size(); j++) {
-                    vinR.push_back(vin[j]);
-                    preR.push_back(pre[j]);
-                }
-                break;
-            }
-            vinL.push_back(vin[i]);
-            preL.push_back(pre[i+1]); 
-        }//大于两个节点时对数组进行划分
-        newRoot-&gt;left = reConstructBinaryTree(preL,vinL);
-        newRoot-&gt;right = reConstructBinaryTree(preR,vinR);
-        return newRoot;
-    }
-};
-</code></pre>
+<p>从这篇博客起，讲述的是算法中的数学问题。此类算法一般不涉及到精妙的解题步骤，而是考虑到复杂的数学思想。</p>
+<h1 id="解法1">解法1</h1>
+<p>我们可以把此问题看作是括号匹配问题，一个50元匹配一个100元，相当于一个左括号匹配一个右括号，保留一个栈，压入左括号，遇到右括号时弹出，如果保证栈中有足够多的左括号，则说明该序列为合法序列。<br>
+可作如下分析，第一个符号一定是左括号，假设第一个符号和第k个符号匹配，那么第二个符号到第k-1个符号之间为合法序列，第k+1个符号到2n也是合法序列，可想而知，k一定为奇数，设k=2i+1(i=0,1,...n)<br>
+<img src="https://i.loli.net/2019/10/25/ij6NFPclkUw4b8O.png" alt="untitled.png"><br>
+假设2n个符号中合法的括号序列之个数为f（2n），若第一个左括号与第k＝2i＋1（i＝0，1，…，n－1）个右括号匹配，那么剩余括号的合法序列为：f（2i）*f（2n－2i－2）个，根据上面的分析，可以得到如下递推式：<br>
+<img src="https://i.loli.net/2019/10/25/9LJMOl3dYHwDKx6.png" alt="untitled1.png"><br>
+f(0)=1,则可在平方级时间复杂度内求出答案</p>
+<h1 id="解法2">解法2</h1>
+<p>为了便于描述，这里用1表示持有50元的球迷，用0表示持有100元的球迷。那么2n个球迷的排队就对应n个1和n个0的排列.如果序列的任意前k（k＝1，2，…，2n－1）项中1的个数都不少于0的个数，我们称这样的一个序列是合法的，否则称其为非法的。显然合法的序列正好与可行的排列方式一一对应。同时，称由n－1个1和n＋1个0组成的序列为Sigma序列（这个名字没有任何特别的意义），这样的序列共有(2n n-1)个。</p>
+<p>n个1和n个0总的排列数为(2n n)个，即合法序列数和非法序列数的总和。我们需要求解合法的序列数，但在尝试后会发现直接求解合法序列并不是一个好的主意，那就试着来求解非法序列吧。<br>
+由定义知道，在一个非法序列中，存在某个（些）k，使得序列前k项中1的个数少于0的个数。更进一步地，存在某个（些）k，使得序列前k项中1的个数比0的个数刚好少1个。取其中最小的k，使得前k项中1的个数比0的个数刚好少1个。那么这个序列的后2n－k项中1的个数会刚好比0的个数多1个。将后2n-k项的0换为1，1换为0，于是得到一个新的序列：由n－1个1和n＋1个0组成一个Sigma序列。我们已经成功地将一个非法序列对应到唯一一个Sigma序列。</p>
+<p>那么一个Sigma序列能唯一地对应到一个非法序列么？对任意一个Sigma序列，存在某个（些）k，使得序列的前k项中1的个数少于0的个数（因为只有n－1个1，而有n＋1个0）。更进一步地，存在某个（些）k，使得序列的前k项中1的个数比0的个数刚好少1个。取其中最小的k，使得前k项中1的个数比0的个数刚好少1个。那么这个序列的后2n－k项中1的个数会刚好比0的个数少1个。将后2n－k项的0换为1，1换为0，于是得到一个新的序列：由n个1和n个0组成。而这个序列正是一个非法的序列（因为前k项中1的个数比0少）。我们又成功地将一个Sigma序列对应到唯一一个非法序列。</p>
+<p><strong>由此我们知道，非法序列和Sigma序列是一一对应的。非法的序列个数为(2n n-1)个，合法的序列数：<br>
+(2n n)-(2n n-1)=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2484389999999999em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>*(2n n)</strong></p>
 </span></p></div>
 	<br>
 	<hr>
 <!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-user"></i>本文由<a rel="license" href="/">阳阳の部落格</a>创作</div>	
 <div style="color: #ccc;font-size:14px;"><i class="fa fa-cc"></i>该文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。转载请注明出处！</div> -->
-<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-24</div>     -->
+<!-- <div style="color: #ccc;font-size:14px;"><i class="fa fa-clock-o"></i>发布时间为：2019-10-25</div>     -->
 	 <p class="md_block">
     <!-- <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://tienyeung.github.io//media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://tienyeung.github.io//media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div> -->
 <div style="text-align:center;color: #ccc;font-size:14px;font-face:heiti">Enjoy~😊</div>    
@@ -452,9 +414,9 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://tienyeung.github.io//post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci">
+            <a href="https://tienyeung.github.io//post/huan-yuan-er-cha-shu">
               <h3 class="post-title">
-                电话号码对应英语单词
+                还原二叉树
               </h3>
             </a>
           </div>
@@ -463,9 +425,9 @@ $("img").each( (i,o) => {
 
           <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
             上一篇
-            <a href="https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti">
+            <a href="https://tienyeung.github.io//post/er-fen-cha-zhao">
               <h3 class="post-title">
-                买票找零问题
+                二分查找
               </h3>
             </a>
           </div>
@@ -482,6 +444,10 @@ $("img").each( (i,o) => {
 
       </div>
 <div class="toc-container">
+<ul class="markdownIt-TOC">
+<li><a href="#%E8%A7%A3%E6%B3%951">解法1</a></li>
+<li><a href="#%E8%A7%A3%E6%B3%952">解法2</a></li>
+</ul>
 
 </div>
     </div>
