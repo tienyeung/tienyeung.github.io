@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2019-11-12T11:18:19.672Z</updated>
+    <updated>2019-12-11T08:22:07.599Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io//atom.xml"/>
@@ -165,7 +165,8 @@ f(0)=1,则可在平方级时间复杂度内求出答案</p>
 </blockquote>
 <!-- more -->
 <p><em>Today is 1024 Programmer's Day</em><br>
-<em>Cheer Up!</em></p>
+<em>Cheer Up!</em><br>
+<em>haha!</em></p>
 <p>前序遍历：先访问当前节点，然后以前序访问左子树，右子树。<br>
 中序遍历：先以中序遍历左子树，接着访问当前节点，然后以中序遍历右子树。<br>
 根据前序遍历和中序遍历的特点，可以发现如下规律：<br>
@@ -714,6 +715,7 @@ Q为负数<br>
 <li>题目只需要求和，并不需要返回子数组的具体位置。</li>
 <li>数组的元素是整数，所以数组可能包含有正整数、零、负整数。</li>
 </ul>
+<p><em>这道题同样可以求解股票的何时买进何时卖出得以利益最大化的问题</em></p>
 <h2 id="解法一-on2">解法一 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></h2>
 <pre><code class="language-python">def maxsum(A:list):
     maxinum=float(&quot;-inf&quot;)
