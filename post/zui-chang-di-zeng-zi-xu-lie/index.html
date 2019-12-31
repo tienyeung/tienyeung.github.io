@@ -326,7 +326,7 @@ function change(){
 <i class="fa fa-bookmark-o"></i>
 <span class="tags_info weaklink">
 	
-	<a href="https://tienyeung.github.io//tag/SU9NtEKDV" class="tag">编程之美</a>
+	<a href="https://tienyeung.github.io/tag/SU9NtEKDV" class="tag">编程之美</a>
 
 
 </span>
@@ -334,12 +334,12 @@ function change(){
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie&sharesource=qzone&title=最长递增子序列&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie&sharesource=qzone&title=最长递增子序列&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
 &lt;p&gt;写一个时间复杂度尽可能低的程序，求一个一维数组（N个元素）中的最长递增子序列的长度。根据题目的要求，求一维数组中的最长递增子序列，也就是找一个标号的序列b[0]，b[1]，…，b[m]（0＜＝b[0]＜b[1]＜…＜b[m]＜N），使得array[b[0]]＜array[b[1]]＜…＜array[b[m]]。&lt;/p&gt;
 &lt;/blockquote&gt;
 "><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie&sharesource=weibo&title=最长递增子序列 + " - " + &lt;blockquote&gt;
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie&sharesource=weibo&title=最长递增子序列 + " - " + &lt;blockquote&gt;
 &lt;p&gt;写一个时间复杂度尽可能低的程序，求一个一维数组（N个元素）中的最长递增子序列的长度。根据题目的要求，求一维数组中的最长递增子序列，也就是找一个标号的序列b[0]，b[1]，…，b[m]（0＜＝b[0]＜b[1]＜…＜b[m]＜N），使得array[b[0]]＜array[b[1]]＜…＜array[b[m]]。&lt;/p&gt;
 &lt;/blockquote&gt;
 &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
@@ -369,7 +369,7 @@ function change(){
 假设在目标数组array[]的前i个元素中，最长递增子序列的长度为LIS[i]。那么，<br>
 LIS[i＋1]＝max{1，LIS[k]＋1}，array[i＋1]＞array[k]，for any k＜＝i<br>
 即如果array[i＋1]大于array[k]，那么第i＋1个元素可以接在LIS[k]长的子序列后面构成一个更长的子序列。与此同时array[i＋1]本身至少可以构成一个长度为1的子序列。<br>
-<img src="https://i.loli.net/2019/10/20/senitVDhpHxkm71.png" alt="untitled.png"><br>
+<img src="https://i.loli.net/2019/10/20/senitVDhpHxkm71.png" alt="untitled.png" loading="lazy"><br>
 这种方法的时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mi>N</mi><mn>2</mn></msup><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（N^2）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">）</span></span></span></span></p>
 <h1 id="解法二">解法二</h1>
 <p>找到前i个元素中的一个递增子序列，使得这个递增子序列的最大的元素比array[i＋1]小，且长度尽量地长。这样将array[i＋1]加在该递增子序列后，便可找到以array[i＋1]为最大元素的最长递增子序列。仍然假设在数组的前i个元素中，以array[i]为最大元素的最长递增子序列的长度为LIS[i]。<br>
@@ -378,11 +378,11 @@ LIS[i＋1]＝max{1，LIS[k]＋1}，array[i＋1]＞array[k]，for any k＜＝i<br
 长度为2的递增子序列最大元素的最小值为MaxV[2]；<br>
 ……<br>
 长度为LIS[i]的递增子序列最大元素的最小值为MaxV[LIS[i]]。<br>
-<img src="https://i.loli.net/2019/10/20/senitVDhpHxkm71.png" alt="untitled.png"><br>
+<img src="https://i.loli.net/2019/10/20/senitVDhpHxkm71.png" alt="untitled.png" loading="lazy"><br>
 时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mi>N</mi><mn>2</mn></msup><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（N^2）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">）</span></span></span></span><br>
 在递增序列中，如果i＜j，那么就会有MaxV[i]＜MaxV[j]。如果出现MaxV[j]＜MaxV[i]的情况，则跟定义矛盾，为什么？<br>
 因此，根据这样单调递增的关系，可以将上面方法中的穷举部分进行如下修改：<br>
-<img src="https://i.loli.net/2019/10/20/QshFq5vWidKULbR.png" alt="untitled2.png"><br>
+<img src="https://i.loli.net/2019/10/20/QshFq5vWidKULbR.png" alt="untitled2.png" loading="lazy"><br>
 如果把上述的查询部分利用二分搜索进行加速，那么就可以把时间复杂度降为O（N*log2N）。</p>
 </span></p></div>
 	<br>
@@ -425,7 +425,7 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
+            <a href="https://tienyeung.github.io/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
               <h3 class="post-title">
                 子数组的最大乘积以及最大和
               </h3>
@@ -436,7 +436,7 @@ $("img").each( (i,o) => {
 
           <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
             上一篇
-            <a href="https://tienyeung.github.io//post/shu-zu-fen-ge">
+            <a href="https://tienyeung.github.io/post/shu-zu-fen-ge">
               <h3 class="post-title">
                 数组分割
               </h3>

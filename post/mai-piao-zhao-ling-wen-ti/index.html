@@ -332,12 +332,12 @@ function change(){
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti&sharesource=qzone&title=买票找零问题&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti&sharesource=qzone&title=买票找零问题&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
 &lt;p&gt;在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？&lt;/p&gt;
 &lt;/blockquote&gt;
 "><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/mai-piao-zhao-ling-wen-ti&sharesource=weibo&title=买票找零问题 + " - " + &lt;blockquote&gt;
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti&sharesource=weibo&title=买票找零问题 + " - " + &lt;blockquote&gt;
 &lt;p&gt;在一场激烈的足球赛开始前，售票工作正在紧张地进行中。每张球票为50元。现有2n个人排队购票，其中有n个人手持50元的钞票，另外n个人手持100元的钞票，假设开始售票时售票处没有零钱。问这2n个人有多少种排队方式，不至使售票处出现找不开钱的局面？&lt;/p&gt;
 &lt;/blockquote&gt;
 &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
@@ -362,9 +362,9 @@ function change(){
 <h1 id="解法1">解法1</h1>
 <p>我们可以把此问题看作是括号匹配问题，一个50元匹配一个100元，相当于一个左括号匹配一个右括号，保留一个栈，压入左括号，遇到右括号时弹出，如果保证栈中有足够多的左括号，则说明该序列为合法序列。<br>
 可作如下分析，第一个符号一定是左括号，假设第一个符号和第k个符号匹配，那么第二个符号到第k-1个符号之间为合法序列，第k+1个符号到2n也是合法序列，可想而知，k一定为奇数，设k=2i+1(i=0,1,...n)<br>
-<img src="https://i.loli.net/2019/10/25/ij6NFPclkUw4b8O.png" alt="untitled.png"><br>
+<img src="https://i.loli.net/2019/10/25/ij6NFPclkUw4b8O.png" alt="untitled.png" loading="lazy"><br>
 假设2n个符号中合法的括号序列之个数为f（2n），若第一个左括号与第k＝2i＋1（i＝0，1，…，n－1）个右括号匹配，那么剩余括号的合法序列为：f（2i）*f（2n－2i－2）个，根据上面的分析，可以得到如下递推式：<br>
-<img src="https://i.loli.net/2019/10/25/9LJMOl3dYHwDKx6.png" alt="untitled1.png"><br>
+<img src="https://i.loli.net/2019/10/25/9LJMOl3dYHwDKx6.png" alt="untitled1.png" loading="lazy"><br>
 f(0)=1,则可在平方级时间复杂度内求出答案</p>
 <h1 id="解法2">解法2</h1>
 <p>为了便于描述，这里用1表示持有50元的球迷，用0表示持有100元的球迷。那么2n个球迷的排队就对应n个1和n个0的排列.如果序列的任意前k（k＝1，2，…，2n－1）项中1的个数都不少于0的个数，我们称这样的一个序列是合法的，否则称其为非法的。显然合法的序列正好与可行的排列方式一一对应。同时，称由n－1个1和n＋1个0组成的序列为Sigma序列（这个名字没有任何特别的意义），这样的序列共有(2n n-1)个。</p>
@@ -414,7 +414,7 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://tienyeung.github.io//post/huan-yuan-er-cha-shu">
+            <a href="https://tienyeung.github.io/post/huan-yuan-er-cha-shu">
               <h3 class="post-title">
                 还原二叉树
               </h3>
@@ -425,7 +425,7 @@ $("img").each( (i,o) => {
 
           <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
             上一篇
-            <a href="https://tienyeung.github.io//post/er-fen-cha-zhao">
+            <a href="https://tienyeung.github.io/post/er-fen-cha-zhao">
               <h3 class="post-title">
                 二分查找
               </h3>

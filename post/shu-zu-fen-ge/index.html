@@ -332,12 +332,12 @@ function change(){
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/shu-zu-fen-ge"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/shu-zu-fen-ge&sharesource=qzone&title=数组分割&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io/post/shu-zu-fen-ge"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io/post/shu-zu-fen-ge&sharesource=qzone&title=数组分割&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
 &lt;p&gt;有一个没有排序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近？题目的本质就是要从2n个整数中找出n个，使得它们的和尽可能地靠近所有整数之和的一半。&lt;/p&gt;
 &lt;/blockquote&gt;
 "><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/shu-zu-fen-ge&sharesource=weibo&title=数组分割 + " - " + &lt;blockquote&gt;
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io/post/shu-zu-fen-ge&sharesource=weibo&title=数组分割 + " - " + &lt;blockquote&gt;
 &lt;p&gt;有一个没有排序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近？题目的本质就是要从2n个整数中找出n个，使得它们的和尽可能地靠近所有整数之和的一半。&lt;/p&gt;
 &lt;/blockquote&gt;
 &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
@@ -364,14 +364,14 @@ function change(){
 可以把任务分成2N步，第k步的定义是前k个元素中任意i个元素的和，所有可能的取值之集合为Sk（只考虑取值小于等于SUM/2的情况）。<br>
 然后将第k步拆分成两个小步。即首先得到前k－1个元素中，任意i个元素，总共能有多少种取值，设这个取值集合为Sk－1＝{vi}。第二步就是令Sk＝Sk－1∪{vi＋arr[k]}，即可完成第k步。<br>
 伪代码如下：<br>
-<img src="https://i.loli.net/2019/10/20/VnYOhJCNfRrmx12.png" alt="untitled.png"><br>
+<img src="https://i.loli.net/2019/10/20/VnYOhJCNfRrmx12.png" alt="untitled.png" loading="lazy"><br>
 从有效性来分析，整个代码是一个三重循环，目的就是执行insert。这个代码实际执行insert的次数至多是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>4</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">4^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>次（枚举所有元素在与不在的情况），因此可以认为复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mn>4</mn><mi>N</mi></msup><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（4^N）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">）</span></span></span></span>。<br>
 既然算法的时间复杂度是N的指数级，因此在N很大时，效率很低。我们不得不考虑设计一种时间复杂度是N的多项式函数的方法。考虑的出发点是，是否有另一种拆分第k步的方法。</p>
 <h1 id="解法二">解法二</h1>
 <p>解法二的拆分方法需要遍历Sk－1＝{vi}的元素，由于Sk－1＝{vi}的元素个数随着k的增大而增大，所以导致了解法二的效率低下。能不能设计一个算法使得第k步所花费的时间与k无关呢？<br>
 我们不妨倒过来想，原来是给定Sk－1＝{vi}，求Sk。那我们能不能给定Sk的可能值v和arr[k]，去寻找v－arr[k]是否在Sk－1＝{vi}中呢？由于Sk可能值的集合的大小与k无关，所以这样设计的动态规划算法其第k步的时间复杂度与k无关。<br>
 代码如下：<br>
-<img src="https://i.loli.net/2019/10/20/cISKm6bpYnz48d1.png" alt="untitled1.png"><br>
+<img src="https://i.loli.net/2019/10/20/cISKm6bpYnz48d1.png" alt="untitled1.png" loading="lazy"><br>
 利用如上的算法，时间复杂度将为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi mathvariant="normal">（</mi><msup><mi>N</mi><mn>2</mn></msup><mo>∗</mo><mi>S</mi><mi>u</mi><mi>m</mi><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">O（N^2* Sum）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord cjk_fallback">（</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord cjk_fallback">）</span></span></span></span>。</p>
 </span></p></div>
 	<br>
@@ -414,7 +414,7 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://tienyeung.github.io//post/zui-chang-di-zeng-zi-xu-lie">
+            <a href="https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie">
               <h3 class="post-title">
                 最长递增子序列
               </h3>
@@ -425,7 +425,7 @@ $("img").each( (i,o) => {
 
           <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
             上一篇
-            <a href="https://tienyeung.github.io//post/lian-xu-zi-ran-shu-de-jia-fa">
+            <a href="https://tienyeung.github.io/post/lian-xu-zi-ran-shu-de-jia-fa">
               <h3 class="post-title">
                 连续自然数的加法
               </h3>

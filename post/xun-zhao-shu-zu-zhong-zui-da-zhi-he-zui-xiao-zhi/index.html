@@ -326,7 +326,7 @@ function change(){
 <i class="fa fa-bookmark-o"></i>
 <span class="tags_info weaklink">
 	
-	<a href="https://tienyeung.github.io//tag/SU9NtEKDV" class="tag">编程之美</a>
+	<a href="https://tienyeung.github.io/tag/SU9NtEKDV" class="tag">编程之美</a>
 
 
 </span>
@@ -334,12 +334,12 @@ function change(){
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io//post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io//post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi&sharesource=qzone&title=寻找数组中最大值和最小值&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tienyeung.github.io/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://tienyeung.github.io/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi&sharesource=qzone&title=寻找数组中最大值和最小值&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;blockquote&gt;
 &lt;p&gt;数组是最简单的一种数据结构。我们经常碰到的一个基本问题，就是寻找整个数组中最大的数，或者最小的数。这时，我们都会扫描一遍数组，把最大（最小）的数找出来。如果我们需要&lt;strong&gt;同时&lt;/strong&gt;找出最大和最小的数呢？对于一个由N个整数组成的数组，需要比较多少次才能把最大和最小的数找出来呢？&lt;/p&gt;
 &lt;/blockquote&gt;
 "><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io//post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi&sharesource=weibo&title=寻找数组中最大值和最小值 + " - " + &lt;blockquote&gt;
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://tienyeung.github.io/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi&sharesource=weibo&title=寻找数组中最大值和最小值 + " - " + &lt;blockquote&gt;
 &lt;p&gt;数组是最简单的一种数据结构。我们经常碰到的一个基本问题，就是寻找整个数组中最大的数，或者最小的数。这时，我们都会扫描一遍数组，把最大（最小）的数找出来。如果我们需要&lt;strong&gt;同时&lt;/strong&gt;找出最大和最小的数呢？对于一个由N个整数组成的数组，需要比较多少次才能把最大和最小的数找出来呢？&lt;/p&gt;
 &lt;/blockquote&gt;
 &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
@@ -363,9 +363,9 @@ function change(){
 <p>最简单的无非是扫描两次数组，分别找出最大值和最小值，但能否将这二者看似独立的问题建立关联，从而减少比较次数呢？</p>
 <h1 id="解法一">解法一</h1>
 <p>一般情况下，最大的数和最小的数不会是同一个数（除非N＝1，或者所有整数都是一样的大小）。所以，我们希望先把数组分成两部分，然后再从这两部分中分别找出最大的数和最小的数。首先按顺序将数组中相邻的两个数分在同一组（这只是概念上的分组，无须做任何实际操作）。若数组为{5，6，8，3，7，9} 如图所示：<br>
-<img src="https://i.loli.net/2019/10/18/ra7P2sbJ9RLKoHv.png" alt="untitled.png"><br>
+<img src="https://i.loli.net/2019/10/18/ra7P2sbJ9RLKoHv.png" alt="untitled.png" loading="lazy"><br>
 接着比较同一组中奇数位数字和偶数位数字，将较大的数放在偶数位上，较小的数放在奇数位上。经过N/2次比较的预处理后，较大的数都放到了偶数位置上，较小的数则放到了奇数位置上，如图：<br>
-<img src="https://i.loli.net/2019/10/18/Cfx14NSLBpVte6F.png" alt="untitled1.png"><br>
+<img src="https://i.loli.net/2019/10/18/Cfx14NSLBpVte6F.png" alt="untitled1.png" loading="lazy"><br>
 最后，我们从奇偶数位上分别求出Max＝9，Min＝3，各需要比较N/2次。整个算法共需要比较1.5*N次。<br>
 如此 <strong>2*N --&gt; 1.5*N</strong></p>
 <h1 id="解法二">解法二</h1>
@@ -413,7 +413,7 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://tienyeung.github.io//post/fei-bo-na-qi-shu-lie-de-you-hua">
+            <a href="https://tienyeung.github.io/post/fei-bo-na-qi-shu-lie-de-you-hua">
               <h3 class="post-title">
                 斐波那契数列的优化
               </h3>
@@ -424,7 +424,7 @@ $("img").each( (i,o) => {
 
           <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
             上一篇
-            <a href="https://tienyeung.github.io//post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
+            <a href="https://tienyeung.github.io/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
               <h3 class="post-title">
                 子数组的最大乘积以及最大和
               </h3>
