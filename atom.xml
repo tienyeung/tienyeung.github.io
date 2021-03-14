@@ -2,49 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tienyeung.github.io/</id>
     <title>阳阳の部落格</title>
-    <updated>2020-04-25T14:13:41.564Z</updated>
+    <updated>2021-03-14T10:35:20.048Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tienyeung.github.io/"/>
     <link rel="self" href="https://tienyeung.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://tienyeung.github.io/images/avatar.png</logo>
     <icon>https://tienyeung.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 阳阳の部落格</rights>
-    <entry>
-        <title type="html"><![CDATA[ta好像一条狗]]></title>
-        <id>https://tienyeung.github.io/post/ta-hao-xiang-yi-tiao-gou</id>
-        <link href="https://tienyeung.github.io/post/ta-hao-xiang-yi-tiao-gou">
-        </link>
-        <updated>2020-04-25T14:04:52.000Z</updated>
-        <summary type="html"><![CDATA[<p>从前，有条没有尾巴的狗。 别的狗都是有尾巴的，它们摇一摇尾巴，就能表示出内心的想法。如果感到高兴，它们就朝上摇尾巴。如果心情不好，它们就把尾巴耷拉下来慢慢地摇。 可只有一条狗，它是没有尾巴的狗。 别的狗对它摇摇尾巴，说“你好呀”。无尾狗也想对对方摇摇尾巴，说句你好。可是它没有尾巴，只能看着对方，不知道如何表示。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>从前，有条没有尾巴的狗。 别的狗都是有尾巴的，它们摇一摇尾巴，就能表示出内心的想法。如果感到高兴，它们就朝上摇尾巴。如果心情不好，它们就把尾巴耷拉下来慢慢地摇。 可只有一条狗，它是没有尾巴的狗。 别的狗对它摇摇尾巴，说“你好呀”。无尾狗也想对对方摇摇尾巴，说句你好。可是它没有尾巴，只能看着对方，不知道如何表示。</p>
-<!-- more -->
-<p>那条狗等了半天，无尾狗毫无表示，于是它走了。 久而久之，别的狗就都不跟无尾狗玩儿了。因为它看起来不亲切，又与众不同。<br>
-无尾狗也觉得自己与众不同、不够亲切，这当然都是自己的错。于是它立志要做一条善良温柔的好狗。 它以为，做一条善良温柔的好狗，别的狗才会喜欢它啊。<br>
-无尾狗感觉很伤心。别的狗感到伤心的时候都会把尾巴耷拉下来，可是无尾狗没有尾巴，它没有办法表示出它很伤心。 这世界上没人知道它很伤心。<br>
-别的狗欺负它，它也没法表示出它很生气。 从来都没人在意它的感受。 别的狗都觉得，这真是一条好脾气的傻狗呀。<br>
-无尾狗终于在自己的生日那天，悄悄地许了一个愿望：希望能够遇见一条在乎自己感受的狗伴侣。希望它能在自己感到难过的时候，发现这一点。 因为无尾狗一直在考虑着别的狗的感受，可是自己感到难过的时候，却没人知道。 无尾狗的心情一直不怎么好。 生而为狗，它很抱歉。</p>
-<p>我就是那条无尾狗。<br>
-别扭又深情，怪异而孤独。<br>
-总觉得自己特别热爱生活，可生活中的小确丧却时时消磨着我前行的勇气。</p>
-<p>小的时候总以为自己长大会变成很厉害的人。后来知道自己没希望了，那就变成成功圆满的人也可以啊。<br>
-再后来觉得，即使普通，只要度过快乐幸福的人生就好。<br>
-再后来，发现只要活着就行。对自己提出要求，只会令人痛苦。<br>
-我只是觉得，这么多年了，我一点长进都没有。<br>
-一点都没有。<br>
-年龄不断增长，我在变老。一切都在无法阻止地走向市侩和庸俗。<br>
-可我还是一点长进都没有。<br>
-不懂事，不会办事，不会做人。<br>
-所以就很拧巴，就很颓然。<br>
-我对人情世故所知甚少，却并未拥有令人忽略这些的才华。</p>
-<center><u>转载自知乎</u></center>
-]]></content>
-    </entry>
+    <rights>All rights reserved 2021, 阳阳の部落格</rights>
     <entry>
         <title type="html"><![CDATA[我的互联网十年]]></title>
-        <id>https://tienyeung.github.io/post/wo-de-hu-lian-wang-shi-nian</id>
-        <link href="https://tienyeung.github.io/post/wo-de-hu-lian-wang-shi-nian">
+        <id>https://tienyeung.github.io/post/wo-de-hu-lian-wang-shi-nian/</id>
+        <link href="https://tienyeung.github.io/post/wo-de-hu-lian-wang-shi-nian/">
         </link>
         <updated>2019-12-31T12:04:26.000Z</updated>
         <summary type="html"><![CDATA[<p>偶然读到的一条资讯告诉我人人网“复活了”，其实我知道人人网一直未死，只是丢失了初心的它以切入直播市场的姿态苟且偷生着。读到这则消息，我迫不及待下载了人人网app。我会如此怀念这个曾经主打校园社交的门户网站，倒不是因为它上面有我的社交关系以及与之相关的回忆，而是在非智能机时代，我的资讯、“深度好文”、段子的来源就是它，没有知乎，微博，各类自媒体的年代，我的对外界的认知来源就是这么狭窄却欢乐，如今信息开始爆炸，我反而愈加焦虑和不安，我开始怕我跟不上这个发展极度迅猛的时代了。</p>
@@ -66,8 +35,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[二分查找]]></title>
-        <id>https://tienyeung.github.io/post/er-fen-cha-zhao</id>
-        <link href="https://tienyeung.github.io/post/er-fen-cha-zhao">
+        <id>https://tienyeung.github.io/post/er-fen-cha-zhao/</id>
+        <link href="https://tienyeung.github.io/post/er-fen-cha-zhao/">
         </link>
         <updated>2019-11-12T11:16:39.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -175,8 +144,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[买票找零问题]]></title>
-        <id>https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti</id>
-        <link href="https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti">
+        <id>https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti/</id>
+        <link href="https://tienyeung.github.io/post/mai-piao-zhao-ling-wen-ti/">
         </link>
         <updated>2019-10-25T06:32:40.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -206,8 +175,8 @@ f(0)=1,则可在平方级时间复杂度内求出答案</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[还原二叉树]]></title>
-        <id>https://tienyeung.github.io/post/huan-yuan-er-cha-shu</id>
-        <link href="https://tienyeung.github.io/post/huan-yuan-er-cha-shu">
+        <id>https://tienyeung.github.io/post/huan-yuan-er-cha-shu/</id>
+        <link href="https://tienyeung.github.io/post/huan-yuan-er-cha-shu/">
         </link>
         <updated>2019-10-24T01:22:50.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -276,8 +245,8 @@ public:
     </entry>
     <entry>
         <title type="html"><![CDATA[电话号码对应英语单词]]></title>
-        <id>https://tienyeung.github.io/post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci</id>
-        <link href="https://tienyeung.github.io/post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci">
+        <id>https://tienyeung.github.io/post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci/</id>
+        <link href="https://tienyeung.github.io/post/dian-hua-hao-ma-dui-ying-ying-yu-dan-ci/">
         </link>
         <updated>2019-10-23T02:17:22.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -404,8 +373,8 @@ public class Num2Letter {
     </entry>
     <entry>
         <title type="html"><![CDATA[连续自然数的加法]]></title>
-        <id>https://tienyeung.github.io/post/lian-xu-zi-ran-shu-de-jia-fa</id>
-        <link href="https://tienyeung.github.io/post/lian-xu-zi-ran-shu-de-jia-fa">
+        <id>https://tienyeung.github.io/post/lian-xu-zi-ran-shu-de-jia-fa/</id>
+        <link href="https://tienyeung.github.io/post/lian-xu-zi-ran-shu-de-jia-fa/">
         </link>
         <updated>2019-10-21T02:18:59.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -607,8 +576,8 @@ Ns = (n[0] + 1) * (n[2] + 1) * (n[3] + 1) * ... * (n[k] + 1) - 1</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[数组分割]]></title>
-        <id>https://tienyeung.github.io/post/shu-zu-fen-ge</id>
-        <link href="https://tienyeung.github.io/post/shu-zu-fen-ge">
+        <id>https://tienyeung.github.io/post/shu-zu-fen-ge/</id>
+        <link href="https://tienyeung.github.io/post/shu-zu-fen-ge/">
         </link>
         <updated>2019-10-20T01:33:40.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -638,8 +607,8 @@ Ns = (n[0] + 1) * (n[2] + 1) * (n[3] + 1) * ... * (n[k] + 1) - 1</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[最长递增子序列]]></title>
-        <id>https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie</id>
-        <link href="https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie">
+        <id>https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie/</id>
+        <link href="https://tienyeung.github.io/post/zui-chang-di-zeng-zi-xu-lie/">
         </link>
         <updated>2019-10-20T01:06:07.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -678,8 +647,8 @@ LIS[i＋1]＝max{1，LIS[k]＋1}，array[i＋1]＞array[k]，for any k＜＝i<br
     </entry>
     <entry>
         <title type="html"><![CDATA[子数组的最大乘积以及最大和]]></title>
-        <id>https://tienyeung.github.io/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he</id>
-        <link href="https://tienyeung.github.io/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he">
+        <id>https://tienyeung.github.io/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he/</id>
+        <link href="https://tienyeung.github.io/post/zi-shu-zu-de-zui-da-cheng-ji-yi-ji-zui-da-he/">
         </link>
         <updated>2019-10-19T02:16:29.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -891,6 +860,34 @@ int maxSum(int *arr, int n)
 </code></pre>
 <p>我们还可以换一个写法：<br>
 <img src="https://i.loli.net/2019/10/19/OL7eFglM2BK8NnC.png" alt="untitled.png" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[寻找数组中最大值和最小值]]></title>
+        <id>https://tienyeung.github.io/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi/</id>
+        <link href="https://tienyeung.github.io/post/xun-zhao-shu-zu-zhong-zui-da-zhi-he-zui-xiao-zhi/">
+        </link>
+        <updated>2019-10-18T02:49:00.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>数组是最简单的一种数据结构。我们经常碰到的一个基本问题，就是寻找整个数组中最大的数，或者最小的数。这时，我们都会扫描一遍数组，把最大（最小）的数找出来。如果我们需要<strong>同时</strong>找出最大和最小的数呢？对于一个由N个整数组成的数组，需要比较多少次才能把最大和最小的数找出来呢？</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>数组是最简单的一种数据结构。我们经常碰到的一个基本问题，就是寻找整个数组中最大的数，或者最小的数。这时，我们都会扫描一遍数组，把最大（最小）的数找出来。如果我们需要<strong>同时</strong>找出最大和最小的数呢？对于一个由N个整数组成的数组，需要比较多少次才能把最大和最小的数找出来呢？</p>
+</blockquote>
+<!-- more -->
+<p>最简单的无非是扫描两次数组，分别找出最大值和最小值，但能否将这二者看似独立的问题建立关联，从而减少比较次数呢？</p>
+<h1 id="解法一">解法一</h1>
+<p>一般情况下，最大的数和最小的数不会是同一个数（除非N＝1，或者所有整数都是一样的大小）。所以，我们希望先把数组分成两部分，然后再从这两部分中分别找出最大的数和最小的数。首先按顺序将数组中相邻的两个数分在同一组（这只是概念上的分组，无须做任何实际操作）。若数组为{5，6，8，3，7，9} 如图所示：<br>
+<img src="https://i.loli.net/2019/10/18/ra7P2sbJ9RLKoHv.png" alt="untitled.png" loading="lazy"><br>
+接着比较同一组中奇数位数字和偶数位数字，将较大的数放在偶数位上，较小的数放在奇数位上。经过N/2次比较的预处理后，较大的数都放到了偶数位置上，较小的数则放到了奇数位置上，如图：<br>
+<img src="https://i.loli.net/2019/10/18/Cfx14NSLBpVte6F.png" alt="untitled1.png" loading="lazy"><br>
+最后，我们从奇偶数位上分别求出Max＝9，Min＝3，各需要比较N/2次。整个算法共需要比较1.5*N次。<br>
+如此 <strong>2*N --&gt; 1.5*N</strong></p>
+<h1 id="解法二">解法二</h1>
+<p>在解法一基础上改进，无需破坏数组。首先仍然按顺序将数组中相邻的两个数分在同一组，然后可以利用两个变量Max和Min来存储当前的最大值和最小值。。同一组的两个数比较之后，不再调整顺序，而是将其中较小的数与当前Min作比较，如果该数小于当前Min则更新Min。同理，将其中较大的数与当前Max作比较，如果该数大于当前Max，则更新Max。如此反复比较，直到遍历完整个数组。Min和Max分别被初始化为数组第一和第二个数中的小者和大者。比较次数仍为1.5*N次。</p>
+<h1 id="解法三">解法三</h1>
+<p>分治思想是算法中很常用的一种技巧。在N个数中求最小值Min和最大值Max，我们只须分别求出前后N/2个数的Min和Max，然后取较小的Min，较大的Max即可（只须较大的数和较大的数比较，较小的数和较小的数比较，两次就可以了）。但即使采用分治法，总的比较次数仍然没有减少。</p>
 ]]></content>
     </entry>
 </feed>
